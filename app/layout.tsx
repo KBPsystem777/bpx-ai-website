@@ -31,6 +31,30 @@ export const metadata: Metadata = {
     "sales growth AI",
     "process optimization AI",
   ],
+  openGraph: {
+    title: "BPxAI - Transforming Business with AI-Powered Agents",
+    description:
+      "BPxAI revolutionizes businesses with AI-driven solutions. Save time, cut costs, and enhance operations efficiency with advanced AI agents. Discover the future today!",
+    url: "https://www.bpxai.com",
+    siteName: "BPxAI",
+    images: [
+      {
+        url: "https://www.bpxai.com/bpxai-logos/bpxai_1.png",
+        width: 1200,
+        height: 630,
+        alt: "BPxAI Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BPxAI - Transforming Business with AI-Powered Agents",
+    description:
+      "BPxAI revolutionizes businesses with AI-driven solutions. Save time, cut costs, and enhance operations efficiency with advanced AI agents. Discover the future today!",
+    images: ["https://www.bpxai.com/bpxai-logos/bpxai_1.png"], // Update with your image URL
+  },
 }
 
 export default function RootLayout({
@@ -40,7 +64,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link rel="icon" href="/favicon.ico" />{" "}
       <body>
         {children}
         <Analytics />
