@@ -17,7 +17,7 @@ export default function Contact() {
             <div className="flex items-center justify-center">
               <Mail className="w-6 h-6 text-purple-300 mr-2" />
               <a href="mailto:bpxailabs@gmail.com">
-                <p className="text-blue-200">bpxailabs@gmail.com</p>
+                <p className="text-blue-200 text-xl">bpxailabs@gmail.com</p>
               </a>
             </div>
             <BookAMeetingCTA caption="Book a meeting with us!" />

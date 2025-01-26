@@ -7,7 +7,7 @@ export default function Hero() {
     <section className="pt-32 pb-20 px-4">
       <div className="container mx-auto text-center">
         <h1 className="text-5xl font-bold mb-6 text-white">
-          BPxAI: Revolutionizing Business Through AI
+          BPxAI: Simplifying AI for Businesses
         </h1>
         <p className="text-xl mb-8 text-blue-200">
           Unlock the potential of your business with intelligent AI-driven
