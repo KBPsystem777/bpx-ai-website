@@ -1,13 +1,14 @@
 import Header from "./components/Header"
 import Hero from "./components/Hero"
-import Insights from "./components/Insights"
 import AITools from "./components/AITools"
 import Partners from "./components/Partners"
 import Services from "./components/Services"
-import AIImpact from "./components/AIImpact"
 import Team from "./components/Team"
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
+import AboutUs from "./components/AboutUs"
+import IndustriesWeServe from "./components/IndustriesWeServe"
+import ValueProposition from "./components/ValueProposition"
 
 export default function LandingPage() {
   return (
@@ -15,16 +16,16 @@ export default function LandingPage() {
       <Header />
       <main>
         <Hero />
-        <Insights />
+        <IndustriesWeServe />
+        <Services />
+        <ValueProposition />
         <AITools />
         <Partners />
-        <Services />
-        <AIImpact />
         <Team />
+        <AboutUs />
         <Contact />
       </main>
       <Footer />
     </div>
   )
 }
-

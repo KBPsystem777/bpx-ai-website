@@ -1,6 +1,8 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { BookA } from "lucide-react"
+import BookAMeetingCTA from "./BookAMeetingCTA"
 
 export default function Header() {
   return (
@@ -42,14 +44,7 @@ export default function Header() {
           </ul>
         </nav> */}
 
-        <Link href="#services" className="text-blue-200 hover:text-white">
-          <Button
-            variant="outline"
-            className="bg-blue-600 text-white hover:bg-blue-700"
-          >
-            Get Started
-          </Button>
-        </Link>
+        <BookAMeetingCTA caption="Let's Talk" />
       </div>
     </header>
   )
