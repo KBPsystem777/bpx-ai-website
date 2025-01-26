@@ -1,7 +1,6 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MapPin } from "lucide-react"
+import { Mail } from "lucide-react"
+
+import BookAMeetingCTA from "./BookAMeetingCTA"
 
 export default function Contact() {
   return (
@@ -13,44 +12,15 @@ export default function Contact() {
         <h2 className="text-3xl font-bold mb-10 text-center text-white">
           Contact Us
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <form className="space-y-4">
-              <Input
-                type="text"
-                placeholder="Your Name"
-                className="w-full bg-white bg-opacity-10 text-white placeholder-blue-200 border-blue-400"
-              />
-              <Input
-                type="email"
-                placeholder="Your Email"
-                className="w-full bg-white bg-opacity-10 text-white placeholder-blue-200 border-blue-400"
-              />
-              <Textarea
-                placeholder="Your Message"
-                className="w-full bg-white bg-opacity-10 text-white placeholder-blue-200 border-blue-400"
-              />
-              <Button
-                type="submit"
-                className="w-full bg-purple-600 text-white hover:bg-purple-700"
-              >
-                Send Message
-              </Button>
-            </form>
-          </div>
+        <div className="flex flex-col items-center gap-8 text-center">
           <div className="space-y-4">
-            <div className="flex items-center">
+            <div className="flex items-center justify-center">
               <Mail className="w-6 h-6 text-purple-300 mr-2" />
-              <p className="text-blue-200">bpxailabs@gmail.com</p>
+              <a href="mailto:bpxailabs@gmail.com">
+                <p className="text-blue-200 text-xl">bpxailabs@gmail.com</p>
+              </a>
             </div>
-            {/* <div className="flex items-center">
-              <Phone className="w-6 h-6 text-purple-300 mr-2" />
-              <p className="text-blue-200">+1 (555) 123-4567</p>
-            </div> */}
-            <div className="flex items-center">
-              <MapPin className="w-6 h-6 text-purple-300 mr-2" />
-              <p className="text-blue-200">San Juan City, Philippines 1500</p>
-            </div>
+            <BookAMeetingCTA caption="Book a meeting with us!" />
           </div>
         </div>
       </div>

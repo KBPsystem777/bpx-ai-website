@@ -9,7 +9,7 @@ export default function Team() {
     },
     {
       name: "Neri Suba",
-      role: "Business Development Lead and HR",
+      role: "Co-Founder, Business Development & HR Lead",
       image: "team/nerisuba.jpg",
     },
   ]

@@ -16,7 +16,8 @@ export default function Footer() {
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
             <h3 className="text-xl font-bold mb-2">BPxAI</h3>
             <p className="text-blue-200">
-              Empowering businesses with cutting-edge AI solutions
+              Simplifying AI technology for businesses. Automate processes,
+              boost productivity, to keep you ahead of the global competition.
             </p>
           </div>
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
