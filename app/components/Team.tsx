@@ -5,22 +5,22 @@ export default function Team() {
     {
       name: "Koleen Paunon",
       role: "CEO & AI Strategist",
-      image: "/jane-doe.jpg",
+      image: "team/koleenbp.jpg",
     },
     {
       name: "Koleen Paunon",
       role: "CTO & Lead Developer",
-      image: "/john-smith.jpg",
+      image: "team/koleenbp.jpg",
     },
     {
       name: "Koleen Paunon",
       role: "AI Research Scientist",
-      image: "/alice-johnson.jpg",
+      image: "team/koleenbp.jpg",
     },
     {
       name: "Koleen Paunon",
       role: "Blockchain Engineering Lead",
-      image: "/bob-williams.jpg",
+      image: "team/koleenbp.jpg",
     },
   ]
 

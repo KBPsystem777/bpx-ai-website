@@ -1,5 +1,10 @@
 import Link from "next/link"
-import { Facebook, Twitter, LinkedinIcon as LinkedIn, Instagram } from "lucide-react"
+import {
+  Facebook,
+  Twitter,
+  LinkedinIcon as LinkedIn,
+  Instagram,
+} from "lucide-react"
 
 export default function Footer() {
   return (
@@ -8,13 +13,18 @@ export default function Footer() {
         <div className="flex flex-wrap justify-between items-center">
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
             <h3 className="text-xl font-bold mb-2">BPxAI</h3>
-            <p className="text-blue-200">Empowering businesses with cutting-edge AI solutions</p>
+            <p className="text-blue-200">
+              Empowering businesses with cutting-edge AI solutions
+            </p>
           </div>
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
             <h4 className="text-lg font-semibold mb-2">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="#services" className="text-blue-200 hover:text-white">
+                <Link
+                  href="#services"
+                  className="text-blue-200 hover:text-white"
+                >
                   Services
                 </Link>
               </li>
@@ -29,7 +39,10 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className="text-blue-200 hover:text-white">
+                <Link
+                  href="#contact"
+                  className="text-blue-200 hover:text-white"
+                >
                   Contact
                 </Link>
               </li>
@@ -54,10 +67,9 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 text-center text-blue-200">
-          <p>&copy; 2023 BPxAI. All rights reserved.</p>
+          <p>&copy; 2025 BPxAI. All rights reserved.</p>
         </div>
       </div>
     </footer>
   )
 }
-

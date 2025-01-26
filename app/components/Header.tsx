@@ -7,7 +7,7 @@ export default function Header() {
     <header className="bg-purple-900 bg-opacity-80 backdrop-blur-md fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center">
-          <Image src="/logo.svg" alt="BPxAI Logo" width={40} height={40} />
+          {/* <Image src="/logo.svg" alt="BPxAI Logo" width={40} height={40} /> */}
           <span className="ml-2 text-2xl font-bold text-white">BPxAI</span>
         </Link>
         <nav>
@@ -34,11 +34,13 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-        <Button variant="outline" className="bg-blue-600 text-white hover:bg-blue-700">
+        <Button
+          variant="outline"
+          className="bg-blue-600 text-white hover:bg-blue-700"
+        >
           Get Started
         </Button>
       </div>
     </header>
   )
 }
-

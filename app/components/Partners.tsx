@@ -2,16 +2,18 @@ import Image from "next/image"
 
 export default function Partners() {
   const partners = [
-    { name: "Partner 1", logo: "/partner1-logo.svg" },
-    { name: "Partner 2", logo: "/partner2-logo.svg" },
-    { name: "Partner 3", logo: "/partner3-logo.svg" },
-    { name: "Partner 4", logo: "/partner4-logo.svg" },
+    { name: "Beneda", logo: "/partners/beneda.jpg" },
+    { name: "LX Studio Labs", logo: "/partners/lx_studiolabs_logo.jpg" },
+    { name: "Base", logo: "/partners/base.png" },
+    { name: "ManageLife", logo: "/partners/ml.png" },
   ]
 
   return (
     <section className="py-20 px-4 bg-gradient-to-r from-purple-900 to-blue-900">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-10 text-center text-white">Our Partners</h2>
+        <h2 className="text-3xl font-bold mb-10 text-center text-white">
+          Our Partners
+        </h2>
         <div className="flex flex-wrap justify-center items-center gap-8">
           {partners.map((partner, index) => (
             <div key={index} className="text-center">
@@ -30,4 +32,3 @@ export default function Partners() {
     </section>
   )
 }
-

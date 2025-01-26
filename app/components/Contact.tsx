@@ -5,9 +5,14 @@ import { Mail, Phone, MapPin } from "lucide-react"
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900">
+    <section
+      id="contact"
+      className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900"
+    >
       <div className="container mx-auto max-w-4xl">
-        <h2 className="text-3xl font-bold mb-10 text-center text-white">Contact Us</h2>
+        <h2 className="text-3xl font-bold mb-10 text-center text-white">
+          Contact Us
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <form className="space-y-4">
@@ -25,7 +30,10 @@ export default function Contact() {
                 placeholder="Your Message"
                 className="w-full bg-white bg-opacity-10 text-white placeholder-blue-200 border-blue-400"
               />
-              <Button type="submit" className="w-full bg-purple-600 text-white hover:bg-purple-700">
+              <Button
+                type="submit"
+                className="w-full bg-purple-600 text-white hover:bg-purple-700"
+              >
                 Send Message
               </Button>
             </form>
@@ -33,15 +41,15 @@ export default function Contact() {
           <div className="space-y-4">
             <div className="flex items-center">
               <Mail className="w-6 h-6 text-purple-300 mr-2" />
-              <p className="text-blue-200">contact@bpxai.com</p>
+              <p className="text-blue-200">bpxailabs@gmail.com</p>
             </div>
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <Phone className="w-6 h-6 text-purple-300 mr-2" />
               <p className="text-blue-200">+1 (555) 123-4567</p>
-            </div>
+            </div> */}
             <div className="flex items-center">
               <MapPin className="w-6 h-6 text-purple-300 mr-2" />
-              <p className="text-blue-200">123 AI Street, Tech City, TC 12345</p>
+              <p className="text-blue-200">San Juan City, Philippines 1500</p>
             </div>
           </div>
         </div>
@@ -49,4 +57,3 @@ export default function Contact() {
     </section>
   )
 }
-
