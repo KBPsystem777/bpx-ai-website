@@ -4,23 +4,13 @@ export default function Team() {
   const teamMembers = [
     {
       name: "Koleen Paunon",
-      role: "CEO & AI Strategist",
+      role: "Founder, CTO & CEO",
       image: "team/koleenbp.jpg",
     },
     {
-      name: "Koleen Paunon",
-      role: "CTO & Lead Developer",
-      image: "team/koleenbp.jpg",
-    },
-    {
-      name: "Koleen Paunon",
-      role: "AI Research Scientist",
-      image: "team/koleenbp.jpg",
-    },
-    {
-      name: "Koleen Paunon",
-      role: "Blockchain Engineering Lead",
-      image: "team/koleenbp.jpg",
+      name: "Neri Suba",
+      role: "Business Development Lead and HR",
+      image: "team/nerisuba.jpg",
     },
   ]
 
@@ -33,7 +23,7 @@ export default function Team() {
         <h2 className="text-3xl font-bold mb-10 text-center text-white">
           Our Team
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {teamMembers.map((member, index) => (
             <div key={index} className="text-center">
               <Image

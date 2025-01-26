@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import "./globals.css"
 
@@ -8,21 +9,27 @@ export const metadata: Metadata = {
   description:
     "BPxAI revolutionizes businesses with AI-driven solutions. Save time, cut costs, and enhance operations efficiency with advanced AI agents. Discover the future today!",
   keywords: [
-    "AI",
-    "Machine Learning",
-    "Business",
-    "AI Agents",
-    "BPxAI",
-    "Recruitment",
-    "HR",
-    "AI Solutions",
-    "AI recruitment",
-    "AI hiring solutions",
-    "recruitment automation",
-    "AI-powered agents",
-    "recruitment industry pain points",
-    "cost-effective hiring",
+    "AI business automation",
+    "AI for financial services",
+    "AI for car rentals",
+    "AI for dealerships",
+    "BPO automation",
+    "sales automation",
+    "AI agents",
+    "business process automation",
+    "intelligent agents",
+    "AI for business",
+    "cost-effective AI solutions",
+    "AI transformation",
     "BPxAI solutions",
+    "AI-powered sales agents",
+    "automated customer service",
+    "AI for industries",
+    "financial industry automation",
+    "car rental automation",
+    "BPO efficiency",
+    "sales growth AI",
+    "process optimization AI",
   ],
 }
 
@@ -37,6 +44,7 @@ export default function RootLayout({
       <body>
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
