@@ -6,6 +6,8 @@ import {
   Instagram,
 } from "lucide-react"
 
+const currentYear = new Date().getFullYear()
+
 export default function Footer() {
   return (
     <footer className="bg-purple-900 text-white py-8">
@@ -67,7 +69,9 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 text-center text-blue-200">
-          <p>&copy; 2025 BPxAI. All rights reserved.</p>
+          <p>
+            &copy; <span>{`${currentYear}`}</span> BPxAI. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

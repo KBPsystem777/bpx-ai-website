@@ -6,7 +6,7 @@ export default function AITools() {
     { name: "elizaOS", logo: "/techs/elizaOS.jpg" },
     { name: "OpenAI", logo: "techs/openai.png" },
     { name: "Virtual Protocols", logo: "techs/virtual-protocol.png" },
-    { name: "React", logo: "techs/react.png" },
+    { name: "Ethereum", logo: "techs/ethereum.webp" },
   ]
 
   return (

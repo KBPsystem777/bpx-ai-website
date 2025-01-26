@@ -10,7 +10,7 @@ export default function Header() {
           {/* <Image src="/logo.svg" alt="BPxAI Logo" width={40} height={40} /> */}
           <span className="ml-2 text-2xl font-bold text-white">BPxAI</span>
         </Link>
-        <nav>
+        {/* <nav>
           <ul className="flex space-x-4">
             <li>
               <Link href="#services" className="text-blue-200 hover:text-white">
@@ -33,13 +33,16 @@ export default function Header() {
               </Link>
             </li>
           </ul>
-        </nav>
-        <Button
-          variant="outline"
-          className="bg-blue-600 text-white hover:bg-blue-700"
-        >
-          Get Started
-        </Button>
+        </nav> */}
+
+        <Link href="#services" className="text-blue-200 hover:text-white">
+          <Button
+            variant="outline"
+            className="bg-blue-600 text-white hover:bg-blue-700"
+          >
+            Get Started
+          </Button>
+        </Link>
       </div>
     </header>
   )
