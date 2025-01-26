@@ -5,7 +5,6 @@ export default function AITools() {
     { name: "Axar.AI", logo: "/techs/axarai.webp" },
     { name: "elizaOS", logo: "/techs/elizaOS.jpg" },
     { name: "OpenAI", logo: "techs/openai.png" },
-    { name: "Virtual Protocols", logo: "techs/virtual-protocol.png" },
     { name: "Ethereum", logo: "techs/ethereum.webp" },
   ]
 
@@ -16,7 +15,7 @@ export default function AITools() {
     >
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold mb-10 text-center text-white">
-          AI Tools & Technologies
+          AI & Web3 Technologies
         </h2>
         <div className="flex flex-wrap justify-center items-center gap-8">
           {tools.map((tool, index) => (
