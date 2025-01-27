@@ -4,7 +4,7 @@ export default function Team() {
   const teamMembers = [
     {
       name: "Koleen Paunon",
-      role: "Founder, CTO & CEO",
+      role: "Founder, AI and Blockchain Developer",
       image: "team/koleenbp.jpg",
     },
     {
