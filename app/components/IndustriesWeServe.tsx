@@ -21,19 +21,6 @@ export default function IndustriesWeServe() {
       description: "Automate fleet management, bookings, and customer support.",
       icon: Car,
     },
-    {
-      name: "Healthcare",
-      description:
-        "AI agents for patient scheduling, insurance claims, and personalized care coordination.",
-      icon: Hospital,
-    },
-
-    {
-      name: "Business Process Outsourcing (BPOs)",
-      description:
-        "End-to-end task automation for cost reduction and faster service delivery.",
-      icon: Building2,
-    },
   ]
 
   return (

@@ -25,28 +25,10 @@ export default function Services() {
       icon: Lightbulb,
     },
     {
-      title: "Web3 & AI Integration",
+      title: "Blockchain, Smart Contracts, Web3 & AI Integration",
       description:
         "Combine blockchain and AI for secure, next-gen business solutions.",
       icon: Layers,
-    },
-    {
-      title: "Smart Contracts",
-      description:
-        "Automate and secure your agreements using blockchain technology.",
-      icon: FileCode,
-    },
-    {
-      title: "Blockchain Development",
-      description:
-        "We build custom blockchain systems to enhance your operations.",
-      icon: Blockchain,
-    },
-    {
-      title: "AI-Powered Chatbots",
-      description:
-        "Provide 24/7 support with intelligent, automated chat solutions.",
-      icon: MessageSquare,
     },
   ]
 
