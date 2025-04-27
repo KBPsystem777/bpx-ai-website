@@ -1,12 +1,15 @@
-import Image from "next/image"
+import Image from "next/image";
 
 export default function Partners() {
   const partners = [
     { name: "Beneda", logo: "/partners/beneda.jpg" },
     { name: "LX Studio Labs", logo: "/partners/lx_studiolabs_logo.jpg" },
     { name: "Base", logo: "/partners/base.png" },
-    { name: "ManageLife", logo: "/partners/ml.png" },
-  ]
+    {
+      name: "Viction",
+      logo: "https://koleenbp.com/images/partners/viction-logo.png",
+    },
+  ];
 
   return (
     <section className="py-20 px-4 bg-gradient-to-r from-purple-900 to-blue-900">
@@ -30,5 +33,5 @@ export default function Partners() {
         </div>
       </div>
     </section>
-  )
+  );
 }

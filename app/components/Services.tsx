@@ -1,65 +1,68 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import {
-  Brain,
-  Lightbulb,
-  Layers,
-  FileCode,
-  BitcoinIcon as Blockchain,
-  MessageSquare,
-} from "lucide-react"
+import type React from "react";
 
-import BookAMeetingCTA from "./BookAMeetingCTA"
+import { Code, Database, Bot, Lightbulb } from "lucide-react";
 
-export default function Services() {
-  const services = [
-    {
-      title: "AI Agents Development",
-      description:
-        "We build AI tools to automate tasks and improve your business performance.",
-      icon: Brain,
-    },
-    {
-      title: "AI Consulting",
-      description:
-        "Get expert advice on how AI can solve your business challenges.",
-      icon: Lightbulb,
-    },
-    {
-      title: "Blockchain, Smart Contracts, Web3 & AI Integration",
-      description:
-        "Combine blockchain and AI for secure, next-gen business solutions.",
-      icon: Layers,
-    },
-  ]
+type ServiceItem = {
+  title: string;
+  description: string;
+  iconName: string;
+};
+
+type ServicesProps = {
+  content: {
+    title: string;
+    items: ServiceItem[];
+  };
+};
+
+export default function Services({ content }: ServicesProps) {
+  // Map icon names to actual icon components
+  const iconMap: Record<string, React.ElementType> = {
+    Code,
+    Database,
+    Bot,
+    Lightbulb,
+  };
 
   return (
     <section
       id="services"
-      className="py-20 px-4 bg-gradient-to-r from-blue-900 to-purple-900"
+      className="py-20 px-4 bg-gradient-to-b from-white to-blue-50"
     >
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-10 text-center text-white">
-          Our Services
+      <div className="container mx-auto max-w-6xl">
+        <h2 className="text-3xl font-bold mb-4 text-center text-blue-900">
+          {content.title}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <Card
-              key={index}
-              className="bg-white bg-opacity-10 backdrop-blur-md border-none"
-            >
-              <CardHeader>
-                <service.icon className="w-12 h-12 text-purple-300 mb-4" />
-                <CardTitle className="text-purple-300">
-                  {service.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-blue-200">{service.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+        <p className="text-blue-700 text-center mb-12 max-w-2xl mx-auto">
+          We deliver technology solutions that are practical, scalable, and
+          aligned with your business goals.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {content.items.map((service, index) => {
+            const IconComponent = iconMap[service.iconName] || Code;
+
+            return (
+              <div
+                key={index}
+                className="group flex flex-col bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-blue-600"
+              >
+                <div className="p-8">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-blue-100 p-3 rounded-lg mr-4 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                      <IconComponent className="w-6 h-6 text-blue-900 group-hover:text-white transition-colors duration-300" />
+                    </div>
+                    <h3 className="text-xl font-bold text-blue-900">
+                      {service.title}
+                    </h3>
+                  </div>
+                  <p className="text-blue-700">{service.description}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
-  )
+  );
 }

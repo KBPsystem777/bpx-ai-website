@@ -1,51 +1,49 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import { BookA } from "lucide-react"
-import BookAMeetingCTA from "./BookAMeetingCTA"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
-export default function Header() {
+type NavigationLink = {
+  label: string;
+  href: string;
+};
+
+type NavigationProps = {
+  links: NavigationLink[];
+  ctaButton: {
+    label: string;
+    href: string;
+  };
+};
+
+type HeaderProps = {
+  navigation: NavigationProps;
+  siteName: string;
+};
+
+export default function Header({ navigation, siteName }: HeaderProps) {
   return (
-    <header className="bg-purple-900 bg-opacity-80 backdrop-blur-md fixed top-0 left-0 right-0 z-50">
+    <header className="bg-white fixed top-0 left-0 right-0 z-50 shadow-sm">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center">
-          {
-            <Image
-              src="/bpx-icon.png"
-              alt="BPxAI Logo"
-              width={40}
-              height={40}
-            />
-          }
-          <span className="ml-2 text-2xl font-bold text-white">BPxAI</span>
+          <span className="text-2xl font-bold text-blue-900">{siteName}</span>
         </Link>
-        {/* <nav>
-          <ul className="flex space-x-4">
-            <li>
-              <Link href="#services" className="text-blue-200 hover:text-white">
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link href="#tools" className="text-blue-200 hover:text-white">
-                Tools
-              </Link>
-            </li>
-            <li>
-              <Link href="#team" className="text-blue-200 hover:text-white">
-                Team
-              </Link>
-            </li>
-            <li>
-              <Link href="#contact" className="text-blue-200 hover:text-white">
-                Contact
-              </Link>
-            </li>
+        <nav>
+          <ul className="hidden md:flex space-x-8">
+            {navigation.links.map((link, index) => (
+              <li key={index}>
+                <Link
+                  href={link.href}
+                  className="text-blue-900 hover:text-blue-600 font-medium"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
-        </nav> */}
-
-        <BookAMeetingCTA caption="Let's Talk" />
+        </nav>
+        <Button className="bg-blue-900 text-white hover:bg-blue-800">
+          {navigation.ctaButton.label}
+        </Button>
       </div>
     </header>
-  )
+  );
 }
