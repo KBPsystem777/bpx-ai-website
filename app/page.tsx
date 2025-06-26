@@ -1,43 +1,23 @@
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import AITools from "./components/AITools";
-import Partners from "./components/Partners";
-import Services from "./components/Services";
-import Team from "./components/Team";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import AboutUs from "./components/AboutUs";
-import IndustriesWeServe from "./components/IndustriesWeServe";
-import ValueProposition from "./components/ValueProposition";
+import { HeroSection } from "@/components/hero-section";
+import { ServicesSection } from "@/components/services-section";
+import { ProjectsSection } from "@/components/projects-section";
+import { PartnersSection } from "@/components/partners-section";
+import { TeamSection } from "@/components/team-section";
+import { ConsultationCTA } from "@/components/consultation-cta";
+import { ContactSection } from "@/components/contact-section";
+import { Footer } from "@/components/footer";
 
-import { siteContent } from "./data/content";
-import CtaSection from "./components/CtaSection";
-import WhyChooseUs from "./components/WhyChooseUs";
-import ProjectHighlights from "./components/ProjectHighlights";
-
-export default function LandingPage() {
+export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
-      <Header
-        navigation={siteContent.navigation}
-        siteName={siteContent.meta.siteName}
-      />
-      <main>
-        <Hero content={siteContent.hero} />
-        <AboutUs content={siteContent.about} />
-        <Services content={siteContent.services} />
-        <WhyChooseUs content={siteContent.whyChooseUs} />
-
-        {/*  />
-      
-        <Testimonial content={siteContent.testimonial} />
-       */}
-        <ProjectHighlights content={siteContent.projectHighlights} />
-
-        <Partners />
-        <CtaSection content={siteContent.cta} />
-      </main>
-      <Footer content={siteContent.footer} />
-    </div>
+    <main className="min-h-screen">
+      <HeroSection />
+      <ServicesSection />
+      <ProjectsSection />
+      <PartnersSection />
+      <TeamSection />
+      <ConsultationCTA />
+      <ContactSection />
+      <Footer />
+    </main>
   );
 }
