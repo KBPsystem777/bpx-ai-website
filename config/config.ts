@@ -85,12 +85,22 @@ export const siteConfig = {
       "Showcasing our AI innovation and technical excellence across industries",
     items: [
       {
+        title: "MedixAI",
+        description:
+          "Revolutionary AI-powered medical consultation platform connecting patients with intelligent diagnosis and pre-vetted healthcare providers across the Philippines.",
+        category: "Medical AI Agent",
+        image: "https://medix.bpxai.com/home/medixai-logo.png",
+        status: "Beta",
+        website: "https://medix.bpxai.com",
+        location: "Philippines",
+      },
+      {
         title: "NegosyoAI",
         description:
           "Our local initiative empowering aspiring Filipino entrepreneurs with autonomous AI business coaching, taking businesses from zero to hero. Currently in beta mode.",
         category: "AI Coaching Platform",
         image: "/bpxai-logos/bpxailabs.png?height=400&width=600",
-        status: "Beta - our very own project",
+        status: "Beta",
         website: "https://negosyo.bpxai.com/",
         location: "Philippines",
       },
@@ -100,7 +110,7 @@ export const siteConfig = {
           "Connecting you to verified, professional drivers for business, logistics, and private transport needs through intelligent matching algorithms.",
         category: "Transportation Platform",
         image: "/apps/drivex.png?height=400&width=600",
-        status: "Beta - our very own project",
+        status: "Beta",
         website: "https://drivex.bpxai.com/",
         location: "Philippines",
       },
@@ -111,6 +121,7 @@ export const siteConfig = {
         category: "RWA & Web3",
         image: "/apps/ml.png?height=400&width=600",
         location: "United States",
+        website: "https://market.managelife.io",
       },
       {
         title: "Baltimore Gas and Electric (BGE)",
@@ -119,6 +130,7 @@ export const siteConfig = {
         category: "Energy & Utilities",
         image: "/clients/bge.jpg?height=10&width=10",
         location: "United States",
+        website: "https://www.bge.com",
       },
       {
         title: "Entergy Corporation",
@@ -127,6 +139,7 @@ export const siteConfig = {
         category: "Energy & Infrastructure",
         image: "/clients/entergy.webp?height=400&width=600",
         location: "United States",
+        website: "https://www.entergy.com",
       },
       {
         title: "Exelon Corporation",
@@ -135,6 +148,7 @@ export const siteConfig = {
         category: "Energy & Automation",
         image: "/clients/exelon.png?height=400&width=600",
         location: "United States",
+        website: "https://www.exeloncorp.com",
       },
       {
         title: "Xcel Energy",
@@ -143,6 +157,7 @@ export const siteConfig = {
         category: "Energy & Analytics",
         image: "/clients/xcel.png?height=400&width=600",
         location: "United States",
+        website: "https://www.xcelenergy.com",
       },
       {
         title: "LGU Digital Transformation",

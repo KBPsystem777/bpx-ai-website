@@ -33,7 +33,7 @@ export const metadata = {
     siteName: "BPxAI",
     images: [
       {
-        url: "https://www.bpxai.com/bpxai.png",
+        url: "https://www.bpxai.com/bpxai-logos/bpxai.png",
         width: 1200,
         height: 630,
         alt: "BPxAI Logo",
@@ -47,6 +47,6 @@ export const metadata = {
     title: "BPxAI - Transforming Business with AI-Powered Agents",
     description:
       "BPxAI revolutionizes businesses with AI-driven solutions. Save time, cut costs, and enhance operations efficiency with advanced AI agents. Discover the future today!",
-    images: ["https://www.bpxai.com/bpxai.png"], // Update with your image URL
+    images: ["https://www.bpxai.com/bpxai-logos/bpxailabs.png"], // Update with your image URL
   },
 };
