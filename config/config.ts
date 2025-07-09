@@ -222,7 +222,7 @@ export const siteConfig = {
         name: "elizaOS",
         description: "Next-generation operating system for AI applications",
         website: "https://elizaos.com/",
-        logo: "/techs/elizaos.jpg?height=80&width=200",
+        logo: "/techs/elizaOS.jpg?height=80&width=200",
       },
       {
         name: "axar.ai",
