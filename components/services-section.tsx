@@ -1,22 +1,24 @@
 "use client";
 
-import { Brain, Lightbulb, Zap, Globe, Code, Building } from "lucide-react";
+import { Search, Copy, Rocket, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
-
-import { siteConfig } from "@/config/config";
+import { useLanguage } from "@/components/language-provider";
 
 const iconMap = {
-  Brain,
-  Lightbulb,
-  Zap,
-  Globe,
-  Code,
-  Building,
+  Search,
+  Copy,
+  Rocket,
 };
 
 export function ServicesSection() {
+  const { t } = useLanguage();
+  const services = t("services");
+
   return (
-    <section className="py-24 bg-slate-900">
+    <section
+      id="services"
+      className="py-24 bg-slate-900 border-t border-slate-800"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -26,44 +28,62 @@ export function ServicesSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-            {siteConfig.services.title}
+            {services.title}
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            {siteConfig.services.subtitle}
+            {services.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {siteConfig.services.items.map((service, index) => {
-            const IconComponent = iconMap[service.icon as keyof typeof iconMap];
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {Array.isArray(services.items) &&
+            services.items.map((service: any, index: number) => {
+              const IconComponent =
+                iconMap[service.iconName as keyof typeof iconMap] || Rocket;
 
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="group relative p-8 bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl border border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-105"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="group relative p-8 bg-slate-800/30 rounded-3xl border border-slate-700/50 hover:border-purple-500/50 transition-all duration-300"
+                >
+                  <div className="relative z-10">
+                    <div className="w-14 h-14 bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-xl flex items-center justify-center mb-6">
+                      <IconComponent className="w-7 h-7 text-purple-400" />
+                    </div>
 
-                <div className="relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="w-8 h-8 text-white" />
+                    <div className="mb-4">
+                      <span className="text-sm font-bold text-purple-400 uppercase tracking-widest">
+                        {service.pricing}
+                      </span>
+                      <h3 className="text-2xl font-bold text-white mt-1">
+                        {service.title}
+                      </h3>
+                    </div>
+
+                    <p className="text-gray-400 leading-relaxed mb-6">
+                      {service.description}
+                    </p>
+
+                    <div className="space-y-3">
+                      <div className="flex items-start space-x-3 text-sm text-gray-400">
+                        <CheckCircle2 className="w-4 h-4 text-green-500 mt-1 shrink-0" />
+                        <span>
+                          {index === 0
+                            ? "Qualified Lead Generation"
+                            : index === 1
+                              ? "Rapid Implementation"
+                              : "Dedicated Architecture Team"}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors duration-300">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-gray-400 leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+                </motion.div>
+              );
+            })}
         </div>
       </div>
     </section>

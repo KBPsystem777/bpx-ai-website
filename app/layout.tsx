@@ -5,15 +5,17 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import { metadata as siteData } from "./metadata/metadata";
+import { LanguageProvider } from "@/components/language-provider";
+import { Header } from "@/components/header";
+import { siteContent } from "./data/content";
 
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "BPxAI - Transforming Business with AI-Powered Agents",
-  description:
-    "BPxAI revolutionizes businesses with AI-driven solutions. Save time, cut costs, and enhance operations efficiency with advanced AI agents. Discover the future today!",
+  title: siteData.title,
+  description: siteData.description,
   keywords: siteData.keywords,
   openGraph: siteData.openGraph,
   twitter: siteData.twitter,
@@ -25,11 +27,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
-        {children}
-        <Analytics />
-        <SpeedInsights />
+        <LanguageProvider content={siteContent}>
+          <Header />
+          {children}
+          <Analytics />
+          <SpeedInsights />
+        </LanguageProvider>
       </body>
     </html>
   );

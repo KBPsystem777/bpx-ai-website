@@ -2,12 +2,13 @@
 
 import { Calendar, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-
 import { Button } from "@/components/ui/button";
-
-import { siteConfig } from "@/config/config";
+import { useLanguage } from "@/components/language-provider";
 
 export function ConsultationCTA() {
+  const { t } = useLanguage();
+  const ctaData = t("cta");
+
   return (
     <section className="py-24 bg-gradient-to-br from-purple-900/20 via-slate-900 to-blue-900/20 relative overflow-hidden">
       {/* Background effects */}
@@ -27,16 +28,16 @@ export function ConsultationCTA() {
           <div className="flex items-center justify-center mb-6">
             <Sparkles className="w-8 h-8 text-purple-400 mr-3" />
             <span className="text-purple-400 font-semibold tracking-wide uppercase text-sm">
-              Free Consultation
+              Systems First
             </span>
           </div>
 
           <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent leading-tight">
-            {siteConfig.consultation.title}
+            {ctaData.title}
           </h2>
 
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-            {siteConfig.consultation.subtitle}
+            {ctaData.description}
           </p>
 
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -46,20 +47,20 @@ export function ConsultationCTA() {
               className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-12 py-6 text-xl font-semibold rounded-full transition-all duration-300 shadow-2xl hover:shadow-purple-500/25"
             >
               <a
-                href={siteConfig.consultation.url}
+                href={ctaData.buttonHref}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Calendar className="mr-3 w-6 h-6" />
-                {siteConfig.consultation.cta}
+                {ctaData.buttonText}
                 <ArrowRight className="ml-3 w-6 h-6" />
               </a>
             </Button>
           </motion.div>
 
           <p className="text-gray-400 mt-6 text-sm">
-            30-minute strategy session • No commitment required • Expert
-            insights guaranteed
+            30-minute strategy session • Guaranteed ROI Insights • Tagalog
+            support available
           </p>
         </motion.div>
       </div>
