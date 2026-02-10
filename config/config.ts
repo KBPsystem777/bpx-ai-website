@@ -1,21 +1,21 @@
 export const siteConfig = {
   company: {
-    name: "BPxAI",
-    tagline: "Pioneering the Future of Artificial Intelligence",
+    name: "BPxAI Labs",
+    tagline: "Reliable Business Operating Systems",
     description:
-      "Elite AI development company delivering cutting-edge automation, Web3, and custom AI solutions to transform businesses globally.",
+      "Operator-led technology studio building Business OS for clarity, control, and execution.",
     contact: {
       email: "bpxailabs@gmail.com",
       phone: "+639177138316",
-      address: "San Juan City, Metro Manila, Philippines 1500",
+      address: "Global / Cross-border Execution",
     },
   },
   hero: {
-    title: "Pioneering the Future of",
-    highlight: "Artificial Intelligence",
+    title: "Build a Better",
+    highlight: "Operating System",
     subtitle:
-      "Elite AI development company delivering cutting-edge automation, Web3, and custom AI solutions to transform businesses globally.",
-    cta: "Explore Our Solutions",
+      "Purpose-built platforms for companies that need clarity and execution — not buzzwords.",
+    cta: "Let's Talk Systems",
   },
   services: {
     title: "Our Expertise",
@@ -170,9 +170,8 @@ export const siteConfig = {
     ],
   },
   contact: {
-    title: "Start Your AI Journey",
-    subtitle:
-      "Ready to transform your business with cutting-edge AI solutions?",
+    title: "Let's Talk Systems",
+    subtitle: "Ready to build a better operating system for your business?",
     form: {
       namePlaceholder: "Your Name",
       emailPlaceholder: "Your Email",
@@ -182,9 +181,8 @@ export const siteConfig = {
     },
   },
   partners: {
-    title: "Trusted Technology Partners",
-    subtitle:
-      "Collaborating with industry leaders to deliver exceptional AI solutions",
+    title: "Technology Partners",
+    subtitle: "Partners we use to build reliable systems",
     items: [
       {
         name: "Base",
@@ -192,13 +190,6 @@ export const siteConfig = {
           "Built on the Superchain - Ethereum L2 blockchain platform",
         website: "https://base.org",
         logo: "/partners/base.png?height=80&width=200",
-      },
-      {
-        name: "Viction",
-        description:
-          "High-performance blockchain infrastructure for Web3 applications",
-        website: "https://viction.xyz",
-        logo: "/partners/viction-logo.png?height=80&width=200",
       },
       {
         name: "Beneda",
@@ -233,10 +224,10 @@ export const siteConfig = {
     ],
   },
   consultation: {
-    title: "Ready to Transform Your Business?",
+    title: "Ready to Turn Operations into Clarity?",
     subtitle:
-      "Book a consultation with our AI experts and discover how we can accelerate your digital transformation journey.",
-    cta: "Book Free Consultation",
+      "Book a strategy session with our systems experts and discover how to build the OS your business actually needs.",
+    cta: "Book Strategy Session",
     url: "https://calendly.com/bpxailabs/30min",
   },
 };

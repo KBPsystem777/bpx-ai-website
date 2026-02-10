@@ -1,80 +1,73 @@
 "use client";
 
-import { ArrowRight, Sparkles, Calendar } from "lucide-react";
+import { ArrowRight, Sparkles, Calendar, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/config/config";
+import { useLanguage } from "@/components/language-provider";
 
 export function HeroSection() {
+  const { t } = useLanguage();
+  const hero = t("hero");
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900 pt-20">
       {/* Animated background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-conic from-purple-500/10 via-transparent to-blue-500/10 rounded-full animate-spin-slow" />
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-[10%] left-[-10%] w-[50%] h-[50%] bg-purple-500/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[10%] right-[-10%] w-[50%] h-[50%] bg-blue-500/10 rounded-full blur-[120px] animate-pulse delay-1000" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
-        >
-          <div className="flex items-center justify-center mb-6">
-            <Sparkles className="w-8 h-8 text-purple-400 mr-3" />
-            <span className="text-purple-400 font-semibold tracking-wide uppercase text-sm">
-              {siteConfig.company.name}
-            </span>
-          </div>
+      <div className="relative z-10 container mx-auto px-4">
+        <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 mb-6 mx-auto">
+              <Sparkles className="w-4 h-4 text-purple-400" />
+              <span className="text-purple-400 font-semibold tracking-wide uppercase text-xs">
+                {t("meta.siteName")}
+              </span>
+            </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent leading-tight">
-            {siteConfig.hero.title}
-            <br />
-            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              {siteConfig.hero.highlight}
-            </span>
-          </h1>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-100 to-blue-100 bg-clip-text text-transparent leading-tight tracking-tight">
+              {hero.headline}
+            </h1>
 
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            {siteConfig.hero.subtitle}
-          </p>
+            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+              {hero.subheadline}
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-2xl"
-            >
-              {siteConfig.hero.cta}
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-2 border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
-            >
-              <a
-                href={siteConfig.consultation.url}
-                target="_blank"
-                rel="noopener noreferrer"
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-2">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 h-14 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-purple-500/20"
+                asChild
               >
-                <Calendar className="mr-2 w-5 h-5" />
-                Book Consultation
-              </a>
-            </Button>
-          </div>
-        </motion.div>
+                <a href={hero.primaryCta.href}>
+                  {hero.primaryCta.label}
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </a>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-slate-700 text-gray-700 hover:bg-white h-14 px-8 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
+              >
+                <a href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="w-6 h-10 border-2 border-purple-400 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-purple-400 rounded-full mt-2 animate-bounce" />
-        </div>
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-50">
+        <div className="w-1 h-12 bg-gradient-to-b from-purple-500 to-transparent rounded-full animate-bounce" />
       </div>
     </section>
   );
