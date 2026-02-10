@@ -11,7 +11,7 @@ The primary entry point for BPxAI, designed to build immediate trust with PH SME
 The hero section SHALL convey the "Accenture for PH SMEs" positioning with a global-standard tagline and clear CTA.
 
 - It SHALL display a high-impact headline "Elevate Your PH SME to Global Standards".
-- It SHALL feature a rotating carousel or grid of success metrics (e.g., "Abra RPT: 20-30% boost").
+- It SHALL feature a rotating carousel or grid of success metrics (e.g., "Abra Real Property Tax: 20-30% boost").
 - The primary CTA SHALL be "Start Free SME Readiness Audit".
 
 #### Scenario: Landing on the page

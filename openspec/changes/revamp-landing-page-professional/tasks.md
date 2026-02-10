@@ -11,7 +11,7 @@
 - [ ] Redesign `HeroSection` with "Global Standards" tagline and metrics carousel.
 - [ ] Update `ServicesSection` to reflect the service-model hierarchy.
 - [ ] Implement `PricingSection` with the 3rd-tier grid.
-- [ ] Integrate PH-specific success metrics (Abra RPT, etc.) into `ProjectsSection`.
+- [ ] Integrate PH-specific success metrics (Abra Real Property Tax, etc.) into `ProjectsSection`.
 
 ## Phase 3: SME Hub & Success Vault
 

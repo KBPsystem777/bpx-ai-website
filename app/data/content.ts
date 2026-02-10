@@ -135,7 +135,7 @@ export const siteContent: Record<string, any> = {
           industry: "Food & Retail",
         },
         {
-          title: "LGU RPT System",
+          title: "LGU Real Property Tax System",
           description:
             "Digitized real property records, increasing collection transparency and efficiency.",
           impact: "30% Revenue Boost",
@@ -306,7 +306,7 @@ export const siteContent: Record<string, any> = {
           industry: "Food & Retail",
         },
         {
-          title: "LGU RPT System",
+          title: "LGU Real Property Tax System",
           description:
             "Pag-digitalize ng property records para sa mas mabilis at transparent na koleksyon ng tax.",
           impact: "30% Revenue Boost",
