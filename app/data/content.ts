@@ -14,6 +14,7 @@ export const siteContent: Record<string, any> = {
       links: [
         { label: "Services", href: "/#services" },
         { label: "Projects", href: "/#projects" },
+        { label: "Research", href: "/#research" },
         { label: "Contact", href: "/#contact" },
       ],
       ctaButton: {
@@ -151,6 +152,31 @@ export const siteContent: Record<string, any> = {
       ],
     },
 
+    research: {
+      title: "Research & Frameworks",
+      subtitle:
+        "Conceptual frameworks and strategic insights driving our approach to technology and operations",
+      documents: [
+        {
+          title: "AI Defense Intelligence Framework for the Philippines",
+          description:
+            "A comprehensive framework exploring the integration of AI technologies in defense and intelligence operations within the Philippine context.",
+          category: "Defense & Intelligence",
+          date: "February 2026",
+          fileSize: "PDF • ~2.5 MB",
+          downloadUrl:
+            "/resources/AI_Defense_Intelligence_Framework_Philippines_Report.pdf",
+          tags: [
+            "AI Systems",
+            "Defense",
+            "Philippines",
+            "Intelligence",
+            "Framework",
+          ],
+        },
+      ],
+    },
+
     cta: {
       title: "Turn operations into clarity.",
       description:
@@ -186,6 +212,7 @@ export const siteContent: Record<string, any> = {
       links: [
         { label: "Serbisyo", href: "/#services" },
         { label: "Proyekto", href: "/#projects" },
+        { label: "Research", href: "/#research" },
         { label: "Kontak", href: "/#contact" },
       ],
       ctaButton: {
@@ -318,6 +345,31 @@ export const siteContent: Record<string, any> = {
             "Maasahang billing automation para sa high-scale utility environments.",
           impact: "70% Error Reduction",
           industry: "Utilities",
+        },
+      ],
+    },
+
+    research: {
+      title: "Research & Frameworks",
+      subtitle:
+        "Mga conceptual frameworks at strategic insights na gumagabay sa aming approach sa technology at operations",
+      documents: [
+        {
+          title: "AI Defense Intelligence Framework para sa Pilipinas",
+          description:
+            "Isang komprehensibong framework na tumatalakay sa integration ng AI technologies sa defense at intelligence operations sa konteksto ng Pilipinas.",
+          category: "Defense & Intelligence",
+          date: "Pebrero 2026",
+          fileSize: "PDF • ~2.5 MB",
+          downloadUrl:
+            "/resources/AI_Defense_Intelligence_Framework_Philippines_Report.pdf",
+          tags: [
+            "AI Systems",
+            "Defense",
+            "Pilipinas",
+            "Intelligence",
+            "Framework",
+          ],
         },
       ],
     },
