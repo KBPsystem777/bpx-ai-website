@@ -56,18 +56,6 @@ export function PartnersSection() {
                   <p className="text-gray-400 text-sm leading-relaxed mb-4">
                     {partner.description}
                   </p>
-
-                  {partner.website !== "#" && (
-                    <a
-                      href={partner.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors duration-300 text-sm font-semibold"
-                    >
-                      Visit Website
-                      <ExternalLink className="ml-1 w-3 h-3" />
-                    </a>
-                  )}
                 </div>
               </div>
             </motion.div>
