@@ -1,9 +1,9 @@
 export const siteConfig = {
   company: {
     name: "BPxAI Labs",
-    tagline: "Reliable Business Operating Systems",
+    tagline: "AI Solutions. DLT Infrastructure. Custom Apps.",
     description:
-      "Operator-led technology studio building Business OS for clarity, control, and execution.",
+      "Full-stack technology studio delivering AI-powered platforms, decentralized applications, and custom systems for enterprises and SMBs.",
     contact: {
       email: "bpxailabs@gmail.com",
       phone: "+639177138316",
@@ -170,8 +170,8 @@ export const siteConfig = {
     ],
   },
   contact: {
-    title: "Let's Talk Systems",
-    subtitle: "Ready to build a better operating system for your business?",
+    title: "Let\u2019s Build Together",
+    subtitle: "Ready to ship AI solutions, DLT infrastructure, or custom applications?",
     form: {
       namePlaceholder: "Your Name",
       emailPlaceholder: "Your Email",

@@ -7,104 +7,104 @@ export const siteContent: Record<string, any> = {
     meta: {
       siteName: "BPxAI Labs",
       description:
-        "Building reliable Business Operating Systems for clarity, control, and execution.",
+        "AI-powered solutions, distributed ledger technology, and custom application development for enterprises and SMBs.",
     },
 
     navigation: {
       links: [
-        { label: "Services", href: "/#services" },
-        { label: "Projects", href: "/#projects" },
+        { label: "Solutions", href: "/#services" },
+        { label: "Case Studies", href: "/#projects" },
         { label: "Research", href: "/#research" },
         { label: "Contact", href: "/#contact" },
       ],
       ctaButton: {
-        label: "Let's Talk Systems",
+        label: "Book a Call",
         href: "/#contact",
       },
     },
 
     hero: {
-      headline: "Build a better operating system",
+      headline: "AI solutions that ship. Systems that scale.",
       subheadline:
-        "Operator-led automation and custom systems for companies that need clarity, control, and execution — not buzzwords.",
+        "From intelligent automation to blockchain infrastructure — we design, build, and deploy production-grade technology for enterprises and growing businesses.",
       metrics: [],
       primaryCta: {
-        label: "Let's Talk Systems",
+        label: "Book a Strategy Call",
         href: "/#contact",
       },
       secondaryCta: {
-        label: "See how it works",
+        label: "View Case Studies",
         href: "/#projects",
       },
     },
 
     about: {
-      title: "Productized Technology Studio",
-      mainHeadline: "Boringly reliable systems for real businesses",
+      title: "Full-Stack Technology Studio",
+      mainHeadline: "Enterprise capability, startup speed",
       description:
-        "BPxAI Labs designs and implements Business Operating Systems (Business OS) — lightweight, purpose-built platforms that replace spreadsheets and fragmented tools with clear, usable systems for both private companies and the public sector.",
+        "BPxAI Labs is a technology studio delivering AI-powered platforms, decentralized applications, and custom business systems. We serve enterprises seeking innovation and SMBs ready to scale — from proof of concept to production.",
       features: [
-        "Designed for real-world operations",
-        "Reliable and scalable execution",
-        "Clarity across sales, tracking, and workflows",
-        "Auditable systems for regulated environments",
+        "AI agents and automation pipelines",
+        "Blockchain and DLT infrastructure",
+        "Custom web and mobile applications",
+        "Enterprise system modernization",
       ],
       conclusion:
-        "We deliver enterprise-level thinking with founder-level execution.",
+        "We bring enterprise-grade engineering with founder-level accountability.",
     },
 
     services: {
-      title: "What we build",
-      subtitle: "Systems that work for your daily operations",
+      title: "What we deliver",
+      subtitle: "End-to-end technology solutions — from AI intelligence to decentralized infrastructure",
       items: [
         {
-          title: "Business OS",
+          title: "AI & Intelligent Automation",
           description:
-            "Custom-fit, modular platforms that replace spreadsheets and fragmented tracking for businesses and government offices.",
+            "Custom AI agents, LLM integrations, and automation pipelines that transform manual workflows into self-operating systems.",
           iconName: "Search",
-          pricing: "Modular",
+          pricing: "AI Solutions",
         },
         {
-          title: "Visibility & Control",
+          title: "Web3 & DLT Infrastructure",
           description:
-            "Internal dashboards for sales, expenses, and operations that answer: 'What is happening today?'",
+            "Blockchain-native applications, smart contracts, and tokenized platforms built on Ethereum L2s and beyond.",
           iconName: "Copy",
-          pricing: "Precision",
+          pricing: "Decentralized",
         },
         {
-          title: "Operational Automation",
+          title: "Custom App Development",
           description:
-            "Selective AI and automation logic that handles the boring parts of your business, quietly and reliably.",
+            "Production-grade web and mobile applications with modern stacks — from MVP sprints to enterprise-scale deployments.",
           iconName: "Rocket",
-          pricing: "Execution",
+          pricing: "Full-Stack",
         },
       ],
     },
 
     pricing: {
-      title: "Service Tiers",
-      subtitle: "Enterprise-grade expertise for modern operators",
+      title: "Engagement Models",
+      subtitle: "Flexible structures designed for your stage — whether you're validating an idea or scaling infrastructure",
       tiers: [
         {
           name: "Blueprint",
-          price: "Custom",
-          description: "For defining your business architecture",
+          price: "Discovery",
+          description: "For scoping your technical architecture and AI strategy",
           features: [
-            "Operational / LGU Audit",
-            "System Architecture Design",
-            "Tech Stack Selection",
+            "Technical & AI Readiness Audit",
+            "Solution Architecture Design",
+            "Technology Stack Recommendation",
           ],
-          cta: "Join Blueprint",
+          cta: "Start Discovery",
           highlight: false,
         },
         {
           name: "Studio",
           price: "Retainer",
-          description: "Continuous development and implementation",
+          description: "Continuous development, deployment, and iteration",
           features: [
-            "Custom Business OS Build",
-            "Ongoing Automation Support",
-            "Dedicated Systems Partner",
+            "Dedicated Engineering Team",
+            "AI/DLT/App Development Sprints",
+            "Priority Support & Maintenance",
           ],
           cta: "Apply for Studio",
           highlight: true,
@@ -112,11 +112,11 @@ export const siteContent: Record<string, any> = {
         {
           name: "Foundry",
           price: "Project",
-          description: "Discrete, specialized system builds",
+          description: "Fixed-scope builds for defined deliverables",
           features: [
-            "Fixed-scope Implementation",
-            "Internal Tool Benchmarking",
-            "Post-launch Training",
+            "End-to-End Implementation",
+            "Smart Contract Development",
+            "Launch Support & Training",
           ],
           cta: "Talk to Founders",
           highlight: false,
@@ -126,26 +126,26 @@ export const siteContent: Record<string, any> = {
 
     projectHighlights: {
       title: "Proof of Execution",
-      subtitle: "Real systems validated through daily usage",
+      subtitle: "Production systems delivering measurable outcomes across industries",
       items: [
         {
           title: "SnackPax (Food Ops)",
           description:
-            "A production system tracking attendance, sales, and expenses for a multi-employee operation.",
+            "A production system tracking attendance, sales, and expenses for a multi-employee food operation — live and in daily use.",
           impact: "Live Daily Usage",
           industry: "Food & Retail",
         },
         {
           title: "LGU Real Property Tax System",
           description:
-            "Digitized real property records, increasing collection transparency and efficiency.",
+            "Digitized real property records for a local government unit, increasing collection transparency and boosting revenue.",
           impact: "30% Revenue Boost",
           industry: "Government",
         },
         {
-          title: "Utility Billing Logic",
+          title: "Utility Billing Automation",
           description:
-            "Reliable billing automation and system logic for high-scale, regulated utility environments.",
+            "Reliable billing automation and system logic for high-scale, regulated utility environments in the US.",
           impact: "70% Error Reduction",
           industry: "Utilities",
         },
@@ -155,15 +155,15 @@ export const siteContent: Record<string, any> = {
     research: {
       title: "Research & Frameworks",
       subtitle:
-        "Conceptual frameworks and strategic insights driving our approach to technology and operations",
+        "Strategic research driving our approach to AI deployment, distributed systems, and digital transformation",
       documents: [
         {
           title: "AI Defense Intelligence Framework for the Philippines",
           description:
             "A comprehensive framework exploring the integration of AI technologies in defense and intelligence operations within the Philippine context.",
-          category: "Defense & Intelligence",
+          category: "Defense & AI",
           date: "February 2026",
-          fileSize: "PDF • ~2.5 MB",
+          fileSize: "PDF \u2022 ~2.5 MB",
           downloadUrl:
             "/resources/AI_Defense_Intelligence_Framework_Philippines_Report.pdf",
           tags: [
@@ -178,130 +178,130 @@ export const siteContent: Record<string, any> = {
     },
 
     cta: {
-      title: "Turn operations into clarity.",
+      title: "Ready to build what\u2019s next?",
       description:
-        "If you're drowning in spreadsheets or fragmented tools, let's build the system your business actually needs.",
-      buttonText: "Let's Talk Systems",
+        "Whether it\u2019s an AI agent, a blockchain platform, or a custom app \u2014 let\u2019s architect your solution and ship it.",
+      buttonText: "Book a Strategy Call",
       buttonHref: "https://calendly.com/bpxailabs/30min",
     },
 
     footer: {
       companyDescription:
-        "The trusted execution partner for companies that value clarity and control.",
+        "AI solutions, DLT infrastructure, and custom application development for enterprises and scaling businesses.",
       contactInfo: {
         email: "bpxailabs@gmail.com",
         phone: "+63 917 713 8316",
         address: "Global / Cross-border Execution",
       },
       quickLinks: [
-        { label: "Services", href: "/#services" },
-        { label: "Projects", href: "/#projects" },
+        { label: "Solutions", href: "/#services" },
+        { label: "Case Studies", href: "/#projects" },
         { label: "Contact", href: "/#contact" },
       ],
-      copyright: `© ${currentYear} BPxAI Labs. All rights reserved.`,
+      copyright: `\u00A9 ${currentYear} BPxAI Labs. All rights reserved.`,
     },
   },
   tl: {
     meta: {
       siteName: "BPxAI Labs",
       description:
-        "Pagbuo ng maaasahang Business Operating Systems para sa linaw, kontrol, at execution.",
+        "AI-powered solutions, distributed ledger technology, at custom application development para sa enterprises at SMBs.",
     },
 
     navigation: {
       links: [
-        { label: "Serbisyo", href: "/#services" },
-        { label: "Proyekto", href: "/#projects" },
+        { label: "Solusyon", href: "/#services" },
+        { label: "Case Studies", href: "/#projects" },
         { label: "Research", href: "/#research" },
         { label: "Kontak", href: "/#contact" },
       ],
       ctaButton: {
-        label: "Usapang Systems",
+        label: "Mag-book ng Call",
         href: "/#contact",
       },
     },
 
     hero: {
-      headline: "Bumuo ng mas magandang operating system",
+      headline: "AI solutions na nagshi-ship. Systems na nagsu-scale.",
       subheadline:
-        "Operator-led automation at custom systems para sa mga kumpanyang nangangailangan ng linaw at kontrol — hindi lang buzzwords.",
+        "Mula sa intelligent automation hanggang blockchain infrastructure \u2014 nagdidisenyo, nagbu-build, at nagde-deploy kami ng production-grade na teknolohiya para sa enterprises at lumalaking negosyo.",
       metrics: [],
       primaryCta: {
-        label: "Usapang Systems",
+        label: "Mag-book ng Strategy Call",
         href: "/#contact",
       },
       secondaryCta: {
-        label: "Tingnan kung paano",
+        label: "Tingnan ang Case Studies",
         href: "/#projects",
       },
     },
 
     about: {
-      title: "Productized Technology Studio",
-      mainHeadline: "Reliable na systems para sa totoong negosyo",
+      title: "Full-Stack Technology Studio",
+      mainHeadline: "Enterprise capability, startup speed",
       description:
-        "Ang BPxAI Labs ay nagdidisenyo at nagpapatupad ng Business Operating Systems (Business OS) — purpose-built platforms na pumapalit sa spreadsheets para sa mas malinaw na sistema sa mga kumpanya at sa gobyerno.",
+        "Ang BPxAI Labs ay isang technology studio na nagde-deliver ng AI-powered platforms, decentralized applications, at custom business systems. Sineserbisyuhan namin ang enterprises na naghahanap ng innovation at SMBs na handang mag-scale.",
       features: [
-        "Disenyong pang-totoong operasyon",
-        "Reliable at scalable execution",
-        "Linaw sa sales, tracking, at workflows",
-        "Auditable systems para sa regulated environments",
+        "AI agents at automation pipelines",
+        "Blockchain at DLT infrastructure",
+        "Custom web at mobile applications",
+        "Enterprise system modernization",
       ],
-      conclusion: "Enterprise-level thinking na may founder-level execution.",
+      conclusion: "Enterprise-grade engineering na may founder-level accountability.",
     },
 
     services: {
-      title: "Ang Aming Binubuo",
-      subtitle: "Systems na swak sa iyong daily operations",
+      title: "Ang aming dine-deliver",
+      subtitle: "End-to-end technology solutions \u2014 mula AI intelligence hanggang decentralized infrastructure",
       items: [
         {
-          title: "Business OS",
+          title: "AI & Intelligent Automation",
           description:
-            "Custom-fit na platforms na pumapalit sa magulong tracking para sa mga negosyo at opisina ng gobyerno.",
+            "Custom AI agents, LLM integrations, at automation pipelines na nagta-transform ng manual workflows sa self-operating systems.",
           iconName: "Search",
-          pricing: "Modular",
+          pricing: "AI Solutions",
         },
         {
-          title: "Visibility & Kontrol",
+          title: "Web3 & DLT Infrastructure",
           description:
-            "Internal dashboards para sa sales at operations na sumasagot sa: 'Ano ang nangyayari ngayon?'",
+            "Blockchain-native applications, smart contracts, at tokenized platforms na built sa Ethereum L2s.",
           iconName: "Copy",
-          pricing: "Precision",
+          pricing: "Decentralized",
         },
         {
-          title: "Operational Automation",
+          title: "Custom App Development",
           description:
-            "Selective AI at automation na humahawak sa mga boring na parte ng iyong negosyo.",
+            "Production-grade na web at mobile applications \u2014 mula MVP sprints hanggang enterprise-scale deployments.",
           iconName: "Rocket",
-          pricing: "Execution",
+          pricing: "Full-Stack",
         },
       ],
     },
 
     pricing: {
-      title: "Service Tiers",
-      subtitle: "Enterprise-grade expertise para sa modernong operators",
+      title: "Engagement Models",
+      subtitle: "Flexible structures na dinisenyo para sa iyong stage \u2014 nagva-validate ka man ng idea o nagsu-scale ng infrastructure",
       tiers: [
         {
           name: "Blueprint",
-          price: "Custom",
-          description: "Para sa pag-define ng iyong business architecture",
+          price: "Discovery",
+          description: "Para sa pag-scope ng technical architecture at AI strategy",
           features: [
-            "Operational / LGU Audit",
-            "System Architecture Design",
-            "Tech Stack Selection",
+            "Technical & AI Readiness Audit",
+            "Solution Architecture Design",
+            "Technology Stack Recommendation",
           ],
-          cta: "Sumali sa Blueprint",
+          cta: "Simulan ang Discovery",
           highlight: false,
         },
         {
           name: "Studio",
           price: "Retainer",
-          description: "Tuloy-tuloy na development at implementation",
+          description: "Tuloy-tuloy na development, deployment, at iteration",
           features: [
-            "Custom Business OS Build",
-            "Ongoing Automation Support",
-            "Dedicated Systems Partner",
+            "Dedicated Engineering Team",
+            "AI/DLT/App Development Sprints",
+            "Priority Support & Maintenance",
           ],
           cta: "Mag-apply sa Studio",
           highlight: true,
@@ -309,11 +309,11 @@ export const siteContent: Record<string, any> = {
         {
           name: "Foundry",
           price: "Project",
-          description: "Specialized system builds para sa iyong negosyo",
+          description: "Fixed-scope builds para sa defined deliverables",
           features: [
-            "Fixed-scope Implementation",
-            "Internal Tool Benchmarking",
-            "Post-launch Training",
+            "End-to-End Implementation",
+            "Smart Contract Development",
+            "Launch Support & Training",
           ],
           cta: "Usapang Founders",
           highlight: false,
@@ -323,26 +323,26 @@ export const siteContent: Record<string, any> = {
 
     projectHighlights: {
       title: "Patunay ng Execution",
-      subtitle: "Mga sistemang ginagamit araw-araw",
+      subtitle: "Production systems na nagde-deliver ng measurable outcomes sa iba't ibang industry",
       items: [
         {
           title: "SnackPax (Food Ops)",
           description:
-            "Sistemang nagta-track ng attendance, sales, at expenses para sa multi-employee operation.",
+            "Production system na nagta-track ng attendance, sales, at expenses para sa multi-employee food operation \u2014 live at ginagamit araw-araw.",
           impact: "Live Daily Usage",
           industry: "Food & Retail",
         },
         {
           title: "LGU Real Property Tax System",
           description:
-            "Pag-digitalize ng property records para sa mas mabilis at transparent na koleksyon ng tax.",
+            "Dinigitalize ang real property records ng local government unit, pinapataas ang transparency at revenue ng collection.",
           impact: "30% Revenue Boost",
           industry: "Gobyerno",
         },
         {
-          title: "Utility Billing Logic",
+          title: "Utility Billing Automation",
           description:
-            "Maasahang billing automation para sa high-scale utility environments.",
+            "Maaasahang billing automation at system logic para sa high-scale, regulated na utility environments sa US.",
           impact: "70% Error Reduction",
           industry: "Utilities",
         },
@@ -352,15 +352,15 @@ export const siteContent: Record<string, any> = {
     research: {
       title: "Research & Frameworks",
       subtitle:
-        "Mga conceptual frameworks at strategic insights na gumagabay sa aming approach sa technology at operations",
+        "Strategic research na gumagabay sa aming approach sa AI deployment, distributed systems, at digital transformation",
       documents: [
         {
           title: "AI Defense Intelligence Framework para sa Pilipinas",
           description:
             "Isang komprehensibong framework na tumatalakay sa integration ng AI technologies sa defense at intelligence operations sa konteksto ng Pilipinas.",
-          category: "Defense & Intelligence",
+          category: "Defense & AI",
           date: "Pebrero 2026",
-          fileSize: "PDF • ~2.5 MB",
+          fileSize: "PDF \u2022 ~2.5 MB",
           downloadUrl:
             "/resources/AI_Defense_Intelligence_Framework_Philippines_Report.pdf",
           tags: [
@@ -375,27 +375,27 @@ export const siteContent: Record<string, any> = {
     },
 
     cta: {
-      title: "Gawing linaw ang iyong operasyon.",
+      title: "Handa ka na bang i-build ang susunod?",
       description:
-        "Kung nalulunod ka na sa spreadsheets, bumuo tayo ng sistemang kailangan talaga ng iyong negosyo.",
-      buttonText: "Usapang Systems",
+        "AI agent man, blockchain platform, o custom app \u2014 i-architect natin ang iyong solution at i-ship ito.",
+      buttonText: "Mag-book ng Strategy Call",
       buttonHref: "https://calendly.com/bpxailabs/30min",
     },
 
     footer: {
       companyDescription:
-        "Ang Execution Partner para sa mga kumpanyang nagpapahalaga sa linaw at kontrol.",
+        "AI solutions, DLT infrastructure, at custom application development para sa enterprises at lumalaking negosyo.",
       contactInfo: {
         email: "bpxailabs@gmail.com",
         phone: "+63 917 713 8316",
         address: "Global / Cross-border Execution",
       },
       quickLinks: [
-        { label: "Serbisyo", href: "/#services" },
-        { label: "Proyekto", href: "/#projects" },
+        { label: "Solusyon", href: "/#services" },
+        { label: "Case Studies", href: "/#projects" },
         { label: "Kontak", href: "/#contact" },
       ],
-      copyright: `© ${currentYear} BPxAI Labs. All rights reserved.`,
+      copyright: `\u00A9 ${currentYear} BPxAI Labs. All rights reserved.`,
     },
   },
 };

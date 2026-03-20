@@ -1,22 +1,24 @@
 export const metadata = {
-  title: "BPxAI Labs - Reliable Business Operating Systems",
+  title: "BPxAI Labs - AI Solutions, DLT Infrastructure & Custom App Development",
   description:
-    "Building reliable Business Operating Systems for clarity, control, and execution. Operator-led automation for modern companies.",
+    "Full-stack technology studio delivering AI-powered platforms, blockchain infrastructure, and custom applications for enterprises and SMBs.",
   keywords: [
-    "Business Operating Systems",
-    "Business OS",
-    "Operational Clarity",
-    "Workflow Automation",
-    "Operator-led AI",
-    "Custom Business Software",
-    "SME Automation",
-    "Process Visibility",
+    "AI Solutions",
+    "Artificial Intelligence",
+    "DLT Infrastructure",
+    "Blockchain Development",
+    "Smart Contracts",
+    "Custom App Development",
+    "Enterprise Software",
+    "Web3",
+    "LLM Integration",
+    "Automation",
     "BPxAI Labs",
   ],
   openGraph: {
-    title: "BPxAI Labs - Reliable Business Operating Systems",
+    title: "BPxAI Labs - AI Solutions, DLT Infrastructure & Custom App Development",
     description:
-      "Building reliable Business Operating Systems for clarity, control, and execution. Operator-led automation for modern companies.",
+      "Full-stack technology studio delivering AI-powered platforms, blockchain infrastructure, and custom applications for enterprises and SMBs.",
     url: "https://www.bpxai.com",
     siteName: "BPxAI Labs",
     images: [
@@ -24,7 +26,7 @@ export const metadata = {
         url: "https://www.bpxai.com/bpxai-logos/bpxailabs.png",
         width: 1200,
         height: 630,
-        alt: "BPxAI Labs Logo",
+        alt: "BPxAI Labs",
       },
     ],
     locale: "en_US",
@@ -32,9 +34,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BPxAI Labs - Reliable Business Operating Systems",
+    title: "BPxAI Labs - AI Solutions, DLT Infrastructure & Custom App Development",
     description:
-      "Building reliable Business Operating Systems for clarity, control, and execution. Operator-led automation for modern companies.",
-    images: ["https://www.bpxai.com/bpxai-logos/bpxailabs.png"], // Update with your image URL
+      "Full-stack technology studio delivering AI-powered platforms, blockchain infrastructure, and custom applications for enterprises and SMBs.",
+    images: ["https://www.bpxai.com/bpxai-logos/bpxailabs.png"],
   },
 };
