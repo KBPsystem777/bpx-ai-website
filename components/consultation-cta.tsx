@@ -23,7 +23,7 @@ export function ConsultationCTA() {
               {ctaData.title}
             </h2>
 
-            <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-blue-200 mb-10 max-w-2xl mx-auto leading-relaxed">
               {ctaData.description}
             </p>
 
@@ -49,7 +49,7 @@ export function ConsultationCTA() {
                   <div className="text-base font-semibold text-white">
                     {stat.value}
                   </div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-blue-300">
                     {stat.label}
                   </div>
                 </div>

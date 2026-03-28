@@ -63,7 +63,7 @@ export function ContactSection() {
           <span className="text-sm text-brand font-medium mb-4 block">
             Get in Touch
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-brand mb-4 tracking-tight">
             {siteConfig.contact.title}
           </h2>
           <p className="text-lg text-gray-500 max-w-2xl">

@@ -24,7 +24,7 @@ export function ProjectsSection() {
           <span className="text-sm text-brand font-medium mb-4 block">
             Our Work
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 max-w-2xl tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-brand mb-4 max-w-2xl tracking-tight">
             {projects.title}
           </h2>
           <p className="text-lg text-gray-500 max-w-2xl">
@@ -84,7 +84,7 @@ export function ProjectsSection() {
                         {project.impact}
                       </span>
                     </div>
-                    <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover:text-brand transition-colors" />
+                    <ArrowUpRight className="w-4 h-4 text-gray-400 group-hover:text-brand transition-colors" />
                   </div>
                 </div>
               </motion.div>
