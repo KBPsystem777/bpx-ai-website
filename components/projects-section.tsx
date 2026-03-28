@@ -27,7 +27,7 @@ export function ProjectsSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-brand mb-4 max-w-2xl tracking-tight">
             {projects.title}
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl">
+          <p className="text-lg text-black max-w-2xl">
             {projects.subtitle}
           </p>
         </motion.div>
@@ -56,11 +56,11 @@ export function ProjectsSection() {
                     </div>
                   </div>
 
-                  <h3 className="text-lg font-bold text-gray-900 mb-2.5 tracking-tight group-hover:text-brand transition-colors">
+                  <h3 className="text-lg font-bold text-black mb-2.5 tracking-tight group-hover:text-brand transition-colors">
                     {project.title}
                   </h3>
 
-                  <p className="text-sm text-gray-500 leading-relaxed mb-5">
+                  <p className="text-sm text-black leading-relaxed mb-5">
                     {project.description}
                   </p>
 
@@ -80,7 +80,7 @@ export function ProjectsSection() {
                       <span className="text-[11px] text-gray-400 tracking-wide uppercase block mb-0.5">
                         Impact
                       </span>
-                      <span className="text-sm font-semibold text-gray-900">
+                      <span className="text-sm font-semibold text-black">
                         {project.impact}
                       </span>
                     </div>

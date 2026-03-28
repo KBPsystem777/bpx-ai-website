@@ -70,7 +70,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg md:text-xl text-gray-500 mb-10 max-w-2xl leading-relaxed"
+            className="text-lg md:text-xl text-black mb-10 max-w-2xl leading-relaxed"
           >
             {hero.subheadline}
           </motion.p>
@@ -96,7 +96,7 @@ export function HeroSection() {
               asChild
               variant="outline"
               size="lg"
-              className="border-gray-200 text-gray-600 hover:text-gray-900 hover:bg-gray-50 h-12 px-6 text-sm rounded-lg bg-white"
+              className="border-gray-200 text-black hover:text-black hover:bg-gray-50 h-12 px-6 text-sm rounded-lg bg-white"
             >
               <a href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
             </Button>
@@ -111,10 +111,10 @@ export function HeroSection() {
             {Array.isArray(hero.metrics) &&
               hero.metrics.map((metric: any, i: number) => (
                 <div key={i}>
-                  <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
+                  <div className="text-3xl md:text-4xl font-bold text-black mb-1">
                     {metric.value}
                   </div>
-                  <div className="text-sm text-gray-600 font-medium">
+                  <div className="text-sm text-black font-medium">
                     {metric.label}
                   </div>
                   <div className="text-xs text-gray-400 mt-0.5">

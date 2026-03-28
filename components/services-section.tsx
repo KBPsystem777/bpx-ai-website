@@ -33,7 +33,7 @@ export function ServicesSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-brand mb-4 max-w-2xl tracking-tight">
             {services.title}
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl">
+          <p className="text-lg text-black max-w-2xl">
             {services.subtitle}
           </p>
         </motion.div>
@@ -63,7 +63,7 @@ export function ServicesSection() {
                       <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${
                         isHighlighted ? "bg-white/10" : "bg-gray-100"
                       }`}>
-                        <IconComponent className={`w-5 h-5 ${isHighlighted ? "text-white" : "text-gray-900"}`} />
+                        <IconComponent className={`w-5 h-5 ${isHighlighted ? "text-white" : "text-black"}`} />
                       </div>
                       <div className="flex items-center space-x-1.5">
                         <Clock className={`w-3.5 h-3.5 ${isHighlighted ? "text-gray-400" : "text-gray-300"}`} />
@@ -82,13 +82,13 @@ export function ServicesSection() {
                     </div>
 
                     <h3 className={`text-xl font-bold mb-4 tracking-tight ${
-                      isHighlighted ? "text-white" : "text-gray-900"
+                      isHighlighted ? "text-white" : "text-black"
                     }`}>
                       {service.title}
                     </h3>
 
                     <p className={`leading-relaxed mb-8 text-[15px] ${
-                      isHighlighted ? "text-gray-300" : "text-gray-500"
+                      isHighlighted ? "text-gray-300" : "text-black"
                     }`}>
                       {service.description}
                     </p>
@@ -100,7 +100,7 @@ export function ServicesSection() {
                             isHighlighted ? "text-gray-400" : "text-gray-300"
                           }`} />
                           <span className={`text-sm ${
-                            isHighlighted ? "text-gray-300" : "text-gray-500"
+                            isHighlighted ? "text-gray-300" : "text-black"
                           }`}>{item}</span>
                         </div>
                       ))}
@@ -111,7 +111,7 @@ export function ServicesSection() {
                       className={`inline-flex items-center text-sm font-medium transition-colors ${
                         isHighlighted
                           ? "text-white hover:text-gray-200"
-                          : "text-gray-900 hover:text-brand"
+                          : "text-black hover:text-brand"
                       }`}
                     >
                       Get started

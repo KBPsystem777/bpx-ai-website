@@ -46,7 +46,7 @@ export function ResearchSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-brand mb-4 max-w-2xl tracking-tight">
             {research.title}
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl">
+          <p className="text-lg text-black max-w-2xl">
             {research.subtitle}
           </p>
         </motion.div>
@@ -72,11 +72,11 @@ export function ResearchSection() {
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-gray-900 mb-2.5 tracking-tight">
+                  <h3 className="text-lg font-bold text-black mb-2.5 tracking-tight">
                     {doc.title}
                   </h3>
 
-                  <p className="text-sm text-gray-500 leading-relaxed mb-5">
+                  <p className="text-sm text-black leading-relaxed mb-5">
                     {doc.description}
                   </p>
 
@@ -104,7 +104,7 @@ export function ResearchSection() {
 
                   <button
                     onClick={() => handleDownload(doc.downloadUrl, doc.title)}
-                    className="w-full flex items-center justify-center space-x-2 py-2.5 rounded-lg border border-gray-200 bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition-all"
+                    className="w-full flex items-center justify-center space-x-2 py-2.5 rounded-lg border border-gray-200 bg-white text-black text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition-all"
                   >
                     <Download className="w-4 h-4" />
                     <span>Download</span>

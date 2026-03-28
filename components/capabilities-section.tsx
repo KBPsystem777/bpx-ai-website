@@ -39,7 +39,7 @@ export function CapabilitiesSection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand mb-4 max-w-3xl leading-tight tracking-tight">
             {capabilities.title}
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl leading-relaxed">
+          <p className="text-lg text-black max-w-2xl leading-relaxed">
             {capabilities.subtitle}
           </p>
         </motion.div>
@@ -67,11 +67,11 @@ export function CapabilitiesSection() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">
+                  <h3 className="text-xl font-bold text-black mb-3 tracking-tight">
                     {pillar.title}
                   </h3>
 
-                  <p className="text-gray-500 leading-relaxed mb-6 text-[15px]">
+                  <p className="text-black leading-relaxed mb-6 text-[15px]">
                     {pillar.description}
                   </p>
 
@@ -87,7 +87,7 @@ export function CapabilitiesSection() {
                   </div>
 
                   <div className="pt-5 border-t border-gray-100">
-                    <span className="text-sm font-semibold text-gray-900">
+                    <span className="text-sm font-semibold text-black">
                       {pillar.metric}
                     </span>
                   </div>

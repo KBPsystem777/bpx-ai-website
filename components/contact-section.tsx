@@ -66,7 +66,7 @@ export function ContactSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-brand mb-4 tracking-tight">
             {siteConfig.contact.title}
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl">
+          <p className="text-lg text-black max-w-2xl">
             {siteConfig.contact.subtitle}
           </p>
         </motion.div>
@@ -85,7 +85,7 @@ export function ContactSection() {
                 className="flex items-start space-x-4 p-5 rounded-xl border border-gray-200 bg-white"
               >
                 <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
-                  <item.icon className="w-5 h-5 text-gray-600" />
+                  <item.icon className="w-5 h-5 text-black" />
                 </div>
                 <div>
                   <p className="text-xs text-gray-400 tracking-wide uppercase mb-0.5">
@@ -94,26 +94,26 @@ export function ContactSection() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="text-gray-900 font-medium hover:text-brand transition-colors text-sm"
+                      className="text-black font-medium hover:text-brand transition-colors text-sm"
                     >
                       {item.value}
                     </a>
                   ) : (
-                    <p className="text-gray-900 font-medium text-sm">{item.value}</p>
+                    <p className="text-black font-medium text-sm">{item.value}</p>
                   )}
                 </div>
               </div>
             ))}
 
             <div className="p-5 rounded-xl border border-gray-200 bg-white">
-              <p className="text-sm text-gray-500 mb-2.5">
+              <p className="text-sm text-black mb-2.5">
                 Prefer a live conversation? Book a 30-minute strategy session.
               </p>
               <a
                 href="https://calendly.com/bpxailabs/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-sm text-gray-900 font-medium hover:text-brand transition-colors"
+                className="inline-flex items-center text-sm text-black font-medium hover:text-brand transition-colors"
               >
                 Book on Calendly
                 <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
@@ -130,8 +130,8 @@ export function ContactSection() {
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center h-full text-center p-8 rounded-2xl border border-gray-200 bg-white">
                 <CheckCircle2 className="w-10 h-10 text-emerald-500 mb-4" />
-                <h3 className="text-lg font-bold text-gray-900 mb-2">Message Sent</h3>
-                <p className="text-gray-500 text-sm">
+                <h3 className="text-lg font-bold text-black mb-2">Message Sent</h3>
+                <p className="text-black text-sm">
                   Thank you for reaching out. We&apos;ll get back to you within 24 hours.
                 </p>
               </div>
@@ -145,7 +145,7 @@ export function ContactSection() {
                       name="name"
                       placeholder={siteConfig.contact.form.namePlaceholder}
                       required
-                      className="bg-white border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg text-sm h-11"
+                      className="bg-white border-gray-200 text-black placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg text-sm h-11"
                     />
                   </div>
                   <div>
@@ -156,7 +156,7 @@ export function ContactSection() {
                       type="email"
                       placeholder={siteConfig.contact.form.emailPlaceholder}
                       required
-                      className="bg-white border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg text-sm h-11"
+                      className="bg-white border-gray-200 text-black placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg text-sm h-11"
                     />
                   </div>
                 </div>
@@ -167,7 +167,7 @@ export function ContactSection() {
                     id="contact-company"
                     name="company"
                     placeholder={siteConfig.contact.form.companyPlaceholder}
-                    className="bg-white border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg text-sm h-11"
+                    className="bg-white border-gray-200 text-black placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg text-sm h-11"
                   />
                 </div>
 
@@ -179,7 +179,7 @@ export function ContactSection() {
                     placeholder={siteConfig.contact.form.messagePlaceholder}
                     rows={5}
                     required
-                    className="bg-white border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg resize-none text-sm"
+                    className="bg-white border-gray-200 text-black placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg resize-none text-sm"
                   />
                 </div>
 
