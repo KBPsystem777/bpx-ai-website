@@ -7,395 +7,498 @@ export const siteContent: Record<string, any> = {
     meta: {
       siteName: "BPxAI Labs",
       description:
-        "Building reliable Business Operating Systems for clarity, control, and execution.",
+        "We build smart technology that helps businesses run better. AI, digital systems, and blockchain solutions for companies, government, and startups.",
     },
 
     navigation: {
       links: [
-        { label: "Services", href: "/#services" },
-        { label: "Projects", href: "/#projects" },
+        { label: "What We Do", href: "/#capabilities" },
+        { label: "Our Work", href: "/#projects" },
         { label: "Research", href: "/#research" },
         { label: "Contact", href: "/#contact" },
       ],
       ctaButton: {
-        label: "Let's Talk Systems",
+        label: "Talk to Us",
         href: "/#contact",
       },
     },
 
     hero: {
-      headline: "Build a better operating system",
+      tagline: "Technology That Works For You",
+      headline: "We build smarter systems so you can make better decisions",
       subheadline:
-        "Operator-led automation and custom systems for companies that need clarity, control, and execution — not buzzwords.",
-      metrics: [],
+        "Your business deserves technology that actually solves problems — not just fancy dashboards. We create AI-powered tools, digital platforms, and secure systems that help you save time, cut costs, and grow faster.",
+      metrics: [
+        { value: "70%", label: "Fewer Errors", sublabel: "In billing systems" },
+        { value: "30%", label: "More Revenue", sublabel: "For local governments" },
+        { value: "9+", label: "Clients Served", sublabel: "US & Philippines" },
+        { value: "24/7", label: "Always Running", sublabel: "Reliable systems" },
+      ],
       primaryCta: {
-        label: "Let's Talk Systems",
+        label: "Talk to Us",
         href: "/#contact",
       },
       secondaryCta: {
-        label: "See how it works",
+        label: "See Our Work",
         href: "/#projects",
       },
+      trustedBy: "Trusted by Exelon, BGE, Entergy, Xcel Energy, and Philippine LGUs",
     },
 
-    about: {
-      title: "Productized Technology Studio",
-      mainHeadline: "Boringly reliable systems for real businesses",
-      description:
-        "BPxAI Labs designs and implements Business Operating Systems (Business OS) — lightweight, purpose-built platforms that replace spreadsheets and fragmented tools with clear, usable systems for both private companies and the public sector.",
-      features: [
-        "Designed for real-world operations",
-        "Reliable and scalable execution",
-        "Clarity across sales, tracking, and workflows",
-        "Auditable systems for regulated environments",
+    capabilities: {
+      sectionLabel: "What We Do",
+      title: "Four ways we help your business win.",
+      subtitle: "We don't just build apps. We build the tools that give you a real advantage — so you can see what's happening, act faster, and stay ahead.",
+      pillars: [
+        {
+          id: "ai",
+          title: "Artificial Intelligence",
+          shortTitle: "AI",
+          description: "We build smart tools that can read data, spot patterns, and make recommendations — so your team can focus on what matters instead of manual work.",
+          capabilities: ["Smart Assistants", "Automated Workflows", "Data Analysis", "Image Recognition"],
+          metric: "10x faster decisions",
+        },
+        {
+          id: "web3",
+          title: "Blockchain & Digital Trust",
+          shortTitle: "Blockchain",
+          description: "We use blockchain to make records tamper-proof and transactions transparent. Perfect for property, finance, and any system where trust matters.",
+          capabilities: ["Tamper-proof Records", "Transparent Transactions", "Digital Assets", "Secure Verification"],
+          metric: "Records you can trust",
+        },
+        {
+          id: "risk",
+          title: "Risk & Compliance",
+          shortTitle: "Risk",
+          description: "We build monitoring systems that catch problems before they become expensive. Real-time alerts, compliance tracking, and risk scoring for peace of mind.",
+          capabilities: ["Problem Detection", "Compliance Tracking", "Risk Scoring", "Automated Alerts"],
+          metric: "No surprises",
+        },
+        {
+          id: "systems",
+          title: "Complete Business Systems",
+          shortTitle: "Systems",
+          description: "We build all-in-one platforms that replace scattered spreadsheets and disconnected tools with one unified system your whole team can use.",
+          capabilities: ["Business Platforms", "Government Systems", "Process Automation", "Data Management"],
+          metric: "Everything in one place",
+        },
       ],
-      conclusion:
-        "We deliver enterprise-level thinking with founder-level execution.",
     },
 
     services: {
-      title: "What we build",
-      subtitle: "Systems that work for your daily operations",
+      title: "How we work with you",
+      subtitle: "Choose the approach that fits your needs — from quick assessments to full system builds",
       items: [
         {
-          title: "Business OS",
+          title: "Blueprint",
           description:
-            "Custom-fit, modular platforms that replace spreadsheets and fragmented tracking for businesses and government offices.",
+            "We study your current operations, find where you're losing time or money, and design the right technology solution — before writing a single line of code.",
           iconName: "Search",
-          pricing: "Modular",
+          pricing: "Assessment",
+          deliverables: ["Full operations review", "Solution design", "Technology plan", "Cost & benefit analysis"],
+          timeline: "2-4 weeks",
         },
         {
-          title: "Visibility & Control",
+          title: "Studio",
           description:
-            "Internal dashboards for sales, expenses, and operations that answer: 'What is happening today?'",
+            "A dedicated team works alongside you, building and improving your systems week by week. Like having your own tech team, without the overhead.",
           iconName: "Copy",
-          pricing: "Precision",
+          pricing: "Monthly",
+          deliverables: ["Dedicated tech team", "Weekly updates & releases", "AI & blockchain integration", "24/7 system monitoring"],
+          timeline: "Ongoing",
         },
         {
-          title: "Operational Automation",
+          title: "Foundry",
           description:
-            "Selective AI and automation logic that handles the boring parts of your business, quietly and reliably.",
+            "A specific project with a clear goal, fixed timeline, and defined budget. We build it, test it, train your team, and support you after launch.",
           iconName: "Rocket",
-          pricing: "Execution",
-        },
-      ],
-    },
-
-    pricing: {
-      title: "Service Tiers",
-      subtitle: "Enterprise-grade expertise for modern operators",
-      tiers: [
-        {
-          name: "Blueprint",
-          price: "Custom",
-          description: "For defining your business architecture",
-          features: [
-            "Operational / LGU Audit",
-            "System Architecture Design",
-            "Tech Stack Selection",
-          ],
-          cta: "Join Blueprint",
-          highlight: false,
-        },
-        {
-          name: "Studio",
-          price: "Retainer",
-          description: "Continuous development and implementation",
-          features: [
-            "Custom Business OS Build",
-            "Ongoing Automation Support",
-            "Dedicated Systems Partner",
-          ],
-          cta: "Apply for Studio",
-          highlight: true,
-        },
-        {
-          name: "Foundry",
-          price: "Project",
-          description: "Discrete, specialized system builds",
-          features: [
-            "Fixed-scope Implementation",
-            "Internal Tool Benchmarking",
-            "Post-launch Training",
-          ],
-          cta: "Talk to Founders",
-          highlight: false,
+          pricing: "Fixed Price",
+          deliverables: ["Complete system build", "Performance testing", "Team training", "90-day support"],
+          timeline: "6-12 weeks",
         },
       ],
     },
 
     projectHighlights: {
-      title: "Proof of Execution",
-      subtitle: "Real systems validated through daily usage",
+      title: "Our Work",
+      subtitle: "Real systems solving real problems — running in production today.",
       items: [
         {
-          title: "SnackPax (Food Ops)",
+          title: "SnackPax Business OS",
           description:
-            "A production system tracking attendance, sales, and expenses for a multi-employee operation.",
-          impact: "Live Daily Usage",
+            "Built an all-in-one platform for a food business to manage attendance, sales, inventory, and expenses. Replaced 7 separate spreadsheets with one simple system.",
+          impact: "Used Every Day",
+          metric: "7 tools → 1",
           industry: "Food & Retail",
+          tags: ["Business Platform", "Automation", "Reports"],
         },
         {
           title: "LGU Real Property Tax System",
           description:
-            "Digitized real property records, increasing collection transparency and efficiency.",
-          impact: "30% Revenue Boost",
+            "Digitized property tax records for local government units in the Philippines. Now tax computation, assessment, and collection are transparent and automated.",
+          impact: "30% More Revenue",
+          metric: "+30% collections",
           industry: "Government",
+          tags: ["Government Tech", "Digital Records", "Tax"],
         },
         {
-          title: "Utility Billing Logic",
+          title: "Utility Billing Automation",
           description:
-            "Reliable billing automation and system logic for high-scale, regulated utility environments.",
-          impact: "70% Error Reduction",
-          industry: "Utilities",
+            "Built billing automation for major US energy companies serving millions of customers. Reduced billing errors by 70% — saving time and preventing costly mistakes.",
+          impact: "70% Fewer Errors",
+          metric: "-70% errors",
+          industry: "Energy & Utilities",
+          tags: ["Enterprise", "Automation", "Billing"],
+        },
+        {
+          title: "MedixAI Medical Triage",
+          description:
+            "An AI-powered health platform that helps patients get initial assessments and connects them with the right healthcare providers across the Philippines.",
+          impact: "Beta Launch",
+          metric: "AI health assistant",
+          industry: "Healthcare AI",
+          tags: ["AI", "Healthcare", "Platform"],
+        },
+        {
+          title: "ManageLife Web3 Housing",
+          description:
+            "A platform that lets people invest in real estate through fractional ownership, with blockchain technology ensuring transparent and secure property management.",
+          impact: "Live Platform",
+          metric: "Digital ownership",
+          industry: "Web3 & Real Estate",
+          tags: ["Blockchain", "Property", "Investment"],
+        },
+        {
+          title: "AI Defense Intelligence Framework",
+          description:
+            "A strategic research paper exploring how AI can strengthen defense and national security operations in the Philippines.",
+          impact: "Published Research",
+          metric: "Policy framework",
+          industry: "Defense & Intelligence",
+          tags: ["Research", "Defense", "AI Policy"],
         },
       ],
     },
 
+    clients: {
+      title: "Trusted by companies that demand results",
+      logos: [
+        { name: "Exelon", logo: "/clients/exelon.png" },
+        { name: "BGE", logo: "/clients/bge.jpg" },
+        { name: "Entergy", logo: "/clients/entergy.webp" },
+        { name: "Xcel Energy", logo: "/clients/xcel.png" },
+        { name: "DILG", logo: "/clients/dilg.png" },
+      ],
+    },
+
     research: {
-      title: "Research & Frameworks",
+      title: "Research & Resources",
       subtitle:
-        "Conceptual frameworks and strategic insights driving our approach to technology and operations",
+        "Our thinking on how emerging technology can solve real-world problems",
       documents: [
         {
           title: "AI Defense Intelligence Framework for the Philippines",
           description:
-            "A comprehensive framework exploring the integration of AI technologies in defense and intelligence operations within the Philippine context.",
-          category: "Defense & Intelligence",
+            "A research paper on how AI technologies can be used to strengthen defense and intelligence operations in the Philippines.",
+          category: "Defense & AI",
           date: "February 2026",
-          fileSize: "PDF • ~2.5 MB",
+          fileSize: "PDF",
           downloadUrl:
             "/resources/AI_Defense_Intelligence_Framework_Philippines_Report.pdf",
           tags: [
-            "AI Systems",
+            "AI",
             "Defense",
             "Philippines",
-            "Intelligence",
-            "Framework",
+            "Policy",
+            "Research",
           ],
         },
       ],
     },
 
     cta: {
-      title: "Turn operations into clarity.",
+      title: "Ready to upgrade your operations?",
       description:
-        "If you're drowning in spreadsheets or fragmented tools, let's build the system your business actually needs.",
-      buttonText: "Let's Talk Systems",
+        "The best businesses don't wait. Let's talk about how the right technology can save you time, reduce your costs, and help you grow. Free 30-minute consultation.",
+      buttonText: "Book a Free Consultation",
       buttonHref: "https://calendly.com/bpxailabs/30min",
+      stats: [
+        { label: "Free Consultation", value: "30 min" },
+        { label: "Response Time", value: "<24h" },
+        { label: "We Speak", value: "EN / TL" },
+      ],
     },
 
     footer: {
       companyDescription:
-        "The trusted execution partner for companies that value clarity and control.",
+        "We build smart technology for businesses, governments, and startups. AI-powered. Secure. Built to last.",
       contactInfo: {
         email: "bpxailabs@gmail.com",
         phone: "+63 917 713 8316",
-        address: "Global / Cross-border Execution",
+        address: "Philippines & Global",
       },
       quickLinks: [
-        { label: "Services", href: "/#services" },
-        { label: "Projects", href: "/#projects" },
+        { label: "What We Do", href: "/#capabilities" },
+        { label: "Our Work", href: "/#projects" },
+        { label: "Research", href: "/#research" },
         { label: "Contact", href: "/#contact" },
       ],
-      copyright: `© ${currentYear} BPxAI Labs. All rights reserved.`,
+      solutions: [
+        { label: "AI & Automation", href: "/#capabilities" },
+        { label: "Blockchain Solutions", href: "/#capabilities" },
+        { label: "Risk & Compliance", href: "/#capabilities" },
+        { label: "Business Platforms", href: "/#capabilities" },
+      ],
+      copyright: `\u00A9 ${currentYear} BPxAI Labs. All rights reserved.`,
     },
   },
   tl: {
     meta: {
       siteName: "BPxAI Labs",
       description:
-        "Pagbuo ng maaasahang Business Operating Systems para sa linaw, kontrol, at execution.",
+        "Gumagawa kami ng matalinong teknolohiya para sa mga negosyo, gobyerno, at startups sa Pilipinas at buong mundo.",
     },
 
     navigation: {
       links: [
-        { label: "Serbisyo", href: "/#services" },
-        { label: "Proyekto", href: "/#projects" },
+        { label: "Ano ang Ginagawa Namin", href: "/#capabilities" },
+        { label: "Mga Proyekto", href: "/#projects" },
         { label: "Research", href: "/#research" },
-        { label: "Kontak", href: "/#contact" },
+        { label: "Makipag-ugnayan", href: "/#contact" },
       ],
       ctaButton: {
-        label: "Usapang Systems",
+        label: "Kausapin Kami",
         href: "/#contact",
       },
     },
 
     hero: {
-      headline: "Bumuo ng mas magandang operating system",
+      tagline: "Teknolohiyang Gumagana Para Sa Iyo",
+      headline: "Gumagawa kami ng mas matalinong sistema para sa mas magandang desisyon",
       subheadline:
-        "Operator-led automation at custom systems para sa mga kumpanyang nangangailangan ng linaw at kontrol — hindi lang buzzwords.",
-      metrics: [],
+        "Ang negosyo mo ay deserve ng teknolohiyang talagang nakakatulong — hindi lang magandang tingnan. Gumagawa kami ng AI tools, digital platforms, at secure systems na makakatipid sa oras, bawas gastos, at tutulong sa growth mo.",
+      metrics: [
+        { value: "70%", label: "Mas Kaunting Errors", sublabel: "Sa billing systems" },
+        { value: "30%", label: "Mas Maraming Kita", sublabel: "Para sa mga LGU" },
+        { value: "9+", label: "Mga Kliyente", sublabel: "US at Pilipinas" },
+        { value: "24/7", label: "Palaging Gumagana", sublabel: "Maaasahang sistema" },
+      ],
       primaryCta: {
-        label: "Usapang Systems",
+        label: "Kausapin Kami",
         href: "/#contact",
       },
       secondaryCta: {
-        label: "Tingnan kung paano",
+        label: "Tingnan ang Mga Proyekto",
         href: "/#projects",
       },
+      trustedBy: "Pinagkakatiwalaan ng Exelon, BGE, Entergy, Xcel Energy, at mga LGU sa Pilipinas",
     },
 
-    about: {
-      title: "Productized Technology Studio",
-      mainHeadline: "Reliable na systems para sa totoong negosyo",
-      description:
-        "Ang BPxAI Labs ay nagdidisenyo at nagpapatupad ng Business Operating Systems (Business OS) — purpose-built platforms na pumapalit sa spreadsheets para sa mas malinaw na sistema sa mga kumpanya at sa gobyerno.",
-      features: [
-        "Disenyong pang-totoong operasyon",
-        "Reliable at scalable execution",
-        "Linaw sa sales, tracking, at workflows",
-        "Auditable systems para sa regulated environments",
+    capabilities: {
+      sectionLabel: "Ano ang Ginagawa Namin",
+      title: "Apat na paraan para manalo ang negosyo mo.",
+      subtitle: "Hindi lang kami gumagawa ng apps. Gumagawa kami ng mga kasangkapan na magbibigay sa iyo ng tunay na bentahe — para makita mo ang nangyayari, kumilos nang mas mabilis, at manatiling nangunguna.",
+      pillars: [
+        {
+          id: "ai",
+          title: "Artificial Intelligence",
+          shortTitle: "AI",
+          description: "Gumagawa kami ng matalinong tools na kayang magbasa ng data, makahanap ng patterns, at mag-recommend — para ang team mo ay makapag-focus sa mahalaga imbes na mano-manong trabaho.",
+          capabilities: ["Matalinong Assistants", "Automated Workflows", "Data Analysis", "Image Recognition"],
+          metric: "10x mas mabilis na desisyon",
+        },
+        {
+          id: "web3",
+          title: "Blockchain at Digital Trust",
+          shortTitle: "Blockchain",
+          description: "Ginagamit namin ang blockchain para gawing tamper-proof ang mga records at transparent ang mga transaksyon. Perfect para sa property, finance, at kahit anong sistema kung saan mahalaga ang tiwala.",
+          capabilities: ["Tamper-proof Records", "Transparent Transactions", "Digital Assets", "Secure Verification"],
+          metric: "Records na mapagkakatiwalaan",
+        },
+        {
+          id: "risk",
+          title: "Risk at Compliance",
+          shortTitle: "Risk",
+          description: "Gumagawa kami ng monitoring systems na nakakahuli ng problema bago pa maging mahal. Real-time alerts, compliance tracking, at risk scoring para sa peace of mind.",
+          capabilities: ["Pagtukoy ng Problema", "Compliance Tracking", "Risk Scoring", "Automated Alerts"],
+          metric: "Walang sorpresa",
+        },
+        {
+          id: "systems",
+          title: "Buong Business Systems",
+          shortTitle: "Systems",
+          description: "Gumagawa kami ng all-in-one platforms na papalit sa kalat-kalat na spreadsheets at disconnected tools — isang unified system na magagamit ng buong team mo.",
+          capabilities: ["Business Platforms", "Government Systems", "Process Automation", "Data Management"],
+          metric: "Lahat sa isang lugar",
+        },
       ],
-      conclusion: "Enterprise-level thinking na may founder-level execution.",
     },
 
     services: {
-      title: "Ang Aming Binubuo",
-      subtitle: "Systems na swak sa iyong daily operations",
+      title: "Paano kami nakikipagtulungan sa iyo",
+      subtitle: "Piliin ang approach na tamang-tama sa needs mo — mula sa mabilisang assessment hanggang sa full system build",
       items: [
         {
-          title: "Business OS",
+          title: "Blueprint",
           description:
-            "Custom-fit na platforms na pumapalit sa magulong tracking para sa mga negosyo at opisina ng gobyerno.",
+            "Pag-aaralan namin ang operations mo, hahanapin kung saan ka nawawalan ng oras o pera, at ididisenyo ang tamang solusyon — bago pa magsulat ng kahit isang linya ng code.",
           iconName: "Search",
-          pricing: "Modular",
+          pricing: "Assessment",
+          deliverables: ["Buong operations review", "Disenyo ng solusyon", "Technology plan", "Cost at benefit analysis"],
+          timeline: "2-4 na linggo",
         },
         {
-          title: "Visibility & Kontrol",
+          title: "Studio",
           description:
-            "Internal dashboards para sa sales at operations na sumasagot sa: 'Ano ang nangyayari ngayon?'",
+            "May dedicated team na kasama mo, nagbu-build at nagpapabuti ng sistema mo linggo-linggo. Parang sarili mong tech team, walang overhead.",
           iconName: "Copy",
-          pricing: "Precision",
+          pricing: "Buwanang Bayad",
+          deliverables: ["Dedicated tech team", "Weekly updates at releases", "AI at blockchain integration", "24/7 system monitoring"],
+          timeline: "Tuloy-tuloy",
         },
         {
-          title: "Operational Automation",
+          title: "Foundry",
           description:
-            "Selective AI at automation na humahawak sa mga boring na parte ng iyong negosyo.",
+            "Isang specific na proyekto na may malinaw na goal, fixed timeline, at defined budget. I-build namin, i-test, i-train ang team mo, at susuportahan ka pagkatapos ng launch.",
           iconName: "Rocket",
-          pricing: "Execution",
-        },
-      ],
-    },
-
-    pricing: {
-      title: "Service Tiers",
-      subtitle: "Enterprise-grade expertise para sa modernong operators",
-      tiers: [
-        {
-          name: "Blueprint",
-          price: "Custom",
-          description: "Para sa pag-define ng iyong business architecture",
-          features: [
-            "Operational / LGU Audit",
-            "System Architecture Design",
-            "Tech Stack Selection",
-          ],
-          cta: "Sumali sa Blueprint",
-          highlight: false,
-        },
-        {
-          name: "Studio",
-          price: "Retainer",
-          description: "Tuloy-tuloy na development at implementation",
-          features: [
-            "Custom Business OS Build",
-            "Ongoing Automation Support",
-            "Dedicated Systems Partner",
-          ],
-          cta: "Mag-apply sa Studio",
-          highlight: true,
-        },
-        {
-          name: "Foundry",
-          price: "Project",
-          description: "Specialized system builds para sa iyong negosyo",
-          features: [
-            "Fixed-scope Implementation",
-            "Internal Tool Benchmarking",
-            "Post-launch Training",
-          ],
-          cta: "Usapang Founders",
-          highlight: false,
+          pricing: "Fixed Price",
+          deliverables: ["Buong system build", "Performance testing", "Team training", "90-araw na suporta"],
+          timeline: "6-12 na linggo",
         },
       ],
     },
 
     projectHighlights: {
-      title: "Patunay ng Execution",
-      subtitle: "Mga sistemang ginagamit araw-araw",
+      title: "Mga Proyekto Namin",
+      subtitle: "Totoong sistema na nagso-solve ng totoong problema — tumatakbo sa production ngayon.",
       items: [
         {
-          title: "SnackPax (Food Ops)",
+          title: "SnackPax Business OS",
           description:
-            "Sistemang nagta-track ng attendance, sales, at expenses para sa multi-employee operation.",
-          impact: "Live Daily Usage",
+            "Gumawa ng all-in-one platform para sa food business para ma-manage ang attendance, benta, inventory, at gastos. Pinalitan ang 7 magkakaibang spreadsheets ng isang simpleng sistema.",
+          impact: "Ginagamit Araw-araw",
+          metric: "7 tools → 1",
           industry: "Food & Retail",
+          tags: ["Business Platform", "Automation", "Reports"],
         },
         {
           title: "LGU Real Property Tax System",
           description:
-            "Pag-digitalize ng property records para sa mas mabilis at transparent na koleksyon ng tax.",
-          impact: "30% Revenue Boost",
+            "Na-digitize ang property tax records para sa mga LGU sa Pilipinas. Ngayon automated at transparent na ang tax computation, assessment, at collection.",
+          impact: "30% Mas Maraming Kita",
+          metric: "+30% collections",
           industry: "Gobyerno",
+          tags: ["Gov-Tech", "Digital Records", "Tax"],
         },
         {
-          title: "Utility Billing Logic",
+          title: "Utility Billing Automation",
           description:
-            "Maasahang billing automation para sa high-scale utility environments.",
-          impact: "70% Error Reduction",
-          industry: "Utilities",
+            "Gumawa ng billing automation para sa malalaking US energy companies na nagse-serve ng milyun-milyong customers. Na-reduce ang billing errors ng 70%.",
+          impact: "70% Mas Kaunting Errors",
+          metric: "-70% errors",
+          industry: "Energy & Utilities",
+          tags: ["Enterprise", "Automation", "Billing"],
+        },
+        {
+          title: "MedixAI Medical Triage",
+          description:
+            "AI-powered health platform na tumutulong sa mga pasyente na makakuha ng initial assessment at ikokonekta sila sa tamang healthcare providers sa Pilipinas.",
+          impact: "Beta Launch",
+          metric: "AI health assistant",
+          industry: "Healthcare AI",
+          tags: ["AI", "Healthcare", "Platform"],
+        },
+        {
+          title: "ManageLife Web3 Housing",
+          description:
+            "Platform kung saan pwedeng mag-invest sa real estate sa pamamagitan ng fractional ownership, gamit ang blockchain para sa transparent at secure na property management.",
+          impact: "Live Platform",
+          metric: "Digital ownership",
+          industry: "Web3 & Real Estate",
+          tags: ["Blockchain", "Property", "Investment"],
+        },
+        {
+          title: "AI Defense Intelligence Framework",
+          description:
+            "Isang strategic research paper tungkol sa kung paano mapapalakas ng AI ang defense at national security operations sa Pilipinas.",
+          impact: "Published Research",
+          metric: "Policy framework",
+          industry: "Defense & Intelligence",
+          tags: ["Research", "Defense", "AI Policy"],
         },
       ],
     },
 
+    clients: {
+      title: "Pinagkakatiwalaan ng mga kompanyang humihingi ng resulta",
+      logos: [
+        { name: "Exelon", logo: "/clients/exelon.png" },
+        { name: "BGE", logo: "/clients/bge.jpg" },
+        { name: "Entergy", logo: "/clients/entergy.webp" },
+        { name: "Xcel Energy", logo: "/clients/xcel.png" },
+        { name: "DILG", logo: "/clients/dilg.png" },
+      ],
+    },
+
     research: {
-      title: "Research & Frameworks",
+      title: "Research at Resources",
       subtitle:
-        "Mga conceptual frameworks at strategic insights na gumagabay sa aming approach sa technology at operations",
+        "Ang pag-iisip namin tungkol sa kung paano malulutas ng bagong teknolohiya ang totoong problema",
       documents: [
         {
           title: "AI Defense Intelligence Framework para sa Pilipinas",
           description:
-            "Isang komprehensibong framework na tumatalakay sa integration ng AI technologies sa defense at intelligence operations sa konteksto ng Pilipinas.",
-          category: "Defense & Intelligence",
+            "Research paper tungkol sa kung paano magagamit ang AI para palakasin ang defense at intelligence operations sa Pilipinas.",
+          category: "Defense at AI",
           date: "Pebrero 2026",
-          fileSize: "PDF • ~2.5 MB",
+          fileSize: "PDF",
           downloadUrl:
             "/resources/AI_Defense_Intelligence_Framework_Philippines_Report.pdf",
           tags: [
-            "AI Systems",
+            "AI",
             "Defense",
             "Pilipinas",
-            "Intelligence",
-            "Framework",
+            "Policy",
+            "Research",
           ],
         },
       ],
     },
 
     cta: {
-      title: "Gawing linaw ang iyong operasyon.",
+      title: "Handa ka na bang i-upgrade ang operations mo?",
       description:
-        "Kung nalulunod ka na sa spreadsheets, bumuo tayo ng sistemang kailangan talaga ng iyong negosyo.",
-      buttonText: "Usapang Systems",
+        "Ang mga pinakamahusay na negosyo ay hindi naghihintay. Pag-usapan natin kung paano makakatipid sa oras, mababawasan ang gastos, at makakatulong sa pag-grow ng negosyo mo ang tamang teknolohiya. Libre ang 30-minutong konsultasyon.",
+      buttonText: "Mag-book ng Libreng Konsultasyon",
       buttonHref: "https://calendly.com/bpxailabs/30min",
+      stats: [
+        { label: "Libreng Konsultasyon", value: "30 min" },
+        { label: "Tugon sa Loob ng", value: "<24 oras" },
+        { label: "Nagsasalita Kami ng", value: "EN / TL" },
+      ],
     },
 
     footer: {
       companyDescription:
-        "Ang Execution Partner para sa mga kumpanyang nagpapahalaga sa linaw at kontrol.",
+        "Gumagawa kami ng matalinong teknolohiya para sa mga negosyo, gobyerno, at startups. AI-powered. Secure. Ginawa para tumagal.",
       contactInfo: {
         email: "bpxailabs@gmail.com",
         phone: "+63 917 713 8316",
-        address: "Global / Cross-border Execution",
+        address: "Pilipinas at Buong Mundo",
       },
       quickLinks: [
-        { label: "Serbisyo", href: "/#services" },
-        { label: "Proyekto", href: "/#projects" },
-        { label: "Kontak", href: "/#contact" },
+        { label: "Ano ang Ginagawa Namin", href: "/#capabilities" },
+        { label: "Mga Proyekto", href: "/#projects" },
+        { label: "Research", href: "/#research" },
+        { label: "Makipag-ugnayan", href: "/#contact" },
       ],
-      copyright: `© ${currentYear} BPxAI Labs. All rights reserved.`,
+      solutions: [
+        { label: "AI at Automation", href: "/#capabilities" },
+        { label: "Blockchain Solutions", href: "/#capabilities" },
+        { label: "Risk at Compliance", href: "/#capabilities" },
+        { label: "Business Platforms", href: "/#capabilities" },
+      ],
+      copyright: `\u00A9 ${currentYear} BPxAI Labs. All rights reserved.`,
     },
   },
 };

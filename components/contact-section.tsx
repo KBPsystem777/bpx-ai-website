@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
@@ -13,12 +13,13 @@ import { submitContactForm } from "@/app/actions";
 
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   async function handleSubmit(formData: FormData) {
     setIsSubmitting(true);
     try {
       await submitContactForm(formData);
-      // Reset form or show success message
+      setIsSubmitted(true);
     } catch (error) {
       console.error("Error submitting form:", error);
     } finally {
@@ -26,125 +27,178 @@ export function ContactSection() {
     }
   }
 
+  const contactItems = [
+    {
+      icon: Mail,
+      label: "Email",
+      value: siteConfig.company.contact.email,
+      href: `mailto:${siteConfig.company.contact.email}`,
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      value: siteConfig.company.contact.phone,
+      href: `tel:${siteConfig.company.contact.phone.replace(/\s/g, "")}`,
+    },
+    {
+      icon: MapPin,
+      label: "Operations",
+      value: siteConfig.company.contact.address,
+    },
+  ];
+
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-800 to-slate-900">
+    <section
+      id="contact"
+      className="py-24 md:py-32 bg-gray-50"
+    >
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+          <span className="text-sm text-brand font-medium mb-4 block">
+            Get in Touch
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
             {siteConfig.contact.title}
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-500 max-w-2xl">
             {siteConfig.contact.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
-          {/* Contact Information */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-4"
           >
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4 group">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Mail className="w-6 h-6 text-white" />
+            {contactItems.map((item, index) => (
+              <div
+                key={index}
+                className="flex items-start space-x-4 p-5 rounded-xl border border-gray-200 bg-white"
+              >
+                <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
+                  <item.icon className="w-5 h-5 text-gray-600" />
                 </div>
                 <div>
-                  <p className="text-gray-400 text-sm">Email</p>
-                  <p className="text-white text-lg font-semibold">
-                    {siteConfig.company.contact.email}
+                  <p className="text-xs text-gray-400 tracking-wide uppercase mb-0.5">
+                    {item.label}
                   </p>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      className="text-gray-900 font-medium hover:text-brand transition-colors text-sm"
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-gray-900 font-medium text-sm">{item.value}</p>
+                  )}
                 </div>
               </div>
+            ))}
 
-              <div className="flex items-center space-x-4 group">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Phone className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <p className="text-gray-400 text-sm">Phone</p>
-                  <p className="text-white text-lg font-semibold">
-                    {siteConfig.company.contact.phone}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-4 group">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <MapPin className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <p className="text-gray-400 text-sm">Address</p>
-                  <p className="text-white text-lg font-semibold">
-                    {siteConfig.company.contact.address}
-                  </p>
-                </div>
-              </div>
+            <div className="p-5 rounded-xl border border-gray-200 bg-white">
+              <p className="text-sm text-gray-500 mb-2.5">
+                Prefer a live conversation? Book a 30-minute strategy session.
+              </p>
+              <a
+                href="https://calendly.com/bpxailabs/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-sm text-gray-900 font-medium hover:text-brand transition-colors"
+              >
+                Book on Calendly
+                <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+              </a>
             </div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <form action={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input
-                  name="name"
-                  placeholder={siteConfig.contact.form.namePlaceholder}
-                  required
-                  className="bg-slate-800/50 border-slate-700 text-white placeholder:text-gray-400 focus:border-purple-500"
-                />
-                <Input
-                  name="email"
-                  type="email"
-                  placeholder={siteConfig.contact.form.emailPlaceholder}
-                  required
-                  className="bg-slate-800/50 border-slate-700 text-white placeholder:text-gray-400 focus:border-purple-500"
-                />
+            {isSubmitted ? (
+              <div className="flex flex-col items-center justify-center h-full text-center p-8 rounded-2xl border border-gray-200 bg-white">
+                <CheckCircle2 className="w-10 h-10 text-emerald-500 mb-4" />
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Message Sent</h3>
+                <p className="text-gray-500 text-sm">
+                  Thank you for reaching out. We&apos;ll get back to you within 24 hours.
+                </p>
               </div>
+            ) : (
+              <form action={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="contact-name" className="sr-only">Name</label>
+                    <Input
+                      id="contact-name"
+                      name="name"
+                      placeholder={siteConfig.contact.form.namePlaceholder}
+                      required
+                      className="bg-white border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg text-sm h-11"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-email" className="sr-only">Email</label>
+                    <Input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      placeholder={siteConfig.contact.form.emailPlaceholder}
+                      required
+                      className="bg-white border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg text-sm h-11"
+                    />
+                  </div>
+                </div>
 
-              <Input
-                name="company"
-                placeholder={siteConfig.contact.form.companyPlaceholder}
-                className="bg-slate-800/50 border-slate-700 text-white placeholder:text-gray-400 focus:border-purple-500"
-              />
+                <div>
+                  <label htmlFor="contact-company" className="sr-only">Company</label>
+                  <Input
+                    id="contact-company"
+                    name="company"
+                    placeholder={siteConfig.contact.form.companyPlaceholder}
+                    className="bg-white border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg text-sm h-11"
+                  />
+                </div>
 
-              <Textarea
-                name="message"
-                placeholder={siteConfig.contact.form.messagePlaceholder}
-                rows={6}
-                required
-                className="bg-slate-800/50 border-slate-700 text-white placeholder:text-gray-400 focus:border-purple-500 resize-none"
-              />
+                <div>
+                  <label htmlFor="contact-message" className="sr-only">Message</label>
+                  <Textarea
+                    id="contact-message"
+                    name="message"
+                    placeholder={siteConfig.contact.form.messagePlaceholder}
+                    rows={5}
+                    required
+                    className="bg-white border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg resize-none text-sm"
+                  />
+                </div>
 
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-3 font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed text-2xl w-fit"
-              >
-                {isSubmitting ? (
-                  "Sending..."
-                ) : (
-                  <>
-                    {siteConfig.contact.form.submitText}
-                    <Send className="ml-2 w-5 h-5" />
-                  </>
-                )}
-              </Button>
-            </form>
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-brand hover:bg-brand-600 text-white font-medium rounded-lg h-11 px-6 text-sm transition-all disabled:opacity-50"
+                >
+                  {isSubmitting ? (
+                    <span>Sending...</span>
+                  ) : (
+                    <>
+                      {siteConfig.contact.form.submitText}
+                      <Send className="ml-2 w-4 h-4" />
+                    </>
+                  )}
+                </Button>
+              </form>
+            )}
           </motion.div>
         </div>
       </div>

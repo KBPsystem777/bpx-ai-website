@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, BarChart3 } from "lucide-react";
+import { ArrowUpRight, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/components/language-provider";
 
@@ -9,62 +9,86 @@ export function ProjectsSection() {
   const projects = t("projectHighlights");
 
   return (
-    <section id="projects" className="py-24 bg-slate-900 overflow-hidden border-t border-slate-800">
+    <section
+      id="projects"
+      className="py-24 md:py-32 bg-gray-50"
+    >
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+          <span className="text-sm text-brand font-medium mb-4 block">
+            Our Work
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 max-w-2xl tracking-tight">
             {projects.title}
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-500 max-w-2xl">
             {projects.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {Array.isArray(projects.items) && projects.items.map((project: any, index: number) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group relative bg-slate-800/40 rounded-3xl border border-slate-700/50 overflow-hidden hover:border-purple-500/50 transition-all duration-300"
-            >
-              <div className="p-8">
-                <div className="flex justify-between items-start mb-6">
-                  <div className="bg-purple-500/10 p-3 rounded-2xl">
-                    <BarChart3 className="w-6 h-6 text-purple-400" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {Array.isArray(projects.items) &&
+            projects.items.map((project: any, index: number) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
+                viewport={{ once: true }}
+                className="group bg-white rounded-2xl border border-gray-200 hover:shadow-lg hover:shadow-gray-100 transition-all duration-300 overflow-hidden"
+              >
+                <div className="p-8">
+                  <div className="flex items-start justify-between mb-5">
+                    <span className="text-xs font-medium text-brand bg-brand-50 px-2.5 py-1 rounded-md">
+                      {project.industry}
+                    </span>
+                    <div className="flex items-center space-x-1">
+                      <TrendingUp className="w-3.5 h-3.5 text-emerald-500" />
+                      <span className="text-xs font-semibold text-emerald-600">
+                        {project.metric}
+                      </span>
+                    </div>
                   </div>
-                  <span className="text-xs font-bold text-gray-500 uppercase tracking-widest bg-slate-700/50 px-3 py-1 rounded-full">
-                    {project.industry}
-                  </span>
+
+                  <h3 className="text-lg font-bold text-gray-900 mb-2.5 tracking-tight group-hover:text-brand transition-colors">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-sm text-gray-500 leading-relaxed mb-5">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {project.tags?.map((tag: string, ti: number) => (
+                      <span
+                        key={ti}
+                        className="text-[11px] text-gray-400 bg-gray-100 px-2 py-0.5 rounded"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="pt-5 border-t border-gray-100 flex items-center justify-between">
+                    <div>
+                      <span className="text-[11px] text-gray-400 tracking-wide uppercase block mb-0.5">
+                        Impact
+                      </span>
+                      <span className="text-sm font-semibold text-gray-900">
+                        {project.impact}
+                      </span>
+                    </div>
+                    <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover:text-brand transition-colors" />
+                  </div>
                 </div>
-
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
-                  {project.title}
-                </h3>
-
-                <p className="text-gray-400 leading-relaxed mb-6">
-                  {project.description}
-                </p>
-
-                <div className="pt-6 border-t border-slate-700/50">
-                  <p className="text-sm font-bold text-purple-400 mb-1 uppercase tracking-tighter">Impact Outcome</p>
-                  <p className="text-xl font-bold text-white uppercase">{project.impact}</p>
-                </div>
-              </div>
-              
-              <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                 <ExternalLink className="w-5 h-5 text-gray-400 hover:text-white cursor-pointer" />
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
         </div>
       </div>
     </section>

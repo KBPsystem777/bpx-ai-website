@@ -1,16 +1,7 @@
 "use client";
 
 import { Download, FileText, Calendar } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/components/language-provider";
 
 interface ResearchDocument {
@@ -39,81 +30,100 @@ export function ResearchSection() {
   return (
     <section
       id="research"
-      className="py-24 bg-gradient-to-b from-background to-muted/20"
+      className="py-24 md:py-32 bg-white"
     >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">{research.title}</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <span className="text-sm text-brand font-medium mb-4 block">
+            Resources
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 max-w-2xl tracking-tight">
+            {research.title}
+          </h2>
+          <p className="text-lg text-gray-500 max-w-2xl">
             {research.subtitle}
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-7xl">
           {Array.isArray(research.documents) &&
             research.documents.map((doc: ResearchDocument, index: number) => (
-              <Card
+              <motion.div
                 key={index}
-                className="flex flex-col hover:shadow-lg transition-shadow"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                viewport={{ once: true }}
+                className="group bg-gray-50 rounded-2xl border border-gray-200 hover:shadow-lg hover:shadow-gray-100 transition-all duration-300 overflow-hidden"
               >
-                <CardHeader>
-                  <div className="flex items-start justify-between mb-2">
-                    <FileText className="h-10 w-10 text-primary mb-4" />
-                    <Badge variant="secondary">{doc.category}</Badge>
+                <div className="p-8">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="w-11 h-11 rounded-xl bg-brand flex items-center justify-center">
+                      <FileText className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-xs font-medium text-brand bg-brand-50 px-2.5 py-1 rounded-md">
+                      {doc.category}
+                    </span>
                   </div>
-                  <CardTitle className="text-xl mb-2">{doc.title}</CardTitle>
-                  <CardDescription className="text-sm">
-                    {doc.description}
-                  </CardDescription>
-                </CardHeader>
 
-                <CardContent className="flex-grow">
-                  <div className="space-y-2 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4" />
+                  <h3 className="text-lg font-bold text-gray-900 mb-2.5 tracking-tight">
+                    {doc.title}
+                  </h3>
+
+                  <p className="text-sm text-gray-500 leading-relaxed mb-5">
+                    {doc.description}
+                  </p>
+
+                  <div className="flex items-center space-x-4 text-xs text-gray-400 mb-5">
+                    <div className="flex items-center space-x-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
                       <span>{doc.date}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Download className="h-4 w-4" />
+                    <div className="flex items-center space-x-1.5">
+                      <Download className="w-3.5 h-3.5" />
                       <span>{doc.fileSize}</span>
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mt-4">
+                  <div className="flex flex-wrap gap-1.5 mb-6">
                     {doc.tags.map((tag: string, tagIndex: number) => (
-                      <Badge
+                      <span
                         key={tagIndex}
-                        variant="outline"
-                        className="text-xs"
+                        className="text-[11px] text-gray-400 bg-white border border-gray-200 px-2 py-0.5 rounded"
                       >
                         {tag}
-                      </Badge>
+                      </span>
                     ))}
                   </div>
-                </CardContent>
 
-                <CardFooter>
-                  <Button
+                  <button
                     onClick={() => handleDownload(doc.downloadUrl, doc.title)}
-                    className="w-full"
-                    variant="default"
+                    className="w-full flex items-center justify-center space-x-2 py-2.5 rounded-lg border border-gray-200 bg-white text-gray-700 text-sm font-medium hover:bg-gray-50 hover:border-gray-300 transition-all"
                   >
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Framework
-                  </Button>
-                </CardFooter>
-              </Card>
+                    <Download className="w-4 h-4" />
+                    <span>Download</span>
+                  </button>
+                </div>
+              </motion.div>
             ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-sm text-muted-foreground">
-            <strong>Disclaimer:</strong> These documents are provided as
-            conceptual frameworks and project overviews for informational
-            purposes. They represent ongoing research and development
-            initiatives.
-          </p>
-        </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="mt-10 text-xs text-gray-400 max-w-2xl"
+        >
+          Disclaimer: These documents are conceptual frameworks and project
+          overviews for informational purposes.
+        </motion.p>
       </div>
     </section>
   );

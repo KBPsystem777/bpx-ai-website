@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, ArrowRight, Sparkles } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/components/language-provider";
@@ -10,59 +10,53 @@ export function ConsultationCTA() {
   const ctaData = t("cta");
 
   return (
-    <section className="py-24 bg-gradient-to-br from-purple-900/20 via-slate-900 to-blue-900/20 relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-      </div>
+    <section className="py-24 md:py-32 bg-brand">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+              {ctaData.title}
+            </h2>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center max-w-4xl mx-auto"
-        >
-          <div className="flex items-center justify-center mb-6">
-            <Sparkles className="w-8 h-8 text-purple-400 mr-3" />
-            <span className="text-purple-400 font-semibold tracking-wide uppercase text-sm">
-              Systems First
-            </span>
-          </div>
+            <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+              {ctaData.description}
+            </p>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent leading-tight">
-            {ctaData.title}
-          </h2>
-
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-            {ctaData.description}
-          </p>
-
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button
               asChild
               size="lg"
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-12 py-6 text-xl font-semibold rounded-full transition-all duration-300 shadow-2xl hover:shadow-purple-500/25"
+              className="bg-white hover:bg-gray-100 text-gray-900 px-8 h-12 text-sm font-semibold rounded-lg transition-all"
             >
               <a
                 href={ctaData.buttonHref}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Calendar className="mr-3 w-6 h-6" />
+                <Calendar className="mr-2 w-4 h-4" />
                 {ctaData.buttonText}
-                <ArrowRight className="ml-3 w-6 h-6" />
+                <ArrowRight className="ml-2 w-4 h-4" />
               </a>
             </Button>
-          </motion.div>
 
-          <p className="text-gray-400 mt-6 text-sm">
-            30-minute strategy session • Guaranteed ROI Insights • Tagalog
-            support available
-          </p>
-        </motion.div>
+            <div className="mt-10 flex items-center justify-center gap-8 md:gap-12">
+              {ctaData.stats?.map((stat: any, i: number) => (
+                <div key={i} className="text-center">
+                  <div className="text-base font-semibold text-white">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

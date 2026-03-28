@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -rf C:/Users/Kolee/AppData/Local/pnpm/store/v10)",
+      "Bash(rm -rf node_modules)"
+    ]
+  }
+}

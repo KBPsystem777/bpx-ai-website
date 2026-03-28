@@ -2,7 +2,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 
-import { Inter } from "next/font/google";
+import { JetBrains_Mono, Sora } from "next/font/google";
 
 import { metadata as siteData } from "./metadata/metadata";
 import { LanguageProvider } from "@/components/language-provider";
@@ -11,7 +11,17 @@ import { siteContent } from "./data/content";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: siteData.title,
@@ -28,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>
+      <body className={`${sora.variable} ${jetbrains.variable} font-sans`}>
         <LanguageProvider content={siteContent}>
           <Header />
           {children}

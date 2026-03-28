@@ -1,12 +1,12 @@
 "use client";
 
-import { Search, Copy, Rocket, CheckCircle2 } from "lucide-react";
+import { Search, Layers, Rocket, ArrowRight, Clock, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/components/language-provider";
 
-const iconMap = {
+const iconMap: Record<string, any> = {
   Search,
-  Copy,
+  Copy: Layers,
   Rocket,
 };
 
@@ -17,69 +17,106 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="py-24 bg-slate-900 border-t border-slate-800"
+      className="py-24 md:py-32 bg-white"
     >
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+          <span className="text-sm text-brand font-medium mb-4 block">
+            How We Work
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 max-w-2xl tracking-tight">
             {services.title}
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-500 max-w-2xl">
             {services.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           {Array.isArray(services.items) &&
             services.items.map((service: any, index: number) => {
               const IconComponent =
                 iconMap[service.iconName as keyof typeof iconMap] || Rocket;
+              const isHighlighted = index === 1;
 
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  transition={{ duration: 0.4, delay: index * 0.08 }}
                   viewport={{ once: true }}
-                  className="group relative p-8 bg-slate-800/30 rounded-3xl border border-slate-700/50 hover:border-purple-500/50 transition-all duration-300"
+                  className={`group rounded-2xl border transition-all duration-300 overflow-hidden ${
+                    isHighlighted
+                      ? "border-gray-900 bg-gray-900 shadow-xl shadow-gray-900/5"
+                      : "border-gray-200 bg-white hover:shadow-lg hover:shadow-gray-100"
+                  }`}
                 >
-                  <div className="relative z-10">
-                    <div className="w-14 h-14 bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-xl flex items-center justify-center mb-6">
-                      <IconComponent className="w-7 h-7 text-purple-400" />
-                    </div>
-
-                    <div className="mb-4">
-                      <span className="text-sm font-bold text-purple-400 uppercase tracking-widest">
-                        {service.pricing}
-                      </span>
-                      <h3 className="text-2xl font-bold text-white mt-1">
-                        {service.title}
-                      </h3>
-                    </div>
-
-                    <p className="text-gray-400 leading-relaxed mb-6">
-                      {service.description}
-                    </p>
-
-                    <div className="space-y-3">
-                      <div className="flex items-start space-x-3 text-sm text-gray-400">
-                        <CheckCircle2 className="w-4 h-4 text-green-500 mt-1 shrink-0" />
-                        <span>
-                          {index === 0
-                            ? "Qualified Lead Generation"
-                            : index === 1
-                              ? "Rapid Implementation"
-                              : "Dedicated Architecture Team"}
+                  <div className="p-8 md:p-10">
+                    <div className="flex items-start justify-between mb-8">
+                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${
+                        isHighlighted ? "bg-white/10" : "bg-gray-100"
+                      }`}>
+                        <IconComponent className={`w-5 h-5 ${isHighlighted ? "text-white" : "text-gray-900"}`} />
+                      </div>
+                      <div className="flex items-center space-x-1.5">
+                        <Clock className={`w-3.5 h-3.5 ${isHighlighted ? "text-gray-400" : "text-gray-300"}`} />
+                        <span className={`text-xs ${isHighlighted ? "text-gray-400" : "text-gray-400"}`}>
+                          {service.timeline}
                         </span>
                       </div>
                     </div>
+
+                    <div className="mb-2">
+                      <span className={`text-xs font-medium tracking-wide uppercase ${
+                        isHighlighted ? "text-gray-400" : "text-brand"
+                      }`}>
+                        {service.pricing}
+                      </span>
+                    </div>
+
+                    <h3 className={`text-xl font-bold mb-4 tracking-tight ${
+                      isHighlighted ? "text-white" : "text-gray-900"
+                    }`}>
+                      {service.title}
+                    </h3>
+
+                    <p className={`leading-relaxed mb-8 text-[15px] ${
+                      isHighlighted ? "text-gray-300" : "text-gray-500"
+                    }`}>
+                      {service.description}
+                    </p>
+
+                    <div className="space-y-3 mb-8">
+                      {service.deliverables?.map((item: string, di: number) => (
+                        <div key={di} className="flex items-start space-x-3">
+                          <CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${
+                            isHighlighted ? "text-gray-400" : "text-gray-300"
+                          }`} />
+                          <span className={`text-sm ${
+                            isHighlighted ? "text-gray-300" : "text-gray-500"
+                          }`}>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <a
+                      href="/#contact"
+                      className={`inline-flex items-center text-sm font-medium transition-colors ${
+                        isHighlighted
+                          ? "text-white hover:text-gray-200"
+                          : "text-gray-900 hover:text-brand"
+                      }`}
+                    >
+                      Get started
+                      <ArrowRight className="w-4 h-4 ml-1.5" />
+                    </a>
                   </div>
                 </motion.div>
               );

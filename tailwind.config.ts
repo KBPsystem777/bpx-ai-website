@@ -17,6 +17,10 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sora)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -51,17 +55,13 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        blue: {
-          50: "#f0f5ff",
-          100: "#e0eaff",
-          200: "#c7d5fe",
-          300: "#a4bcfd",
-          400: "#819dfc",
-          500: "#5a78f9",
-          600: "#3a56ef",
-          700: "#2a3fd3",
-          800: "#2335ab",
-          900: "#0a2463",
+        // Brand blue — derived from logo
+        brand: {
+          DEFAULT: "#0F2044",
+          50: "#EFF4FF",
+          100: "#D6E2FF",
+          600: "#1A3568",
+          700: "#0F2044",
         },
       },
       borderRadius: {
