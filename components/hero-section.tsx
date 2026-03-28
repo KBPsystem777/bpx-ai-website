@@ -15,7 +15,7 @@ function ClientLogoBanner() {
     <div className="border-t border-gray-100">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col sm:flex-row items-center gap-6">
-          <span className="text-gray-400 text-xs tracking-wide uppercase shrink-0">
+          <span className="text-black text-xs tracking-wide uppercase shrink-0">
             Trusted by
           </span>
           <div className="flex items-center gap-10 md:gap-14 overflow-hidden">
@@ -117,7 +117,7 @@ export function HeroSection() {
                   <div className="text-sm text-black font-medium">
                     {metric.label}
                   </div>
-                  <div className="text-xs text-gray-400 mt-0.5">
+                  <div className="text-xs text-black mt-0.5">
                     {metric.sublabel}
                   </div>
                 </div>

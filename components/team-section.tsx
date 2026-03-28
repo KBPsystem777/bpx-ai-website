@@ -19,7 +19,7 @@ export function TeamSection() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             {siteConfig.team.title}
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-white/70 max-w-3xl mx-auto">
             {siteConfig.team.subtitle}
           </p>
         </motion.div>
@@ -57,7 +57,7 @@ export function TeamSection() {
                 {member.role}
               </p>
 
-              <p className="text-gray-400 leading-relaxed max-w-sm mx-auto">
+              <p className="text-white/70 leading-relaxed max-w-sm mx-auto">
                 {member.description}
               </p>
             </motion.div>

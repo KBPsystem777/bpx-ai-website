@@ -41,7 +41,7 @@ export function Header() {
               height={28}
               className="rounded"
             />
-            <span className="text-base font-bold tracking-tight text-gray-900">
+            <span className="text-base font-bold tracking-tight text-black">
               {siteName}
             </span>
           </Link>
@@ -53,7 +53,7 @@ export function Header() {
               <Link
                 key={index}
                 href={link.href}
-                className="text-gray-500 hover:text-gray-900 transition-colors text-sm px-3.5 py-2"
+                className="text-black hover:text-black transition-colors text-sm px-3.5 py-2"
               >
                 {link.label}
               </Link>
@@ -63,7 +63,7 @@ export function Header() {
         <div className="flex-1 flex justify-end items-center">
           <div className="hidden lg:flex items-center space-x-3">
             <button
-              className="text-gray-400 hover:text-gray-600 transition-colors text-xs tracking-wide px-2.5 py-1.5 rounded-md hover:bg-gray-100"
+              className="text-black hover:text-black transition-colors text-xs tracking-wide px-2.5 py-1.5 rounded-md hover:bg-gray-100"
               onClick={() => setLanguage(language === "en" ? "tl" : "en")}
               aria-label={`Switch language to ${language === "en" ? "Tagalog" : "English"}`}
             >
@@ -82,14 +82,14 @@ export function Header() {
 
           <div className="lg:hidden flex items-center space-x-2">
             <button
-              className="text-gray-400 hover:text-gray-600 transition-colors text-xs"
+              className="text-black hover:text-black transition-colors text-xs"
               onClick={() => setLanguage(language === "en" ? "tl" : "en")}
               aria-label={`Switch language to ${language === "en" ? "Tagalog" : "English"}`}
             >
               {language.toUpperCase()}
             </button>
             <button
-              className="text-gray-600 hover:text-gray-900 transition-colors p-1"
+              className="text-black hover:text-black transition-colors p-1"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
@@ -114,7 +114,7 @@ export function Header() {
                   <Link
                     key={index}
                     href={link.href}
-                    className="block text-gray-600 hover:text-gray-900 transition-colors text-sm py-2.5"
+                    className="block text-black hover:text-black transition-colors text-sm py-2.5"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}

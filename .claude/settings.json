@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(grep -r \"0F2044\\\\|222 47% 18%\" /c/Users/Kolee/proj/bpxai-landing-page --include=*.tsx --include=*.ts --include=*.css --include=*.js)"
+      "Bash(grep -r \"0F2044\\\\|222 47% 18%\" /c/Users/Kolee/proj/bpxai-landing-page --include=*.tsx --include=*.ts --include=*.css --include=*.js)",
+      "WebFetch(domain:localhost)",
+      "Bash(curl -s http://localhost:3000)"
     ]
   }
 }

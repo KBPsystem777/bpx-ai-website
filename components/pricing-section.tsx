@@ -22,7 +22,7 @@ export function PricingSection() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             {pricing.title}
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-white/70 max-w-3xl mx-auto">
             {pricing.subtitle}
           </p>
         </motion.div>
@@ -57,14 +57,14 @@ export function PricingSection() {
                       {tier.price}
                     </span>
                   </div>
-                  <p className="text-gray-400 text-sm">{tier.description}</p>
+                  <p className="text-white/70 text-sm">{tier.description}</p>
                 </div>
 
                 <ul className="space-y-4 mb-8">
                   {tier.features.map((feature: string, fIndex: number) => (
                     <li
                       key={fIndex}
-                      className="flex items-start space-x-3 text-sm text-gray-300"
+                      className="flex items-start space-x-3 text-sm text-white/80"
                     >
                       <Check className="w-5 h-5 text-purple-400 shrink-0" />
                       <span>{feature}</span>

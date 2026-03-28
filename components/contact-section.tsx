@@ -88,7 +88,7 @@ export function ContactSection() {
                   <item.icon className="w-5 h-5 text-black" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400 tracking-wide uppercase mb-0.5">
+                  <p className="text-xs text-black tracking-wide uppercase mb-0.5">
                     {item.label}
                   </p>
                   {item.href ? (

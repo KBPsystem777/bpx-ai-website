@@ -68,7 +68,7 @@ export function ProjectsSection() {
                     {project.tags?.map((tag: string, ti: number) => (
                       <span
                         key={ti}
-                        className="text-[11px] text-gray-400 bg-gray-100 px-2 py-0.5 rounded"
+                        className="text-[11px] text-black bg-gray-100 px-2 py-0.5 rounded"
                       >
                         {tag}
                       </span>
@@ -77,14 +77,14 @@ export function ProjectsSection() {
 
                   <div className="pt-5 border-t border-gray-100 flex items-center justify-between">
                     <div>
-                      <span className="text-[11px] text-gray-400 tracking-wide uppercase block mb-0.5">
+                      <span className="text-[11px] text-black tracking-wide uppercase block mb-0.5">
                         Impact
                       </span>
                       <span className="text-sm font-semibold text-black">
                         {project.impact}
                       </span>
                     </div>
-                    <ArrowUpRight className="w-4 h-4 text-gray-400 group-hover:text-brand transition-colors" />
+                    <ArrowUpRight className="w-4 h-4 text-black group-hover:text-brand transition-colors" />
                   </div>
                 </div>
               </motion.div>

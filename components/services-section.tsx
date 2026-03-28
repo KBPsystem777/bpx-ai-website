@@ -66,8 +66,8 @@ export function ServicesSection() {
                         <IconComponent className={`w-5 h-5 ${isHighlighted ? "text-white" : "text-black"}`} />
                       </div>
                       <div className="flex items-center space-x-1.5">
-                        <Clock className={`w-3.5 h-3.5 ${isHighlighted ? "text-gray-400" : "text-gray-300"}`} />
-                        <span className={`text-xs ${isHighlighted ? "text-gray-400" : "text-gray-400"}`}>
+                        <Clock className={`w-3.5 h-3.5 ${isHighlighted ? "text-white/70" : "text-black"}`} />
+                        <span className={`text-xs ${isHighlighted ? "text-white/70" : "text-black"}`}>
                           {service.timeline}
                         </span>
                       </div>
@@ -75,7 +75,7 @@ export function ServicesSection() {
 
                     <div className="mb-2">
                       <span className={`text-xs font-medium tracking-wide uppercase ${
-                        isHighlighted ? "text-gray-400" : "text-brand"
+                        isHighlighted ? "text-white/70" : "text-brand"
                       }`}>
                         {service.pricing}
                       </span>
@@ -88,7 +88,7 @@ export function ServicesSection() {
                     </h3>
 
                     <p className={`leading-relaxed mb-8 text-[15px] ${
-                      isHighlighted ? "text-gray-300" : "text-black"
+                      isHighlighted ? "text-white/80" : "text-black"
                     }`}>
                       {service.description}
                     </p>
@@ -97,10 +97,10 @@ export function ServicesSection() {
                       {service.deliverables?.map((item: string, di: number) => (
                         <div key={di} className="flex items-start space-x-3">
                           <CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${
-                            isHighlighted ? "text-gray-400" : "text-gray-300"
+                            isHighlighted ? "text-white/70" : "text-black"
                           }`} />
                           <span className={`text-sm ${
-                            isHighlighted ? "text-gray-300" : "text-black"
+                            isHighlighted ? "text-white/80" : "text-black"
                           }`}>{item}</span>
                         </div>
                       ))}
@@ -110,7 +110,7 @@ export function ServicesSection() {
                       href="/#contact"
                       className={`inline-flex items-center text-sm font-medium transition-colors ${
                         isHighlighted
-                          ? "text-white hover:text-gray-200"
+                          ? "text-white hover:text-white/80"
                           : "text-black hover:text-brand"
                       }`}
                     >

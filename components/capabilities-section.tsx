@@ -62,7 +62,7 @@ export function CapabilitiesSection() {
                     <div className="w-11 h-11 rounded-xl bg-brand flex items-center justify-center">
                       <Icon className="w-5 h-5 text-white" />
                     </div>
-                    <span className="text-xs text-gray-400 font-medium">
+                    <span className="text-xs text-black font-medium">
                       0{index + 1}
                     </span>
                   </div>
@@ -79,7 +79,7 @@ export function CapabilitiesSection() {
                     {pillar.capabilities.map((cap: string, ci: number) => (
                       <span
                         key={ci}
-                        className="text-xs text-gray-500 bg-gray-100 px-2.5 py-1 rounded-md"
+                        className="text-xs text-black bg-gray-100 px-2.5 py-1 rounded-md"
                       >
                         {cap}
                       </span>

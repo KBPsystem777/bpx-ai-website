@@ -15,7 +15,7 @@ export function PartnersSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="text-sm text-gray-400 tracking-wide uppercase">
+          <span className="text-sm text-black tracking-wide uppercase">
             Technology Partners
           </span>
         </motion.div>
@@ -40,10 +40,10 @@ export function PartnersSection() {
                   alt={partner.name}
                   width={200}
                   height={80}
-                  className="max-w-full max-h-full object-contain opacity-40 group-hover:opacity-70 grayscale group-hover:grayscale-0 transition-all duration-200"
+                  className="max-w-full max-h-full object-contain  group-hover:opacity-70 transition-all duration-200"
                 />
               </div>
-              <span className="text-xs text-gray-400 group-hover:text-gray-600 transition-colors">
+              <span className="text-xs text-black group-hover:text-black transition-colors">
                 {partner.name}
               </span>
             </motion.a>

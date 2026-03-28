@@ -19,18 +19,18 @@ export function ConsultationCTA() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-black mb-6 tracking-tight leading-tight">
               {ctaData.title}
             </h2>
 
-            <p className="text-lg md:text-xl text-blue-200 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-black mb-10 max-w-2xl mx-auto leading-relaxed">
               {ctaData.description}
             </p>
 
             <Button
               asChild
               size="lg"
-              className="bg-white hover:bg-gray-100 text-gray-900 px-8 h-12 text-sm font-semibold rounded-lg transition-all"
+              className="bg-white hover:bg-gray-100 text-black px-8 h-12 text-sm font-semibold rounded-lg transition-all"
             >
               <a
                 href={ctaData.buttonHref}
@@ -46,12 +46,10 @@ export function ConsultationCTA() {
             <div className="mt-10 flex items-center justify-center gap-8 md:gap-12">
               {ctaData.stats?.map((stat: any, i: number) => (
                 <div key={i} className="text-center">
-                  <div className="text-base font-semibold text-white">
+                  <div className="text-base font-semibold text-black">
                     {stat.value}
                   </div>
-                  <div className="text-xs text-blue-300">
-                    {stat.label}
-                  </div>
+                  <div className="text-xs text-black/80">{stat.label}</div>
                 </div>
               ))}
             </div>
