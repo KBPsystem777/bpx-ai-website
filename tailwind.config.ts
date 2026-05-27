@@ -69,9 +69,22 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Named brand tokens — used directly for gold/teal/ivory accents
+        // Named brand tokens
         ink: "hsl(var(--ink))",
         ivory: "hsl(var(--ivory))",
+        sapphire: {
+          50: "#EFF4FF",
+          100: "#DBE6FF",
+          200: "#BACDFE",
+          300: "#8FA9FB",
+          400: "#5E80F6",
+          500: "#3B82F6",
+          DEFAULT: "#2563EB",
+          600: "#2563EB",
+          700: "#1D4ED8",
+          800: "#1E40AF",
+          900: "#1E3A8A",
+        },
         gold: {
           50: "#FAF6EA",
           100: "#F4ECCF",

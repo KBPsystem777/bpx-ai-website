@@ -23,7 +23,7 @@ export async function submitContactForm(formData: FormData) {
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #f8f8f6; border-radius: 8px;">
           <div style="background: #0F2044; padding: 24px; border-radius: 8px 8px 0 0;">
-            <h2 style="color: #C9A84C; margin: 0; font-size: 18px;">New Contact Form Submission</h2>
+            <h2 style="color: #2563EB; margin: 0; font-size: 18px;">New Contact Form Submission</h2>
           </div>
           <div style="background: white; padding: 24px; border-radius: 0 0 8px 8px; border: 1px solid #e5e5e5; border-top: none;">
             <table style="width: 100%; border-collapse: collapse;">
@@ -33,7 +33,7 @@ export async function submitContactForm(formData: FormData) {
               </tr>
               <tr>
                 <td style="padding: 8px 0; color: #666; font-size: 14px;">Email</td>
-                <td style="padding: 8px 0; color: #0F2044; font-size: 14px;"><a href="mailto:${email}" style="color: #C9A84C;">${email}</a></td>
+                <td style="padding: 8px 0; color: #0F2044; font-size: 14px;"><a href="mailto:${email}" style="color: #2563EB;">${email}</a></td>
               </tr>
               ${company ? `<tr>
                 <td style="padding: 8px 0; color: #666; font-size: 14px;">Company</td>
