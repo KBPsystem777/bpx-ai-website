@@ -2,53 +2,66 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+
 import { siteConfig } from "@/config/config";
+
+const editorialEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export function PartnersSection() {
   return (
-    <section className="py-20 bg-white border-t border-gray-100">
-      <div className="container mx-auto px-4">
+    <section className="relative py-20 lg:py-24 bg-background border-t border-border/60">
+      <div className="container mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
+          transition={{ duration: 0.6, ease: editorialEase }}
+          viewport={{ once: true, margin: "-60px" }}
+          className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6 lg:gap-12 items-start mb-12 lg:mb-16"
         >
-          <span className="text-sm text-black tracking-wide uppercase">
-            Technology Partners
-          </span>
+          <div>
+            <div className="eyebrow mb-4">Tooling & Alliances</div>
+            <h2 className="font-display text-foreground text-2xl lg:text-3xl leading-tight tracking-tight font-light">
+              The standards and platforms our practice runs on.
+            </h2>
+          </div>
+          <p className="text-sm lg:text-base text-muted-foreground leading-relaxed max-w-2xl">
+            We partner where the protocol matters — public-chain settlement
+            layers, agentic runtimes, model providers, and the open-source
+            cryptographic libraries our migrations rely on.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: editorialEase }}
+          viewport={{ once: true, margin: "-40px" }}
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px bg-border/60 border border-border/60 rounded-sm overflow-hidden"
+        >
           {siteConfig.partners.items.map((partner, index) => (
-            <motion.a
+            <a
               key={index}
               href={partner.website}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.04 }}
-              viewport={{ once: true }}
-              className="group flex flex-col items-center justify-center p-5 rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all duration-200"
-              aria-label={`Visit ${partner.name} website`}
+              className="group flex flex-col items-center justify-center gap-3 bg-surface px-6 py-8 hover:bg-muted/30 transition-colors duration-300"
+              aria-label={`${partner.name} (opens in new tab)`}
             >
-              <div className="w-full h-10 mb-2 flex items-center justify-center">
+              <div className="w-full h-9 flex items-center justify-center bg-ivory/95 rounded-sm px-3 py-1.5">
                 <Image
                   src={partner.logo || "/placeholder.svg"}
                   alt={partner.name}
-                  width={200}
-                  height={80}
-                  className="max-w-full max-h-full object-contain  group-hover:opacity-70 transition-all duration-200"
+                  width={140}
+                  height={36}
+                  className="max-h-7 w-auto object-contain"
                 />
               </div>
-              <span className="text-xs text-black group-hover:text-black transition-colors">
+              <span className="text-[11px] tracking-wider uppercase text-muted-foreground group-hover:text-foreground transition-colors font-mono">
                 {partner.name}
               </span>
-            </motion.a>
+            </a>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

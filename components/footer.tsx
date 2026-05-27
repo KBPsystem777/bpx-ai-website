@@ -1,115 +1,158 @@
 "use client";
 
-import { useLanguage } from "@/components/language-provider";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
+import { useLanguage } from "@/components/language-provider";
+
 export function Footer() {
   const { t } = useLanguage();
   const footerData = t("footer");
+  const siteName = t("meta.siteName");
 
   return (
-    <footer className="bg-white border-t border-gray-200">
-      <div className="container mx-auto px-4 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2.5 mb-5">
+    <footer className="relative bg-background border-t border-border/60">
+      <div className="container mx-auto py-16 lg:py-20">
+        {/* Top grid */}
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-10 lg:gap-12 mb-16">
+          {/* Brand + description */}
+          <div className="col-span-2 md:col-span-12 lg:col-span-4">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2.5 mb-5 group"
+              aria-label="BPxAI home"
+            >
               <Image
                 src="/bpxai.png"
-                alt="BPxAI Labs"
-                width={24}
-                height={24}
-                className="rounded"
+                alt=""
+                width={26}
+                height={26}
+                className="rounded-sm"
               />
-              <span className="text-base font-bold tracking-tight text-black">
-                {t("meta.siteName")}
+              <span className="text-[15px] font-semibold tracking-tight text-foreground">
+                {siteName}
               </span>
-            </div>
-            <p className="text-sm text-black leading-relaxed max-w-xs">
+            </Link>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
               {footerData.companyDescription}
             </p>
+
+            <div className="mt-8 pt-6 border-t border-border/60">
+              <p className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground mb-2">
+                Tagline
+              </p>
+              <p className="font-display text-foreground text-lg leading-snug tracking-tight">
+                Engineered for the post-quantum decade.
+              </p>
+            </div>
           </div>
 
-          <nav aria-label="Quick links">
-            <h4 className="text-xs text-black tracking-wide uppercase mb-4 font-medium">
-              Navigation
+          {/* Practices */}
+          <nav
+            aria-label="Practices"
+            className="col-span-1 md:col-span-4 lg:col-span-3"
+          >
+            <h4 className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground mb-5">
+              Practices
             </h4>
-            <ul className="space-y-2.5">
-              {footerData.quickLinks?.map((link: any, i: number) => (
-                <li key={i}>
-                  <Link
-                    href={link.href}
-                    className="text-black hover:text-black transition-colors text-sm flex items-center group"
-                  >
-                    {link.label}
-                    <ArrowUpRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <nav aria-label="Solutions">
-            <h4 className="text-xs text-black tracking-wide uppercase mb-4 font-medium">
-              Solutions
-            </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {footerData.solutions?.map((link: any, i: number) => (
                 <li key={i}>
                   <Link
                     href={link.href}
-                    className="text-black hover:text-black transition-colors text-sm flex items-center group"
+                    className="group inline-flex items-center gap-1 text-sm text-foreground/85 hover:text-foreground transition-colors"
                   >
                     {link.label}
-                    <ArrowUpRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ArrowUpRight
+                      className="w-3.5 h-3.5 opacity-0 -ml-1 group-hover:opacity-100 group-hover:ml-0 transition-all"
+                      aria-hidden
+                    />
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          <div>
-            <h4 className="text-xs text-black tracking-wide uppercase mb-4 font-medium">
+          {/* Navigation */}
+          <nav
+            aria-label="Site navigation"
+            className="col-span-1 md:col-span-4 lg:col-span-2"
+          >
+            <h4 className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground mb-5">
+              Navigation
+            </h4>
+            <ul className="space-y-3">
+              {footerData.quickLinks?.map((link: any, i: number) => (
+                <li key={i}>
+                  <Link
+                    href={link.href}
+                    className="group inline-flex items-center gap-1 text-sm text-foreground/85 hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                    <ArrowUpRight
+                      className="w-3.5 h-3.5 opacity-0 -ml-1 group-hover:opacity-100 group-hover:ml-0 transition-all"
+                      aria-hidden
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Contact */}
+          <div className="col-span-2 md:col-span-4 lg:col-span-3">
+            <h4 className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground mb-5">
               Contact
             </h4>
-            <div className="space-y-2.5">
-              <a
-                href={`mailto:${footerData.contactInfo?.email}`}
-                className="text-black hover:text-black transition-colors text-sm block"
-              >
-                {footerData.contactInfo?.email}
-              </a>
-              <a
-                href={`tel:${footerData.contactInfo?.phone?.replace(/\s/g, "")}`}
-                className="text-black hover:text-black transition-colors text-sm block"
-              >
-                {footerData.contactInfo?.phone}
-              </a>
-              <p className="text-black text-sm">
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href={`mailto:${footerData.contactInfo?.email}`}
+                  className="text-sm text-foreground/85 hover:text-foreground transition-colors"
+                >
+                  {footerData.contactInfo?.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${footerData.contactInfo?.phone?.replace(
+                    /\s/g,
+                    "",
+                  )}`}
+                  className="text-sm text-foreground/85 hover:text-foreground transition-colors"
+                >
+                  {footerData.contactInfo?.phone}
+                </a>
+              </li>
+              <li className="text-sm text-muted-foreground leading-relaxed">
                 {footerData.contactInfo?.address}
-              </p>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="pt-6 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-black">
+        {/* Bottom band */}
+        <div className="pt-8 border-t border-border/60 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground font-mono tracking-wider">
             {footerData.copyright}
           </p>
-          <div className="flex items-center space-x-5">
+          <div className="flex items-center gap-6">
             <Link
               href="#"
-              className="text-xs text-black hover:text-black transition-colors"
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors font-mono tracking-wider"
             >
-              Privacy Policy
+              Privacy
             </Link>
             <Link
               href="#"
-              className="text-xs text-black hover:text-black transition-colors"
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors font-mono tracking-wider"
             >
-              Terms of Service
+              Terms
             </Link>
+            <span className="text-xs text-muted-foreground font-mono tracking-wider">
+              EN · FIL
+            </span>
           </div>
         </div>
       </div>

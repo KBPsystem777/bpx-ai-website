@@ -1,8 +1,11 @@
 "use client";
 
-import { ArrowUpRight, TrendingUp } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
+
 import { useLanguage } from "@/components/language-provider";
+
+const editorialEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export function ProjectsSection() {
   const { t } = useLanguage();
@@ -11,83 +14,90 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="py-24 md:py-32 bg-gray-50"
+      className="relative py-24 lg:py-32 bg-surface border-t border-border/60"
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mb-16"
+          transition={{ duration: 0.6, ease: editorialEase }}
+          viewport={{ once: true, margin: "-80px" }}
+          className="max-w-4xl mb-16 lg:mb-20"
         >
-          <span className="text-sm text-brand font-medium mb-4 block">
-            Our Work
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-brand mb-4 max-w-2xl tracking-tight">
+          <div className="eyebrow mb-5">Selected Engagements</div>
+          <h2 className="font-display text-foreground text-[clamp(1.875rem,4vw,3.25rem)] font-light leading-[1.08] tracking-tighter mb-6">
             {projects.title}
           </h2>
-          <p className="text-lg text-black max-w-2xl">
+          <p className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
             {projects.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border/60 border border-border/60 rounded-sm overflow-hidden">
           {Array.isArray(projects.items) &&
             projects.items.map((project: any, index: number) => (
-              <motion.div
+              <motion.article
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.06 }}
-                viewport={{ once: true }}
-                className="group bg-white rounded-2xl border border-gray-200 hover:shadow-lg hover:shadow-gray-100 transition-all duration-300 overflow-hidden"
+                transition={{
+                  duration: 0.5,
+                  ease: editorialEase,
+                  delay: (index % 3) * 0.06,
+                }}
+                viewport={{ once: true, margin: "-40px" }}
+                className="group relative bg-background p-8 lg:p-9 flex flex-col"
               >
-                <div className="p-8">
-                  <div className="flex items-start justify-between mb-5">
-                    <span className="text-xs font-medium text-brand bg-brand-50 px-2.5 py-1 rounded-md">
-                      {project.industry}
-                    </span>
-                    <div className="flex items-center space-x-1">
-                      <TrendingUp className="w-3.5 h-3.5 text-emerald-500" />
-                      <span className="text-xs font-semibold text-emerald-600">
-                        {project.metric}
-                      </span>
-                    </div>
-                  </div>
-
-                  <h3 className="text-lg font-bold text-black mb-2.5 tracking-tight group-hover:text-brand transition-colors">
-                    {project.title}
-                  </h3>
-
-                  <p className="text-sm text-black leading-relaxed mb-5">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {project.tags?.map((tag: string, ti: number) => (
-                      <span
-                        key={ti}
-                        className="text-[11px] text-black bg-gray-100 px-2 py-0.5 rounded"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="pt-5 border-t border-gray-100 flex items-center justify-between">
-                    <div>
-                      <span className="text-[11px] text-black tracking-wide uppercase block mb-0.5">
-                        Impact
-                      </span>
-                      <span className="text-sm font-semibold text-black">
-                        {project.impact}
-                      </span>
-                    </div>
-                    <ArrowUpRight className="w-4 h-4 text-black group-hover:text-brand transition-colors" />
-                  </div>
+                {/* Sector label */}
+                <div className="flex items-center justify-between mb-8">
+                  <span className="text-[11px] tracking-widest uppercase text-accent font-mono">
+                    {project.industry}
+                  </span>
+                  <ArrowUpRight
+                    className="w-4 h-4 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
+                    aria-hidden
+                  />
                 </div>
-              </motion.div>
+
+                {/* Title */}
+                <h3 className="font-display text-foreground text-xl lg:text-2xl leading-[1.15] tracking-tight font-normal mb-4">
+                  {project.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-muted-foreground leading-relaxed mb-8">
+                  {project.description}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1.5 mb-8">
+                  {project.tags?.map((tag: string, ti: number) => (
+                    <span
+                      key={ti}
+                      className="text-[11px] text-muted-foreground/90 border border-border px-2 py-1 leading-none"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Impact rail */}
+                <div className="mt-auto pt-6 border-t border-border/60 flex items-end justify-between gap-4">
+                  <div>
+                    <span className="text-[11px] tracking-widest uppercase text-muted-foreground font-mono block mb-1.5">
+                      Impact
+                    </span>
+                    <span className="text-sm text-foreground font-medium leading-snug">
+                      {project.impact}
+                    </span>
+                  </div>
+                  {project.metric && (
+                    <span className="text-xs font-mono text-accent shrink-0">
+                      {project.metric}
+                    </span>
+                  )}
+                </div>
+              </motion.article>
             ))}
         </div>
       </div>

@@ -2,33 +2,109 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * BPxAI Design Tokens
+ *
+ * The site defaults to dark — PQC and cybersecurity firms read dark.
+ * Light mode is supported but secondary.
+ *
+ * Palette anchors:
+ *  - Ink (deep navy-black, default background): #06080F
+ *  - Brand navy (primary surface accent): #0F2044
+ *  - Gold (accent, restrained — for emphasis, not chrome): #C9A84C
+ *  - Teal (secondary, used sparingly on sector accents): #1A4D4D
+ *  - Ivory (warm foreground): #F0EBE0
+ *
+ * All values declared in HSL so Tailwind utilities compose cleanly.
+ */
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 7%;
+    /* Light mode — secondary, but supported */
+    --background: 36 30% 97%;
+    --foreground: 222 47% 8%;
+
+    --surface: 0 0% 100%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 7%;
+    --card-foreground: 222 47% 8%;
+
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 7%;
-    --primary: 222 47% 18%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 0 0% 7%;
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
-    --accent: 220 14% 96%;
-    --accent-foreground: 0 0% 7%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 222 47% 18%;
-    --radius: 0.625rem;
-    --chart-1: 222 47% 18%;
-    --chart-2: 220 60% 50%;
-    --chart-3: 160 60% 45%;
-    --chart-4: 30 80% 55%;
-    --chart-5: 280 65% 60%;
+    --popover-foreground: 222 47% 8%;
+
+    --primary: 222 65% 16%;
+    --primary-foreground: 36 30% 97%;
+
+    --secondary: 180 49% 20%;
+    --secondary-foreground: 36 30% 97%;
+
+    --accent: 45 56% 54%;
+    --accent-foreground: 222 47% 8%;
+
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 9% 38%;
+
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 36 30% 97%;
+
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 222 65% 16%;
+
+    --ink: 222 47% 6%;
+    --ivory: 36 25% 92%;
+    --gold: 45 56% 54%;
+    --teal: 180 49% 20%;
+
+    --radius: 0.25rem;
+
+    --chart-1: 222 65% 16%;
+    --chart-2: 45 56% 54%;
+    --chart-3: 180 49% 20%;
+    --chart-4: 30 70% 50%;
+    --chart-5: 280 40% 45%;
+  }
+
+  .dark {
+    /* Dark mode — default */
+    --background: 222 47% 6%;
+    --foreground: 36 25% 92%;
+
+    --surface: 222 32% 9%;
+    --card: 222 28% 10%;
+    --card-foreground: 36 25% 92%;
+
+    --popover: 222 32% 9%;
+    --popover-foreground: 36 25% 92%;
+
+    --primary: 36 25% 92%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 180 35% 22%;
+    --secondary-foreground: 36 25% 92%;
+
+    --accent: 45 56% 54%;
+    --accent-foreground: 222 47% 6%;
+
+    --muted: 222 22% 14%;
+    --muted-foreground: 220 12% 62%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 36 25% 92%;
+
+    --border: 222 22% 16%;
+    --input: 222 22% 16%;
+    --ring: 45 56% 54%;
+
+    --ink: 222 47% 6%;
+    --ivory: 36 25% 92%;
+    --gold: 45 56% 54%;
+    --teal: 180 35% 22%;
+
+    --chart-1: 45 56% 54%;
+    --chart-2: 180 49% 40%;
+    --chart-3: 222 60% 50%;
+    --chart-4: 30 65% 55%;
+    --chart-5: 280 35% 55%;
   }
 }
 
@@ -37,22 +113,86 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
     @apply bg-background text-foreground antialiased;
+    overflow-x: hidden;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  /* Editorial display — Fraunces variable axis tuning for headlines */
+  .font-display {
+    font-family: var(--font-display), "Iowan Old Style", "Apple Garamond",
+      "Baskerville", "Times New Roman", serif;
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    letter-spacing: -0.02em;
   }
 }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  overflow-x: hidden;
-}
-
+/* Selection styling */
 ::selection {
-  background: rgba(15, 32, 68, 0.12);
-  color: #0A0A0A;
+  background: hsl(var(--accent) / 0.35);
+  color: hsl(var(--foreground));
+}
+
+/* Custom dark scrollbar (subtle, editorial) */
+.dark ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 999px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Hairline divider — editorial */
+.hairline {
+  border-color: hsl(var(--border));
+  border-top-width: 1px;
+  border-style: solid;
+}
+
+/* Eyebrow label — used for section labels above headlines */
+.eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: hsl(var(--accent));
+}
+
+/* Subtle grid background — for hero and editorial sections */
+.grid-pattern {
+  background-image:
+    linear-gradient(hsl(var(--border) / 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--border) / 0.5) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 80%);
+}
+
+/* Radial glow — for hero accent */
+.radial-glow {
+  background: radial-gradient(
+    ellipse 60% 40% at 50% 0%,
+    hsl(var(--accent) / 0.08) 0%,
+    transparent 70%
+  );
 }

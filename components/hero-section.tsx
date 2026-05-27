@@ -1,36 +1,45 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/components/language-provider";
 
-function ClientLogoBanner() {
+const editorialEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+function ClientLogoBand() {
   const { t } = useLanguage();
   const clients = t("clients");
+  const trustedBy = t("hero.trustedBy");
+
+  if (!Array.isArray(clients?.logos)) return null;
 
   return (
-    <div className="border-t border-gray-100">
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col sm:flex-row items-center gap-6">
-          <span className="text-black text-xs tracking-wide uppercase shrink-0">
-            Trusted by
-          </span>
-          <div className="flex items-center gap-10 md:gap-14 overflow-hidden">
-            {Array.isArray(clients?.logos) &&
-              clients.logos.map((client: any, i: number) => (
-                <div key={i} className="shrink-0 opacity-30 hover:opacity-50 transition-opacity grayscale">
-                  <Image
-                    src={client.logo}
-                    alt={client.name}
-                    width={80}
-                    height={32}
-                    className="h-5 w-auto object-contain"
-                  />
-                </div>
-              ))}
+    <div className="border-t border-border/60">
+      <div className="container mx-auto py-8 lg:py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6 lg:gap-12 items-center">
+          <p className="text-[11px] tracking-widest uppercase text-muted-foreground font-mono leading-relaxed max-w-md">
+            {trustedBy}
+          </p>
+          <div className="flex flex-wrap items-center gap-x-10 lg:gap-x-14 gap-y-6 lg:justify-end">
+            {clients.logos.map((client: any, i: number) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
+                title={client.name}
+              >
+                <Image
+                  src={client.logo}
+                  alt={client.name}
+                  width={120}
+                  height={32}
+                  className="h-6 w-auto object-contain"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -43,90 +52,116 @@ export function HeroSection() {
   const hero = t("hero");
 
   return (
-    <section className="relative pt-32 pb-0 overflow-hidden bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl">
+    <section className="relative pt-28 lg:pt-36 pb-0 overflow-hidden bg-background">
+      {/* Atmospheric background layers */}
+      <div
+        className="absolute inset-0 grid-pattern opacity-40 pointer-events-none"
+        aria-hidden
+      />
+      <div
+        className="absolute inset-x-0 top-0 h-[600px] radial-glow pointer-events-none"
+        aria-hidden
+      />
+
+      <div className="container mx-auto relative">
+        <div className="max-w-5xl">
+          {/* Eyebrow */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-6"
+            transition={{ duration: 0.5, ease: editorialEase }}
+            className="flex items-center gap-3 mb-8"
           >
-            <span className="inline-flex items-center text-sm text-brand font-medium bg-brand-50 px-3 py-1 rounded-full">
+            <span className="inline-flex items-center gap-2 text-[11px] tracking-widest uppercase text-accent font-mono">
+              <span
+                className="w-1.5 h-1.5 rounded-full bg-accent"
+                aria-hidden
+              />
               {hero.tagline}
             </span>
           </motion.div>
 
+          {/* Editorial display headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-brand leading-[1.1] tracking-tight"
+            transition={{ duration: 0.7, ease: editorialEase, delay: 0.08 }}
+            className="font-display text-foreground text-[clamp(2.5rem,6vw,5.5rem)] font-light leading-[1.02] tracking-tighter mb-8 max-w-4xl"
           >
             {hero.headline}
           </motion.h1>
 
+          {/* Subhead */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg md:text-xl text-black mb-10 max-w-2xl leading-relaxed"
+            transition={{ duration: 0.6, ease: editorialEase, delay: 0.18 }}
+            className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl mb-12"
           >
             {hero.subheadline}
           </motion.p>
 
+          {/* Primary actions */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-start gap-3 mb-20"
+            transition={{ duration: 0.5, ease: editorialEase, delay: 0.28 }}
+            className="flex flex-col sm:flex-row gap-3 mb-20 lg:mb-28"
           >
             <Button
-              size="lg"
-              className="bg-brand hover:bg-brand-600 text-white font-medium px-6 h-12 text-sm rounded-lg"
               asChild
+              size="lg"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-sm h-12 px-6 text-[13px] font-medium tracking-tight"
             >
-              <a href={hero.primaryCta.href}>
+              <Link href={hero.primaryCta.href}>
                 {hero.primaryCta.label}
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </a>
+                <ArrowUpRight className="w-4 h-4" aria-hidden />
+              </Link>
             </Button>
-
             <Button
               asChild
-              variant="outline"
               size="lg"
-              className="border-gray-200 text-black hover:text-black hover:bg-gray-50 h-12 px-6 text-sm rounded-lg bg-white"
+              variant="outline"
+              className="border border-border bg-transparent text-foreground hover:bg-muted/40 hover:text-foreground rounded-sm h-12 px-6 text-[13px] font-medium tracking-tight"
             >
-              <a href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
+              <Link href={hero.secondaryCta.href}>
+                <ShieldCheck className="w-4 h-4" aria-hidden />
+                {hero.secondaryCta.label}
+              </Link>
             </Button>
           </motion.div>
 
+          {/* Metrics strip */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, ease: editorialEase, delay: 0.4 }}
+            className="border-t border-border/60 pt-8 pb-14 lg:pb-20"
           >
-            {Array.isArray(hero.metrics) &&
-              hero.metrics.map((metric: any, i: number) => (
-                <div key={i}>
-                  <div className="text-3xl md:text-4xl font-bold text-black mb-1">
-                    {metric.value}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
+              {Array.isArray(hero.metrics) &&
+                hero.metrics.map((metric: any, i: number) => (
+                  <div key={i} className="flex flex-col">
+                    <span className="text-[11px] tracking-widest uppercase text-muted-foreground font-mono mb-3">
+                      0{i + 1}
+                    </span>
+                    <span className="font-display text-2xl lg:text-[28px] leading-[1.1] tracking-tight text-foreground mb-2">
+                      {metric.value}
+                    </span>
+                    <span className="text-sm text-foreground/90 font-medium leading-snug">
+                      {metric.label}
+                    </span>
+                    <span className="text-xs text-muted-foreground mt-1 leading-snug">
+                      {metric.sublabel}
+                    </span>
                   </div>
-                  <div className="text-sm text-black font-medium">
-                    {metric.label}
-                  </div>
-                  <div className="text-xs text-black mt-0.5">
-                    {metric.sublabel}
-                  </div>
-                </div>
-              ))}
+                ))}
+            </div>
           </motion.div>
         </div>
       </div>
 
-      <ClientLogoBanner />
+      <ClientLogoBand />
     </section>
   );
 }

@@ -1,187 +1,236 @@
-// This file centralizes all content for easy CMS integration in the future
+// This file centralizes all content for easy CMS integration in the future.
+// All copy here derives from MESSAGING.md (repo root). Treat that document as canonical.
 
 const currentYear = new Date().getFullYear();
 
 export const siteContent: Record<string, any> = {
   en: {
     meta: {
-      siteName: "BPxAI Labs",
+      siteName: "BPxAI",
       description:
-        "We build smart technology that helps businesses run better. AI, digital systems, and blockchain solutions for companies, government, and startups.",
+        "The Philippine practice for post-quantum cryptography, applied AI, and blockchain-verified systems.",
     },
 
     navigation: {
       links: [
-        { label: "What We Do", href: "/#capabilities" },
-        { label: "Our Work", href: "/#projects" },
+        { label: "Practices", href: "/#capabilities" },
+        { label: "Quantum", href: "/quantum" },
+        { label: "Ronway Scanner", href: "/ronway" },
         { label: "Research", href: "/#research" },
         { label: "Contact", href: "/#contact" },
       ],
       ctaButton: {
-        label: "Talk to Us",
+        label: "Brief our partners",
         href: "/#contact",
       },
     },
 
     hero: {
-      tagline: "Technology That Works For You",
-      headline: "We build smarter systems so you can make better decisions",
+      tagline: "Post-Quantum · Applied AI · Verifiable Systems",
+      headline:
+        "Engineered for the post-quantum decade.",
       subheadline:
-        "Your business deserves technology that actually solves problems — not just fancy dashboards. We create AI-powered tools, digital platforms, and secure systems that help you save time, cut costs, and grow faster.",
+        "BPxAI is the Philippine market's specialist consultancy for post-quantum cryptography, applied artificial intelligence, and blockchain-verified systems. We work with the institutions whose continuity depends on cryptographic resilience and decision-grade intelligence in the decade ahead.",
       metrics: [
-        { value: "70%", label: "Fewer Errors", sublabel: "In billing systems" },
-        { value: "30%", label: "More Revenue", sublabel: "For local governments" },
-        { value: "9+", label: "Clients Served", sublabel: "US & Philippines" },
-        { value: "24/7", label: "Always Running", sublabel: "Reliable systems" },
+        {
+          value: "FIPS 203 / 204 / 205",
+          label: "NIST-aligned migration practice",
+          sublabel: "Hybrid PQC, in production",
+        },
+        {
+          value: "4",
+          label: "Fortune 500 utilities delivered",
+          sublabel: "Exelon · BGE · Entergy · Xcel",
+        },
+        {
+          value: "PH-built",
+          label: "Ronway PQC Scanner",
+          sublabel: "First Philippine-developed",
+        },
+        {
+          value: "EN / FIL",
+          label: "Institutional bilingual delivery",
+          sublabel: "Sovereign-grade localization",
+        },
       ],
       primaryCta: {
-        label: "Talk to Us",
+        label: "Brief our partners",
         href: "/#contact",
       },
       secondaryCta: {
-        label: "See Our Work",
-        href: "/#projects",
+        label: "Scan a system with Ronway",
+        href: "/ronway",
       },
-      trustedBy: "Trusted by Exelon, BGE, Entergy, Xcel Energy, and Philippine LGUs",
+      trustedBy:
+        "Engagements with Fortune 500 U.S. utilities, Philippine local government units, and the Department of the Interior and Local Government.",
     },
 
     capabilities: {
-      sectionLabel: "What We Do",
-      title: "Four ways we help your business win.",
-      subtitle: "We don't just build apps. We build the tools that give you a real advantage — so you can see what's happening, act faster, and stay ahead.",
+      sectionLabel: "Practices",
+      title:
+        "Three disciplines. One institutional posture for the next decade.",
+      subtitle:
+        "Most firms still treat post-quantum cryptography, applied AI, and verifiable systems as separate conversations. We work where they converge — at the cryptographic and intelligence layer underneath the institution.",
       pillars: [
         {
+          id: "pqc",
+          title: "Post-Quantum Cryptography",
+          shortTitle: "Quantum",
+          description:
+            "NIST finalized FIPS 203, 204, and 205 in August 2024. Migration windows for institutional cryptography run five to seven years. We map your cryptographic surface, score the exposure, and engineer hybrid PQC deployments in sequence — board-readable on one end, production-grade on the other.",
+          capabilities: [
+            "Cryptographic inventory & exposure mapping",
+            "Hybrid PQC migration architecture",
+            "Ronway Scanner (public surface)",
+            "Regulatory readiness briefings",
+          ],
+          metric: "Aligned to NIST FIPS 203 / 204 / 205",
+        },
+        {
           id: "ai",
-          title: "Artificial Intelligence",
+          title: "Applied Artificial Intelligence",
           shortTitle: "AI",
-          description: "We build smart tools that can read data, spot patterns, and make recommendations — so your team can focus on what matters instead of manual work.",
-          capabilities: ["Smart Assistants", "Automated Workflows", "Data Analysis", "Image Recognition"],
-          metric: "10x faster decisions",
+          description:
+            "We deliver AI where institutional consequence is high — clinical triage, defense doctrine, regulated financial operations. Decision-grade systems, not productivity wrappers. We have published doctrine on AI in national defense and shipped clinical-triage infrastructure into the Philippine health system.",
+          capabilities: [
+            "AI strategy & governance for regulated institutions",
+            "Clinical & operational triage systems",
+            "Defense and intelligence AI doctrine",
+            "Agentic systems for institutional back-office",
+          ],
+          metric: "Doctrine published. Deployments running.",
         },
         {
           id: "web3",
           title: "Blockchain & Digital Trust",
-          shortTitle: "Blockchain",
-          description: "We use blockchain to make records tamper-proof and transactions transparent. Perfect for property, finance, and any system where trust matters.",
-          capabilities: ["Tamper-proof Records", "Transparent Transactions", "Digital Assets", "Secure Verification"],
-          metric: "Records you can trust",
-        },
-        {
-          id: "risk",
-          title: "Risk & Compliance",
-          shortTitle: "Risk",
-          description: "We build monitoring systems that catch problems before they become expensive. Real-time alerts, compliance tracking, and risk scoring for peace of mind.",
-          capabilities: ["Problem Detection", "Compliance Tracking", "Risk Scoring", "Automated Alerts"],
-          metric: "No surprises",
-        },
-        {
-          id: "systems",
-          title: "Complete Business Systems",
-          shortTitle: "Systems",
-          description: "We build all-in-one platforms that replace scattered spreadsheets and disconnected tools with one unified system your whole team can use.",
-          capabilities: ["Business Platforms", "Government Systems", "Process Automation", "Data Management"],
-          metric: "Everything in one place",
+          shortTitle: "Trust",
+          description:
+            "Verifiable systems for transactions, records, and processes where institutional trust is the product. We do not treat blockchain as a marketing layer. We use it where verifiability — not novelty — is the institutional requirement.",
+          capabilities: [
+            "Tokenization for regulated assets",
+            "On-chain provenance for sovereign procurement",
+            "Verifiable credential systems",
+            "Smart-contract audit & oversight",
+          ],
+          metric: "Live across U.S. residential markets",
         },
       ],
     },
 
     services: {
-      title: "How we work with you",
-      subtitle: "Choose the approach that fits your needs — from quick assessments to full system builds",
+      title: "How an engagement begins",
+      subtitle:
+        "Three entry points, calibrated to the depth of question on the table.",
       items: [
         {
-          title: "Blueprint",
+          title: "Ronway Consultation",
           description:
-            "We study your current operations, find where you're losing time or money, and design the right technology solution — before writing a single line of code.",
+            "A sixty-to-ninety-minute working session with our cryptographic partners, anchored on the result of a Ronway scan of your environment. We walk through the full exposure map, identify systems the public scan could not reach, and propose a migration sequence. Output: a written remediation brief delivered within seven days.",
           iconName: "Search",
-          pricing: "Assessment",
-          deliverables: ["Full operations review", "Solution design", "Technology plan", "Cost & benefit analysis"],
-          timeline: "2-4 weeks",
+          pricing: "Entry engagement",
+          deliverables: [
+            "Ronway scan of nominated environment",
+            "Full exposure map & priority matrix",
+            "Migration sequence proposal",
+            "Written remediation brief (7 days)",
+          ],
+          timeline: "1 week",
         },
         {
-          title: "Studio",
+          title: "Cryptographic Discovery",
           description:
-            "A dedicated team works alongside you, building and improving your systems week by week. Like having your own tech team, without the overhead.",
+            "A formal cryptographic inventory and exposure assessment of your institutional environment — internal and external surface. Algorithm-by-algorithm risk scoring against NIST timelines, regulator-aligned. Concludes with a board-readable executive summary and a roadmap-ready exposure matrix.",
           iconName: "Copy",
-          pricing: "Monthly",
-          deliverables: ["Dedicated tech team", "Weekly updates & releases", "AI & blockchain integration", "24/7 system monitoring"],
-          timeline: "Ongoing",
+          pricing: "Discovery engagement",
+          deliverables: [
+            "Full cryptographic inventory",
+            "NIST-aligned exposure scoring",
+            "Regulatory alignment memo",
+            "Board-readable executive summary",
+          ],
+          timeline: "2–4 weeks",
         },
         {
-          title: "Foundry",
+          title: "Migration Architecture",
           description:
-            "A specific project with a clear goal, fixed timeline, and defined budget. We build it, test it, train your team, and support you after launch.",
+            "Discovery plus a complete migration architecture — hybrid PQC design, system sequencing, certificate-chain replacement plan, vendor and library assessment, and the engineering oversight to deliver it. The outcome is a migration your engineering team can execute and your regulator can audit.",
           iconName: "Rocket",
-          pricing: "Fixed Price",
-          deliverables: ["Complete system build", "Performance testing", "Team training", "90-day support"],
-          timeline: "6-12 weeks",
+          pricing: "Full engagement",
+          deliverables: [
+            "Hybrid PQC architecture",
+            "Migration sequencing & timeline",
+            "Vendor & library assessment",
+            "Engineering oversight through cutover",
+          ],
+          timeline: "8–16 weeks",
         },
       ],
     },
 
     projectHighlights: {
-      title: "Our Work",
-      subtitle: "Real systems solving real problems — running in production today.",
+      title: "Selected engagements",
+      subtitle:
+        "Engagements we can speak to publicly. Sovereign and defense work is referenced only at the level our principals are authorized to discuss.",
       items: [
         {
-          title: "SnackPax Business OS",
+          title: "AI Defense Intelligence Framework — Philippines",
           description:
-            "Built an all-in-one platform for a food business to manage attendance, sales, inventory, and expenses. Replaced 7 separate spreadsheets with one simple system.",
-          impact: "Used Every Day",
-          metric: "7 tools → 1",
-          industry: "Food & Retail",
-          tags: ["Business Platform", "Automation", "Reports"],
+            "Published strategic doctrine on the application of artificial intelligence to Philippine defense and national-security operations. First-mover position in the country's AI-defense thought-leadership conversation.",
+          impact: "Doctrine, published",
+          metric: "Strategic framework",
+          industry: "Defense & National Security",
+          tags: ["AI Doctrine", "Defense", "Published Research"],
         },
         {
-          title: "LGU Real Property Tax System",
+          title: "Sovereign Revenue Infrastructure — Philippine LGUs",
           description:
-            "Digitized property tax records for local government units in the Philippines. Now tax computation, assessment, and collection are transparent and automated.",
-          impact: "30% More Revenue",
-          metric: "+30% collections",
-          industry: "Government",
-          tags: ["Government Tech", "Digital Records", "Tax"],
+            "Designed and delivered the digital backbone for real-property tax assessment, computation, and collection across Philippine local government units. Modernized a category of sovereign revenue infrastructure that had operated on paper for a generation.",
+          impact: "+30% public revenue collection",
+          metric: "+30% collections lift",
+          industry: "Public Sector",
+          tags: ["Sovereign Capability", "Tax Infrastructure", "DILG"],
         },
         {
-          title: "Utility Billing Automation",
+          title: "Billing Accuracy — Fortune 500 U.S. Utilities",
           description:
-            "Built billing automation for major US energy companies serving millions of customers. Reduced billing errors by 70% — saving time and preventing costly mistakes.",
-          impact: "70% Fewer Errors",
-          metric: "-70% errors",
+            "Engineered billing accuracy and customer-portal automation for four Fortune 500 U.S. utilities — Exelon, Baltimore Gas and Electric, Entergy, and Xcel Energy. The same transactional surface that, in a Philippine financial-services context, becomes inter-bank messaging.",
+          impact: "70% reduction in billing-error rates",
+          metric: "−70% error rate",
           industry: "Energy & Utilities",
-          tags: ["Enterprise", "Automation", "Billing"],
+          tags: ["Fortune 500", "Billing Integrity", "Automation"],
         },
         {
-          title: "MedixAI Medical Triage",
+          title: "MedixAI — Clinical Triage Infrastructure",
           description:
-            "An AI-powered health platform that helps patients get initial assessments and connects them with the right healthcare providers across the Philippines.",
-          impact: "Beta Launch",
-          metric: "AI health assistant",
-          industry: "Healthcare AI",
-          tags: ["AI", "Healthcare", "Platform"],
+            "Clinical-triage and provider-matching infrastructure for the Philippine health system. AI-mediated initial assessment that routes patients to appropriately credentialed providers. Currently in limited release.",
+          impact: "Limited release, Philippine market",
+          metric: "AI clinical triage",
+          industry: "Healthcare",
+          tags: ["Clinical AI", "Healthcare", "Limited Release"],
         },
         {
-          title: "ManageLife Web3 Housing",
+          title: "ManageLife — Blockchain-Verified Housing",
           description:
-            "A platform that lets people invest in real estate through fractional ownership, with blockchain technology ensuring transparent and secure property management.",
-          impact: "Live Platform",
-          metric: "Digital ownership",
-          industry: "Web3 & Real Estate",
-          tags: ["Blockchain", "Property", "Investment"],
+            "Tokenized fractional-ownership infrastructure for U.S. residential housing. On-chain provenance and verifiable property records, delivered as production infrastructure rather than proof-of-concept.",
+          impact: "Live, U.S. residential markets",
+          metric: "On-chain provenance",
+          industry: "Financial Services",
+          tags: ["Tokenization", "Verifiable Records", "Real Assets"],
         },
         {
-          title: "AI Defense Intelligence Framework",
+          title: "Operational Systems — Emerging Enterprise",
           description:
-            "A strategic research paper exploring how AI can strengthen defense and national security operations in the Philippines.",
-          impact: "Published Research",
-          metric: "Policy framework",
-          industry: "Defense & Intelligence",
-          tags: ["Research", "Defense", "AI Policy"],
+            "Unified operational platform replacing fragmented spreadsheet workflows for an emerging Philippine enterprise. Attendance, sales, inventory, expenses — consolidated into a single intelligence surface.",
+          impact: "Daily operational use",
+          metric: "Unified intelligence surface",
+          industry: "Enterprise",
+          tags: ["Operational Intelligence", "Consolidation"],
         },
       ],
     },
 
     clients: {
-      title: "Trusted by companies that demand results",
+      title: "Institutional engagements to date",
       logos: [
         { name: "Exelon", logo: "/clients/exelon.png" },
         { name: "BGE", logo: "/clients/bge.jpg" },
@@ -191,246 +240,319 @@ export const siteContent: Record<string, any> = {
       ],
     },
 
-    research: {
-      title: "Research & Resources",
+    ronway: {
+      sectionLabel: "Ronway Scanner",
+      title:
+        "The first Philippine-developed post-quantum cryptography scanner.",
       subtitle:
-        "Our thinking on how emerging technology can solve real-world problems",
+        "Ronway scans the public cryptographic surface of any institutional system — TLS configurations, certificate chains, signing infrastructure, key-exchange protocols — and returns the proportion of that surface that will not survive the post-quantum transition. The scan is free. The remediation plan is the consultation.",
+      bullets: [
+        "TLS configuration & cipher-suite analysis",
+        "Certificate-chain post-quantum readiness",
+        "Signing-algorithm exposure (RSA, ECDSA, Ed25519)",
+        "Key-exchange protocol assessment",
+      ],
+      disclosure:
+        "Ronway scans public cryptographic surface only. Internal HSMs, key-management systems, and air-gapped infrastructure are not in scope of the free scan. Where the scanner cannot reach, the consultation begins.",
+      primaryCta: {
+        label: "Scan a system",
+        href: "/ronway",
+      },
+      secondaryCta: {
+        label: "Book a Ronway consultation",
+        href: "/#contact",
+      },
+    },
+
+    research: {
+      title: "Research & Doctrine",
+      subtitle:
+        "Published positions on the standards migrations, regulatory transitions, and institutional questions that define the post-quantum decade.",
       documents: [
         {
           title: "AI Defense Intelligence Framework for the Philippines",
           description:
-            "A research paper on how AI technologies can be used to strengthen defense and intelligence operations in the Philippines.",
-          category: "Defense & AI",
+            "Strategic doctrine on the application of artificial intelligence to Philippine defense and intelligence operations. Published as part of BPxAI's first-mover position in the national-security technology conversation.",
+          category: "Defense & National Security",
           date: "February 2026",
           fileSize: "PDF",
           downloadUrl:
             "/resources/AI_Defense_Intelligence_Framework_Philippines_Report.pdf",
           tags: [
-            "AI",
+            "AI Doctrine",
             "Defense",
+            "National Security",
             "Philippines",
-            "Policy",
-            "Research",
           ],
         },
       ],
     },
 
     cta: {
-      title: "Ready to upgrade your operations?",
+      title: "Begin the conversation before the agenda is finalized.",
       description:
-        "The best businesses don't wait. Let's talk about how the right technology can save you time, reduce your costs, and help you grow. Free 30-minute consultation.",
-      buttonText: "Book a Free Consultation",
+        "If post-quantum cryptography, applied AI, or verifiable systems sit on your institutional agenda for the next twelve months — formally or informally — we should speak. A thirty-minute partner briefing is the standard entry point.",
+      buttonText: "Brief our partners",
       buttonHref: "https://calendly.com/bpxailabs/30min",
       stats: [
-        { label: "Free Consultation", value: "30 min" },
-        { label: "Response Time", value: "<24h" },
-        { label: "We Speak", value: "EN / TL" },
+        { label: "Partner briefing", value: "30 min" },
+        { label: "Response window", value: "<24h" },
+        { label: "Working languages", value: "EN / FIL" },
       ],
     },
 
     footer: {
       companyDescription:
-        "We build smart technology for businesses, governments, and startups. AI-powered. Secure. Built to last.",
+        "The Philippine practice for post-quantum cryptography, applied AI, and blockchain-verified systems. Engineered for the institutions of the next decade.",
       contactInfo: {
         email: "bpxailabs@gmail.com",
         phone: "+63 917 713 8316",
-        address: "Philippines & Global",
+        address: "Manila · Philippines · Global engagement",
       },
       quickLinks: [
-        { label: "What We Do", href: "/#capabilities" },
-        { label: "Our Work", href: "/#projects" },
+        { label: "Practices", href: "/#capabilities" },
+        { label: "Quantum Practice", href: "/quantum" },
+        { label: "Ronway Scanner", href: "/ronway" },
         { label: "Research", href: "/#research" },
         { label: "Contact", href: "/#contact" },
       ],
       solutions: [
-        { label: "AI & Automation", href: "/#capabilities" },
-        { label: "Blockchain Solutions", href: "/#capabilities" },
-        { label: "Risk & Compliance", href: "/#capabilities" },
-        { label: "Business Platforms", href: "/#capabilities" },
+        { label: "Post-Quantum Cryptography", href: "/quantum" },
+        { label: "Applied AI", href: "/#capabilities" },
+        { label: "Blockchain & Digital Trust", href: "/#capabilities" },
+        { label: "Ronway Scanner", href: "/ronway" },
       ],
-      copyright: `\u00A9 ${currentYear} BPxAI Labs. All rights reserved.`,
+      copyright: `© ${currentYear} BPxAI. All rights reserved.`,
     },
   },
+
   tl: {
     meta: {
-      siteName: "BPxAI Labs",
+      siteName: "BPxAI",
       description:
-        "Gumagawa kami ng matalinong teknolohiya para sa mga negosyo, gobyerno, at startups sa Pilipinas at buong mundo.",
+        "Ang Filipinong praktis para sa post-quantum cryptography, inilapat na AI, at mga sistemang may katibayang on-chain.",
     },
 
     navigation: {
       links: [
-        { label: "Ano ang Ginagawa Namin", href: "/#capabilities" },
-        { label: "Mga Proyekto", href: "/#projects" },
-        { label: "Research", href: "/#research" },
+        { label: "Mga Praktis", href: "/#capabilities" },
+        { label: "Quantum", href: "/quantum" },
+        { label: "Ronway Scanner", href: "/ronway" },
+        { label: "Pananaliksik", href: "/#research" },
         { label: "Makipag-ugnayan", href: "/#contact" },
       ],
       ctaButton: {
-        label: "Kausapin Kami",
+        label: "Makipag-ugnayan sa aming partners",
         href: "/#contact",
       },
     },
 
     hero: {
-      tagline: "Teknolohiyang Gumagana Para Sa Iyo",
-      headline: "Gumagawa kami ng mas matalinong sistema para sa mas magandang desisyon",
+      tagline: "Post-Quantum · Inilapat na AI · Mga Sistemang May Katibayan",
+      headline:
+        "Itinatayo para sa dekada ng post-quantum.",
       subheadline:
-        "Ang negosyo mo ay deserve ng teknolohiyang talagang nakakatulong — hindi lang magandang tingnan. Gumagawa kami ng AI tools, digital platforms, at secure systems na makakatipid sa oras, bawas gastos, at tutulong sa growth mo.",
+        "Ang BPxAI ang Filipinong praktis para sa post-quantum cryptography, inilapat na artificial intelligence, at mga sistemang may katibayang on-chain. Naglilingkod kami sa mga institusyon na ang pagpapatuloy ng operasyon ay nakasalalay sa katibayang kriptograpiko at sa kalidad ng pasiyang nakabatay sa kaalaman, sa darating na dekada.",
       metrics: [
-        { value: "70%", label: "Mas Kaunting Errors", sublabel: "Sa billing systems" },
-        { value: "30%", label: "Mas Maraming Kita", sublabel: "Para sa mga LGU" },
-        { value: "9+", label: "Mga Kliyente", sublabel: "US at Pilipinas" },
-        { value: "24/7", label: "Palaging Gumagana", sublabel: "Maaasahang sistema" },
+        {
+          value: "FIPS 203 / 204 / 205",
+          label: "Praktis na nakaayon sa NIST",
+          sublabel: "Hybrid PQC, sa produksyon",
+        },
+        {
+          value: "4",
+          label: "Mga Fortune 500 utility na natupad",
+          sublabel: "Exelon · BGE · Entergy · Xcel",
+        },
+        {
+          value: "PH-built",
+          label: "Ronway PQC Scanner",
+          sublabel: "Unang Filipinong nilikha",
+        },
+        {
+          value: "EN / FIL",
+          label: "Institusyonal na bilinggwal",
+          sublabel: "Lokalisasyong sovereign-grade",
+        },
       ],
       primaryCta: {
-        label: "Kausapin Kami",
+        label: "Makipag-ugnayan sa aming partners",
         href: "/#contact",
       },
       secondaryCta: {
-        label: "Tingnan ang Mga Proyekto",
-        href: "/#projects",
+        label: "I-scan ang isang sistema",
+        href: "/ronway",
       },
-      trustedBy: "Pinagkakatiwalaan ng Exelon, BGE, Entergy, Xcel Energy, at mga LGU sa Pilipinas",
+      trustedBy:
+        "Mga engagement sa mga Fortune 500 utility ng Estados Unidos, mga lokal na pamahalaan ng Pilipinas, at ang Department of the Interior and Local Government.",
     },
 
     capabilities: {
-      sectionLabel: "Ano ang Ginagawa Namin",
-      title: "Apat na paraan para manalo ang negosyo mo.",
-      subtitle: "Hindi lang kami gumagawa ng apps. Gumagawa kami ng mga kasangkapan na magbibigay sa iyo ng tunay na bentahe — para makita mo ang nangyayari, kumilos nang mas mabilis, at manatiling nangunguna.",
+      sectionLabel: "Mga Praktis",
+      title:
+        "Tatlong disiplina. Isang institusyonal na panindigan para sa susunod na dekada.",
+      subtitle:
+        "Hiwa-hiwalay pa rin sa karamihan ng kumpanya ang post-quantum cryptography, inilapat na AI, at mga sistemang may katibayan. Sa amin, pinagtatagpo namin ang tatlo — sa antas na kriptograpiko at maalam, na nasa ilalim ng buong institusyon.",
       pillars: [
         {
+          id: "pqc",
+          title: "Post-Quantum Cryptography",
+          shortTitle: "Quantum",
+          description:
+            "Pinagtibay ng NIST ang FIPS 203, 204, at 205 noong Agosto 2024. Ang yugto ng paglipat para sa kriptograpiya ng mga institusyon ay tumatakbo ng lima hanggang pitong taon. Tinutukoy namin ang kabuuan ng inyong kriptograpikong saklaw, sinusukat ang panganib, at idinidisenyo ang sunud-sunod na hybrid PQC deployment — basahin ng lupon sa isang dulo, handa sa produksyon sa kabila.",
+          capabilities: [
+            "Imbentaryo at pagmamapa ng kriptograpikong saklaw",
+            "Arkitektura ng paglipat sa hybrid PQC",
+            "Ronway Scanner (panlabas na saklaw)",
+            "Paghahanda sa pangangasiwang pang-regulatoryo",
+          ],
+          metric: "Nakaayon sa NIST FIPS 203 / 204 / 205",
+        },
+        {
           id: "ai",
-          title: "Artificial Intelligence",
+          title: "Inilapat na Artificial Intelligence",
           shortTitle: "AI",
-          description: "Gumagawa kami ng matalinong tools na kayang magbasa ng data, makahanap ng patterns, at mag-recommend — para ang team mo ay makapag-focus sa mahalaga imbes na mano-manong trabaho.",
-          capabilities: ["Matalinong Assistants", "Automated Workflows", "Data Analysis", "Image Recognition"],
-          metric: "10x mas mabilis na desisyon",
+          description:
+            "Itinatayo namin ang AI kung saan malaki ang institusyonal na bunga — klinikal na triage, doktrinang pantanggulan, at mga regulated na operasyong pinansiyal. Mga sistemang pang-pasiya, hindi pampabilis lamang ng gawain. May naipalathala kaming doktrina sa AI para sa pambansang tanggulan, at may umiiral na kliniko-AI sa sistemang pangkalusugan ng Pilipinas.",
+          capabilities: [
+            "Estratehiya at pamamahala ng AI sa mga regulated na institusyon",
+            "Mga klinikal at operasyonal na sistemang triage",
+            "Doktrina sa AI para sa tanggulan at intelidyensya",
+            "Mga agentic system para sa institusyonal na back-office",
+          ],
+          metric: "May naipalathalang doktrina. May tumatakbong deployment.",
         },
         {
           id: "web3",
-          title: "Blockchain at Digital Trust",
-          shortTitle: "Blockchain",
-          description: "Ginagamit namin ang blockchain para gawing tamper-proof ang mga records at transparent ang mga transaksyon. Perfect para sa property, finance, at kahit anong sistema kung saan mahalaga ang tiwala.",
-          capabilities: ["Tamper-proof Records", "Transparent Transactions", "Digital Assets", "Secure Verification"],
-          metric: "Records na mapagkakatiwalaan",
-        },
-        {
-          id: "risk",
-          title: "Risk at Compliance",
-          shortTitle: "Risk",
-          description: "Gumagawa kami ng monitoring systems na nakakahuli ng problema bago pa maging mahal. Real-time alerts, compliance tracking, at risk scoring para sa peace of mind.",
-          capabilities: ["Pagtukoy ng Problema", "Compliance Tracking", "Risk Scoring", "Automated Alerts"],
-          metric: "Walang sorpresa",
-        },
-        {
-          id: "systems",
-          title: "Buong Business Systems",
-          shortTitle: "Systems",
-          description: "Gumagawa kami ng all-in-one platforms na papalit sa kalat-kalat na spreadsheets at disconnected tools — isang unified system na magagamit ng buong team mo.",
-          capabilities: ["Business Platforms", "Government Systems", "Process Automation", "Data Management"],
-          metric: "Lahat sa isang lugar",
+          title: "Blockchain at Katibayang Digital",
+          shortTitle: "Katibayan",
+          description:
+            "Mga sistemang may katibayan para sa transaksyon, talaan, at proseso kung saan ang institusyonal na pagtitiwala mismo ang produkto. Hindi namin ginagamit ang blockchain bilang pampaganda. Ginagamit namin kung saan ang katibayan — hindi ang pagiging bago — ang institusyonal na pangangailangan.",
+          capabilities: [
+            "Tokenization para sa mga regulated na ari-arian",
+            "On-chain provenance para sa sovereign na pagbili",
+            "Mga sistemang verifiable credential",
+            "Pag-audit at pagmamatyag sa smart contract",
+          ],
+          metric: "Live sa mga residential market ng Estados Unidos",
         },
       ],
     },
 
     services: {
-      title: "Paano kami nakikipagtulungan sa iyo",
-      subtitle: "Piliin ang approach na tamang-tama sa needs mo — mula sa mabilisang assessment hanggang sa full system build",
+      title: "Paano nagsisimula ang isang engagement",
+      subtitle:
+        "Tatlong pasukan, naaayon sa lalim ng tanong na nakatakda sa harap ninyo.",
       items: [
         {
-          title: "Blueprint",
+          title: "Ronway Consultation",
           description:
-            "Pag-aaralan namin ang operations mo, hahanapin kung saan ka nawawalan ng oras o pera, at ididisenyo ang tamang solusyon — bago pa magsulat ng kahit isang linya ng code.",
+            "Isang animnapu-hanggang-siyamnapung-minutong working session kasama ang aming mga kriptograpikong partner, nakabatay sa resulta ng Ronway scan ng inyong kapaligiran. Tatalakayin namin ang buong mapa ng panganib, tutukuyin ang mga sistemang hindi narating ng panlabas na scan, at mag-iiwan ng iminumungkahing pagkakasunod-sunod ng paglipat. Output: isang nakasulat na remediation brief na ihahatid sa loob ng pitong araw.",
           iconName: "Search",
-          pricing: "Assessment",
-          deliverables: ["Buong operations review", "Disenyo ng solusyon", "Technology plan", "Cost at benefit analysis"],
-          timeline: "2-4 na linggo",
+          pricing: "Panimulang engagement",
+          deliverables: [
+            "Ronway scan ng itinakdang kapaligiran",
+            "Buong mapa ng panganib at matrix ng priyoridad",
+            "Mungkahi para sa pagkakasunod-sunod ng paglipat",
+            "Nakasulat na remediation brief (7 araw)",
+          ],
+          timeline: "1 linggo",
         },
         {
-          title: "Studio",
+          title: "Cryptographic Discovery",
           description:
-            "May dedicated team na kasama mo, nagbu-build at nagpapabuti ng sistema mo linggo-linggo. Parang sarili mong tech team, walang overhead.",
+            "Pormal na imbentaryo at pagsusuri ng panganib ng inyong institusyonal na kapaligiran — panloob at panlabas. Pagsusuri ng panganib batay sa NIST timeline, algorithm bawat algorithm, at nakaayon sa regulator. Nagtatapos sa isang executive summary na mababasa ng lupon at isang exposure matrix na handang isalang sa roadmap.",
           iconName: "Copy",
-          pricing: "Buwanang Bayad",
-          deliverables: ["Dedicated tech team", "Weekly updates at releases", "AI at blockchain integration", "24/7 system monitoring"],
-          timeline: "Tuloy-tuloy",
+          pricing: "Engagement ng pagsusuri",
+          deliverables: [
+            "Buong imbentaryong kriptograpiko",
+            "Pagmamarka ng panganib na nakaayon sa NIST",
+            "Memorandum ng pagsasaayos sa regulator",
+            "Executive summary para sa lupon",
+          ],
+          timeline: "2–4 na linggo",
         },
         {
-          title: "Foundry",
+          title: "Migration Architecture",
           description:
-            "Isang specific na proyekto na may malinaw na goal, fixed timeline, at defined budget. I-build namin, i-test, i-train ang team mo, at susuportahan ka pagkatapos ng launch.",
+            "Pagsusuri kasama ang kumpletong arkitektura ng paglipat — disenyo ng hybrid PQC, pagkakasunod-sunod ng mga sistema, plano sa pagpapalit ng kadena ng certificate, pagsusuri ng vendor at library, at ang engineering oversight para maipatupad. Ang resulta: isang paglipat na kayang gawin ng inyong engineering team at kayang i-audit ng inyong regulator.",
           iconName: "Rocket",
-          pricing: "Fixed Price",
-          deliverables: ["Buong system build", "Performance testing", "Team training", "90-araw na suporta"],
-          timeline: "6-12 na linggo",
+          pricing: "Buong engagement",
+          deliverables: [
+            "Arkitektura ng hybrid PQC",
+            "Pagkakasunod-sunod at takdang panahon ng paglipat",
+            "Pagsusuri sa vendor at library",
+            "Engineering oversight hanggang sa cutover",
+          ],
+          timeline: "8–16 na linggo",
         },
       ],
     },
 
     projectHighlights: {
-      title: "Mga Proyekto Namin",
-      subtitle: "Totoong sistema na nagso-solve ng totoong problema — tumatakbo sa production ngayon.",
+      title: "Mga piling engagement",
+      subtitle:
+        "Mga engagement na maipapahayag namin sa publiko. Ang sovereign at pantanggulang gawain ay binabanggit lamang sa antas na pinahihintulutan ng aming mga partner.",
       items: [
         {
-          title: "SnackPax Business OS",
+          title: "AI Defense Intelligence Framework — Pilipinas",
           description:
-            "Gumawa ng all-in-one platform para sa food business para ma-manage ang attendance, benta, inventory, at gastos. Pinalitan ang 7 magkakaibang spreadsheets ng isang simpleng sistema.",
-          impact: "Ginagamit Araw-araw",
-          metric: "7 tools → 1",
-          industry: "Food & Retail",
-          tags: ["Business Platform", "Automation", "Reports"],
+            "Naipalathalang estratehikong doktrina sa paggamit ng artificial intelligence para sa operasyong pantanggulan at intelidyensya ng Pilipinas. Unang panindigan sa pambansang pag-uusap hinggil sa AI at seguridad.",
+          impact: "Naipalathalang doktrina",
+          metric: "Estratehikong framework",
+          industry: "Tanggulan at Pambansang Seguridad",
+          tags: ["Doktrinang AI", "Tanggulan", "Naipalathalang Pananaliksik"],
         },
         {
-          title: "LGU Real Property Tax System",
+          title: "Sovereign na Imprastraktura ng Kita — Mga LGU ng Pilipinas",
           description:
-            "Na-digitize ang property tax records para sa mga LGU sa Pilipinas. Ngayon automated at transparent na ang tax computation, assessment, at collection.",
-          impact: "30% Mas Maraming Kita",
-          metric: "+30% collections",
-          industry: "Gobyerno",
-          tags: ["Gov-Tech", "Digital Records", "Tax"],
+            "Idinisenyo at itinayo ang digital na backbone ng pagtatasa, pagkukwenta, at pagkolekta ng buwis sa totoong ari-arian sa mga lokal na pamahalaan ng Pilipinas. Ginawang moderno ang isang kategorya ng sovereign na imprastraktura ng kita na isang henerasyong umiral sa papel.",
+          impact: "+30% na koleksyon ng pampublikong kita",
+          metric: "+30% na pagtaas ng koleksyon",
+          industry: "Pampublikong Sektor",
+          tags: ["Sovereign na Kapasidad", "Imprastraktura ng Buwis", "DILG"],
         },
         {
-          title: "Utility Billing Automation",
+          title: "Katumpakan sa Pagsingil — Mga Fortune 500 Utility ng U.S.",
           description:
-            "Gumawa ng billing automation para sa malalaking US energy companies na nagse-serve ng milyun-milyong customers. Na-reduce ang billing errors ng 70%.",
-          impact: "70% Mas Kaunting Errors",
-          metric: "-70% errors",
-          industry: "Energy & Utilities",
-          tags: ["Enterprise", "Automation", "Billing"],
+            "Itinayo ang katumpakan ng pagsingil at automation ng customer portal para sa apat na Fortune 500 utility ng Estados Unidos — Exelon, Baltimore Gas and Electric, Entergy, at Xcel Energy. Katulad na transaksyonal na saklaw ang nagiging inter-bank messaging sa konteksto ng pinansiyal na sektor ng Pilipinas.",
+          impact: "70% na pagbawas sa antas ng pagkakamali sa pagsingil",
+          metric: "−70% na pagkakamali",
+          industry: "Enerhiya at Utilities",
+          tags: ["Fortune 500", "Katumpakan sa Pagsingil", "Automation"],
         },
         {
-          title: "MedixAI Medical Triage",
+          title: "MedixAI — Imprastraktura ng Klinikal na Triage",
           description:
-            "AI-powered health platform na tumutulong sa mga pasyente na makakuha ng initial assessment at ikokonekta sila sa tamang healthcare providers sa Pilipinas.",
-          impact: "Beta Launch",
-          metric: "AI health assistant",
-          industry: "Healthcare AI",
-          tags: ["AI", "Healthcare", "Platform"],
+            "Imprastraktura ng klinikal na triage at pagtutugma ng provider para sa sistemang pangkalusugan ng Pilipinas. Inisyal na pagtatasang pinapagana ng AI na nagruruta ng pasyente sa mga provider na may tamang kredensyal. Kasalukuyang nasa limitadong pagpapalabas.",
+          impact: "Limitadong pagpapalabas, merkado ng Pilipinas",
+          metric: "Klinikal na triage gamit ang AI",
+          industry: "Pangkalusugan",
+          tags: ["Klinikal na AI", "Pangkalusugan", "Limitadong Pagpapalabas"],
         },
         {
-          title: "ManageLife Web3 Housing",
+          title: "ManageLife — Pabahay na May Katibayang On-chain",
           description:
-            "Platform kung saan pwedeng mag-invest sa real estate sa pamamagitan ng fractional ownership, gamit ang blockchain para sa transparent at secure na property management.",
-          impact: "Live Platform",
-          metric: "Digital ownership",
-          industry: "Web3 & Real Estate",
-          tags: ["Blockchain", "Property", "Investment"],
+            "Imprastraktura ng tokenized na fractional ownership para sa residential housing ng Estados Unidos. On-chain provenance at verifiable na talaan ng ari-arian, inihahatid bilang imprastrakturang nasa produksyon, hindi proof-of-concept.",
+          impact: "Live, mga residential market ng U.S.",
+          metric: "On-chain provenance",
+          industry: "Pinansiyal na Sektor",
+          tags: ["Tokenization", "Mga Talaang Verifiable", "Real Assets"],
         },
         {
-          title: "AI Defense Intelligence Framework",
+          title: "Operasyonal na Sistema — Umuusbong na Negosyo",
           description:
-            "Isang strategic research paper tungkol sa kung paano mapapalakas ng AI ang defense at national security operations sa Pilipinas.",
-          impact: "Published Research",
-          metric: "Policy framework",
-          industry: "Defense & Intelligence",
-          tags: ["Research", "Defense", "AI Policy"],
+            "Pinag-isang operasyonal na platform na pumalit sa pira-pirasong daloy ng spreadsheet para sa isang umuusbong na negosyo sa Pilipinas. Attendance, benta, inventory, at gastos — pinagsama sa isang maalam na surface.",
+          impact: "Pang-araw-araw na operasyonal na paggamit",
+          metric: "Pinag-isang maalam na surface",
+          industry: "Negosyo",
+          tags: ["Operasyonal na Kaalaman", "Konsolidasyon"],
         },
       ],
     },
 
     clients: {
-      title: "Pinagkakatiwalaan ng mga kompanyang humihingi ng resulta",
+      title: "Mga institusyonal na engagement hanggang sa kasalukuyan",
       logos: [
         { name: "Exelon", logo: "/clients/exelon.png" },
         { name: "BGE", logo: "/clients/bge.jpg" },
@@ -440,65 +562,90 @@ export const siteContent: Record<string, any> = {
       ],
     },
 
-    research: {
-      title: "Research at Resources",
+    ronway: {
+      sectionLabel: "Ronway Scanner",
+      title:
+        "Ang unang Filipinong nilikhang scanner para sa post-quantum cryptography.",
       subtitle:
-        "Ang pag-iisip namin tungkol sa kung paano malulutas ng bagong teknolohiya ang totoong problema",
+        "Sinusuri ng Ronway ang panlabas na kriptograpikong saklaw ng anumang institusyonal na sistema — TLS configuration, certificate chain, signing infrastructure, key-exchange protocol — at ibinabalik ang proporsyon ng saklaw na hindi tatagal sa paglipat sa post-quantum. Libre ang pag-scan. Ang remediation plan ay ang konsultasyon.",
+      bullets: [
+        "Pagsusuri ng TLS configuration at cipher-suite",
+        "Paghahandang post-quantum ng kadena ng certificate",
+        "Saklaw ng panganib sa signing algorithm (RSA, ECDSA, Ed25519)",
+        "Pagsusuri ng protocol ng key-exchange",
+      ],
+      disclosure:
+        "Sinusuri lamang ng Ronway ang panlabas na kriptograpikong saklaw. Hindi saklaw ng libreng scan ang mga panloob na HSM, sistema ng key-management, at air-gapped na imprastraktura. Sa kung saan hindi narating ng scanner, doon nagsisimula ang konsultasyon.",
+      primaryCta: {
+        label: "I-scan ang isang sistema",
+        href: "/ronway",
+      },
+      secondaryCta: {
+        label: "Mag-book ng Ronway consultation",
+        href: "/#contact",
+      },
+    },
+
+    research: {
+      title: "Pananaliksik at Doktrina",
+      subtitle:
+        "Mga naipalathalang panindigan sa paglipat ng pamantayan, pagbabagong regulatoryo, at institusyonal na tanong na bumubuo sa dekada ng post-quantum.",
       documents: [
         {
           title: "AI Defense Intelligence Framework para sa Pilipinas",
           description:
-            "Research paper tungkol sa kung paano magagamit ang AI para palakasin ang defense at intelligence operations sa Pilipinas.",
-          category: "Defense at AI",
+            "Estratehikong doktrina sa paggamit ng artificial intelligence para sa operasyong pantanggulan at intelidyensya ng Pilipinas. Naipalathala bilang bahagi ng unang panindigan ng BPxAI sa pag-uusap hinggil sa teknolohiya at pambansang seguridad.",
+          category: "Tanggulan at Pambansang Seguridad",
           date: "Pebrero 2026",
           fileSize: "PDF",
           downloadUrl:
             "/resources/AI_Defense_Intelligence_Framework_Philippines_Report.pdf",
           tags: [
-            "AI",
-            "Defense",
+            "Doktrinang AI",
+            "Tanggulan",
+            "Pambansang Seguridad",
             "Pilipinas",
-            "Policy",
-            "Research",
           ],
         },
       ],
     },
 
     cta: {
-      title: "Handa ka na bang i-upgrade ang operations mo?",
+      title:
+        "Simulan ang pag-uusap bago matapos ang agenda.",
       description:
-        "Ang mga pinakamahusay na negosyo ay hindi naghihintay. Pag-usapan natin kung paano makakatipid sa oras, mababawasan ang gastos, at makakatulong sa pag-grow ng negosyo mo ang tamang teknolohiya. Libre ang 30-minutong konsultasyon.",
-      buttonText: "Mag-book ng Libreng Konsultasyon",
+        "Kung ang post-quantum cryptography, inilapat na AI, o mga sistemang may katibayan ay nasa inyong institusyonal na agenda sa susunod na labindalawang buwan — pormal man o hindi — dapat tayong magkita. Ang tatlumpung-minutong partner briefing ang karaniwang pasukan.",
+      buttonText: "Makipag-ugnayan sa aming partners",
       buttonHref: "https://calendly.com/bpxailabs/30min",
       stats: [
-        { label: "Libreng Konsultasyon", value: "30 min" },
-        { label: "Tugon sa Loob ng", value: "<24 oras" },
-        { label: "Nagsasalita Kami ng", value: "EN / TL" },
+        { label: "Partner briefing", value: "30 min" },
+        { label: "Yugto ng tugon", value: "<24h" },
+        { label: "Wika ng pag-uusap", value: "EN / FIL" },
       ],
     },
 
     footer: {
       companyDescription:
-        "Gumagawa kami ng matalinong teknolohiya para sa mga negosyo, gobyerno, at startups. AI-powered. Secure. Ginawa para tumagal.",
+        "Ang Filipinong praktis para sa post-quantum cryptography, inilapat na AI, at mga sistemang may katibayan. Itinatayo para sa mga institusyon ng susunod na dekada.",
       contactInfo: {
         email: "bpxailabs@gmail.com",
         phone: "+63 917 713 8316",
-        address: "Pilipinas at Buong Mundo",
+        address: "Maynila · Pilipinas · Pandaigdigang engagement",
       },
       quickLinks: [
-        { label: "Ano ang Ginagawa Namin", href: "/#capabilities" },
-        { label: "Mga Proyekto", href: "/#projects" },
-        { label: "Research", href: "/#research" },
+        { label: "Mga Praktis", href: "/#capabilities" },
+        { label: "Quantum Practice", href: "/quantum" },
+        { label: "Ronway Scanner", href: "/ronway" },
+        { label: "Pananaliksik", href: "/#research" },
         { label: "Makipag-ugnayan", href: "/#contact" },
       ],
       solutions: [
-        { label: "AI at Automation", href: "/#capabilities" },
-        { label: "Blockchain Solutions", href: "/#capabilities" },
-        { label: "Risk at Compliance", href: "/#capabilities" },
-        { label: "Business Platforms", href: "/#capabilities" },
+        { label: "Post-Quantum Cryptography", href: "/quantum" },
+        { label: "Inilapat na AI", href: "/#capabilities" },
+        { label: "Blockchain at Katibayang Digital", href: "/#capabilities" },
+        { label: "Ronway Scanner", href: "/ronway" },
       ],
-      copyright: `\u00A9 ${currentYear} BPxAI Labs. All rights reserved.`,
+      copyright: `© ${currentYear} BPxAI. Lahat ng karapatan ay nakalaan.`,
     },
   },
 };

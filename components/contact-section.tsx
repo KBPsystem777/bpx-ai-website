@@ -1,7 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, ArrowRight, CheckCircle2 } from "lucide-react";
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  Mail,
+  MapPin,
+  Phone,
+  Send,
+} from "lucide-react";
 import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
@@ -10,6 +17,8 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { siteConfig } from "@/config/config";
 import { submitContactForm } from "@/app/actions";
+
+const editorialEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,170 +39,229 @@ export function ContactSection() {
   const contactItems = [
     {
       icon: Mail,
-      label: "Email",
+      label: "Direct",
       value: siteConfig.company.contact.email,
       href: `mailto:${siteConfig.company.contact.email}`,
     },
     {
       icon: Phone,
-      label: "Phone",
+      label: "Voice",
       value: siteConfig.company.contact.phone,
       href: `tel:${siteConfig.company.contact.phone.replace(/\s/g, "")}`,
     },
     {
       icon: MapPin,
-      label: "Operations",
-      value: siteConfig.company.contact.address,
+      label: "Operating",
+      value: "Manila · Philippines · Global engagement",
     },
   ];
+
+  const inputBase =
+    "bg-transparent border-border text-foreground placeholder:text-muted-foreground/70 focus-visible:border-accent focus-visible:ring-0 rounded-sm text-sm h-11";
 
   return (
     <section
       id="contact"
-      className="py-24 md:py-32 bg-gray-50"
+      className="relative py-24 lg:py-32 bg-surface border-t border-border/60"
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mb-16"
+          transition={{ duration: 0.6, ease: editorialEase }}
+          viewport={{ once: true, margin: "-80px" }}
+          className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 lg:gap-12 items-start mb-16 lg:mb-20"
         >
-          <span className="text-sm text-brand font-medium mb-4 block">
-            Get in Touch
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-brand mb-4 tracking-tight">
-            {siteConfig.contact.title}
-          </h2>
-          <p className="text-lg text-black max-w-2xl">
-            {siteConfig.contact.subtitle}
+          <div>
+            <div className="eyebrow mb-5">Direct Correspondence</div>
+            <h2 className="font-display text-foreground text-[clamp(1.875rem,4vw,3rem)] font-light leading-[1.08] tracking-tighter">
+              For the conversations that begin in writing.
+            </h2>
+          </div>
+          <p className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl lg:pt-3">
+            Most institutional engagements begin with a brief written
+            introduction — context, question, timeline. Our partners respond
+            within one working day.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-border/60 border border-border/60 rounded-sm overflow-hidden">
+          {/* Contact channels */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="space-y-4"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: editorialEase }}
+            viewport={{ once: true, margin: "-40px" }}
+            className="bg-background p-8 lg:p-10"
           >
-            {contactItems.map((item, index) => (
-              <div
-                key={index}
-                className="flex items-start space-x-4 p-5 rounded-xl border border-gray-200 bg-white"
-              >
-                <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
-                  <item.icon className="w-5 h-5 text-black" />
-                </div>
-                <div>
-                  <p className="text-xs text-black tracking-wide uppercase mb-0.5">
-                    {item.label}
-                  </p>
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      className="text-black font-medium hover:text-brand transition-colors text-sm"
-                    >
-                      {item.value}
-                    </a>
-                  ) : (
-                    <p className="text-black font-medium text-sm">{item.value}</p>
-                  )}
-                </div>
-              </div>
-            ))}
+            <div className="eyebrow mb-6">Channels</div>
+            <ul className="space-y-px">
+              {contactItems.map((item, index) => {
+                const Icon = item.icon;
+                const inner = (
+                  <div className="flex items-center justify-between gap-4 py-4 border-t border-border/60 first:border-t-0">
+                    <div className="flex items-center gap-4 min-w-0">
+                      <Icon
+                        className="w-4 h-4 text-accent shrink-0"
+                        aria-hidden
+                      />
+                      <div className="min-w-0">
+                        <p className="text-[11px] tracking-widest uppercase text-muted-foreground font-mono mb-1">
+                          {item.label}
+                        </p>
+                        <p className="text-sm text-foreground truncate">
+                          {item.value}
+                        </p>
+                      </div>
+                    </div>
+                    {item.href && (
+                      <ArrowUpRight
+                        className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors shrink-0"
+                        aria-hidden
+                      />
+                    )}
+                  </div>
+                );
 
-            <div className="p-5 rounded-xl border border-gray-200 bg-white">
-              <p className="text-sm text-black mb-2.5">
-                Prefer a live conversation? Book a 30-minute strategy session.
+                return (
+                  <li key={index}>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className="group block hover:bg-muted/20 transition-colors -mx-2 px-2"
+                      >
+                        {inner}
+                      </a>
+                    ) : (
+                      <div className="-mx-2 px-2">{inner}</div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="mt-10 pt-8 border-t border-border/60">
+              <p className="text-sm text-muted-foreground mb-3">
+                Prefer to speak first.
               </p>
               <a
                 href="https://calendly.com/bpxailabs/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-sm text-black font-medium hover:text-brand transition-colors"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent/80 transition-colors"
               >
-                Book on Calendly
-                <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+                Book a partner briefing
+                <ArrowUpRight className="w-4 h-4" aria-hidden />
               </a>
             </div>
           </motion.div>
 
+          {/* Form */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: editorialEase, delay: 0.1 }}
+            viewport={{ once: true, margin: "-40px" }}
+            className="bg-background p-8 lg:p-10"
           >
+            <div className="eyebrow mb-6">Written Introduction</div>
+
             {isSubmitted ? (
-              <div className="flex flex-col items-center justify-center h-full text-center p-8 rounded-2xl border border-gray-200 bg-white">
-                <CheckCircle2 className="w-10 h-10 text-emerald-500 mb-4" />
-                <h3 className="text-lg font-bold text-black mb-2">Message Sent</h3>
-                <p className="text-black text-sm">
-                  Thank you for reaching out. We&apos;ll get back to you within 24 hours.
-                </p>
+              <div className="flex flex-col items-start gap-4 py-6">
+                <CheckCircle2
+                  className="w-8 h-8 text-accent"
+                  aria-hidden
+                />
+                <div>
+                  <h3 className="font-display text-foreground text-xl tracking-tight mb-2">
+                    Received.
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
+                    A partner will respond within one working day. For
+                    sovereign or defense-adjacent engagements, please indicate
+                    the appropriate channel in your message.
+                  </p>
+                </div>
               </div>
             ) : (
               <form action={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="contact-name" className="sr-only">Name</label>
+                    <label
+                      htmlFor="contact-name"
+                      className="sr-only"
+                    >
+                      Name
+                    </label>
                     <Input
                       id="contact-name"
                       name="name"
                       placeholder={siteConfig.contact.form.namePlaceholder}
                       required
-                      className="bg-white border-gray-200 text-black placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg text-sm h-11"
+                      className={inputBase}
                     />
                   </div>
                   <div>
-                    <label htmlFor="contact-email" className="sr-only">Email</label>
+                    <label
+                      htmlFor="contact-email"
+                      className="sr-only"
+                    >
+                      Email
+                    </label>
                     <Input
                       id="contact-email"
                       name="email"
                       type="email"
                       placeholder={siteConfig.contact.form.emailPlaceholder}
                       required
-                      className="bg-white border-gray-200 text-black placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg text-sm h-11"
+                      className={inputBase}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="contact-company" className="sr-only">Company</label>
+                  <label
+                    htmlFor="contact-company"
+                    className="sr-only"
+                  >
+                    Institution
+                  </label>
                   <Input
                     id="contact-company"
                     name="company"
-                    placeholder={siteConfig.contact.form.companyPlaceholder}
-                    className="bg-white border-gray-200 text-black placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg text-sm h-11"
+                    placeholder="Institution / Organization"
+                    className={inputBase}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="contact-message" className="sr-only">Message</label>
+                  <label
+                    htmlFor="contact-message"
+                    className="sr-only"
+                  >
+                    Message
+                  </label>
                   <Textarea
                     id="contact-message"
                     name="message"
-                    placeholder={siteConfig.contact.form.messagePlaceholder}
+                    placeholder="Context, question, and timeline — a few sentences are enough."
                     rows={5}
                     required
-                    className="bg-white border-gray-200 text-black placeholder:text-gray-400 focus:border-gray-400 focus:ring-gray-200 rounded-lg resize-none text-sm"
+                    className="bg-transparent border-border text-foreground placeholder:text-muted-foreground/70 focus-visible:border-accent focus-visible:ring-0 rounded-sm resize-none text-sm"
                   />
                 </div>
 
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-brand hover:bg-brand-600 text-white font-medium rounded-lg h-11 px-6 text-sm transition-all disabled:opacity-50"
+                  className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-sm h-11 px-6 text-[13px] font-medium tracking-tight disabled:opacity-50"
                 >
                   {isSubmitting ? (
-                    <span>Sending...</span>
+                    <span>Sending…</span>
                   ) : (
                     <>
-                      {siteConfig.contact.form.submitText}
-                      <Send className="ml-2 w-4 h-4" />
+                      Send introduction
+                      <Send className="w-4 h-4" aria-hidden />
                     </>
                   )}
                 </Button>

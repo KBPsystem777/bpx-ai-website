@@ -1,20 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Brain,
-  Link2,
-  ShieldAlert,
-  Layers,
-} from "lucide-react";
+import { Atom, Brain, Link2, ShieldCheck } from "lucide-react";
+
 import { useLanguage } from "@/components/language-provider";
 
 const pillarIcons: Record<string, any> = {
+  pqc: Atom,
   ai: Brain,
   web3: Link2,
-  risk: ShieldAlert,
-  systems: Layers,
+  // Legacy ids — retained as fallbacks in case content reverts
+  risk: ShieldCheck,
+  systems: Link2,
 };
+
+const editorialEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export function CapabilitiesSection() {
   const { t } = useLanguage();
@@ -23,75 +23,93 @@ export function CapabilitiesSection() {
   return (
     <section
       id="capabilities"
-      className="py-24 md:py-32 bg-gray-50"
+      className="relative py-24 lg:py-32 bg-background border-t border-border/60"
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mb-16"
+          transition={{ duration: 0.6, ease: editorialEase }}
+          viewport={{ once: true, margin: "-80px" }}
+          className="max-w-4xl mb-16 lg:mb-20"
         >
-          <span className="text-sm text-brand font-medium mb-4 block">
-            {capabilities.sectionLabel}
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand mb-4 max-w-3xl leading-tight tracking-tight">
+          <div className="eyebrow mb-5">{capabilities.sectionLabel}</div>
+          <h2 className="font-display text-foreground text-[clamp(1.875rem,4vw,3.25rem)] font-light leading-[1.08] tracking-tighter mb-6">
             {capabilities.title}
           </h2>
-          <p className="text-lg text-black max-w-2xl leading-relaxed">
+          <p className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
             {capabilities.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-border/60 border border-border/60 rounded-sm overflow-hidden">
           {Array.isArray(capabilities.pillars) &&
             capabilities.pillars.map((pillar: any, index: number) => {
-              const Icon = pillarIcons[pillar.id] || Layers;
+              const Icon = pillarIcons[pillar.id] || ShieldCheck;
+              const indexLabel = `0${index + 1}`;
 
               return (
-                <motion.div
+                <motion.article
                   key={pillar.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.08 }}
-                  viewport={{ once: true }}
-                  className="group p-8 md:p-10 rounded-2xl border border-gray-200 bg-white hover:shadow-lg hover:shadow-gray-100 transition-all duration-300"
+                  transition={{
+                    duration: 0.5,
+                    ease: editorialEase,
+                    delay: index * 0.08,
+                  }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  className="group relative bg-surface p-8 lg:p-10 flex flex-col"
                 >
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="w-11 h-11 rounded-xl bg-brand flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-white" />
+                  {/* Header row */}
+                  <div className="flex items-start justify-between mb-10">
+                    <div
+                      className="w-10 h-10 border border-border flex items-center justify-center"
+                      aria-hidden
+                    >
+                      <Icon className="w-[18px] h-[18px] text-accent" />
                     </div>
-                    <span className="text-xs text-black font-medium">
-                      0{index + 1}
+                    <span className="text-[11px] tracking-widest uppercase text-muted-foreground font-mono">
+                      {indexLabel} / 03
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-black mb-3 tracking-tight">
+                  {/* Title */}
+                  <h3 className="font-display text-foreground text-2xl lg:text-[28px] leading-tight tracking-tight font-normal mb-4">
                     {pillar.title}
                   </h3>
 
-                  <p className="text-black leading-relaxed mb-6 text-[15px]">
+                  {/* Description */}
+                  <p className="text-sm lg:text-[15px] text-muted-foreground leading-relaxed mb-8">
                     {pillar.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {pillar.capabilities.map((cap: string, ci: number) => (
-                      <span
+                  {/* Capabilities list — editorial */}
+                  <ul className="space-y-2.5 mb-10">
+                    {pillar.capabilities?.map((cap: string, ci: number) => (
+                      <li
                         key={ci}
-                        className="text-xs text-black bg-gray-100 px-2.5 py-1 rounded-md"
+                        className="flex items-start gap-3 text-sm text-foreground/85"
                       >
-                        {cap}
-                      </span>
+                        <span
+                          className="mt-[7px] w-1 h-1 rounded-full bg-accent shrink-0"
+                          aria-hidden
+                        />
+                        <span className="leading-relaxed">{cap}</span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
 
-                  <div className="pt-5 border-t border-gray-100">
-                    <span className="text-sm font-semibold text-black">
+                  {/* Footer metric */}
+                  <div className="mt-auto pt-6 border-t border-border/60">
+                    <span className="text-[11px] tracking-widest uppercase text-muted-foreground font-mono mb-1.5 block">
+                      Posture
+                    </span>
+                    <span className="text-sm font-medium text-foreground leading-snug">
                       {pillar.metric}
                     </span>
                   </div>
-                </motion.div>
+                </motion.article>
               );
             })}
         </div>
