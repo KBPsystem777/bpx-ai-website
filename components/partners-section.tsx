@@ -16,7 +16,7 @@ interface LogoItem {
 
 function LogoTile({ name, logo, website }: LogoItem) {
   const tile = (
-    <div className="group flex items-center justify-center bg-ivory rounded-sm h-20 px-6 transition-all hover:scale-[1.02]">
+    <div className="group flex items-center justify-center bg-surface border border-border/60 rounded-sm h-20 px-6 transition-all hover:border-border hover:scale-[1.02]">
       <Image
         src={logo}
         alt={name}

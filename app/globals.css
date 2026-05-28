@@ -5,50 +5,53 @@
 /*
  * BPxAI Design Tokens
  *
- * The site defaults to dark — PQC and cybersecurity firms read dark.
- * Light mode is supported but secondary.
+ * The site runs in light mode — a clean, bright "Tesla white" surface:
+ * white / near-white backgrounds, near-black typography, sapphire accent.
+ * The `.dark` palette is retained but applied only to deliberately dark
+ * surfaces (the Ronway terminal, the footer) by scoping a `.dark` class
+ * onto those subtrees — it is no longer the document default.
  *
  * Palette anchors:
- *  - Ink (deep navy-black, default background): #06080F
- *  - Brand navy (primary surface accent): #0F2044
+ *  - White (default background): #FFFFFF
+ *  - Cloud (alternating surface / cards): #F5F6F8
+ *  - Ink (near-black typography + dark footer/terminal): #0B0F1A
  *  - Sapphire (accent — primary CTA, focus, signal): #2563EB
  *  - Gold (tertiary highlight — used sparingly for award/honor signals): #C9A84C
  *  - Teal (secondary — sector accents): #1A4D4D
- *  - Ivory (warm foreground): #F0EBE0
  *
  * All values declared in HSL so Tailwind utilities compose cleanly.
  */
 
 @layer base {
   :root {
-    /* Light mode — secondary, but supported */
-    --background: 36 30% 97%;
-    --foreground: 222 47% 8%;
+    /* Light mode — Tesla white, the primary experience */
+    --background: 0 0% 100%;
+    --foreground: 222 44% 10%;
 
-    --surface: 0 0% 100%;
+    --surface: 220 20% 97%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 8%;
+    --card-foreground: 222 44% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 8%;
+    --popover-foreground: 222 44% 10%;
 
-    --primary: 222 65% 16%;
-    --primary-foreground: 36 30% 97%;
+    --primary: 222 44% 11%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 180 49% 20%;
-    --secondary-foreground: 36 30% 97%;
+    --secondary: 220 16% 95%;
+    --secondary-foreground: 222 44% 11%;
 
     --accent: 221 83% 53%;
     --accent-foreground: 0 0% 100%;
 
-    --muted: 220 14% 94%;
-    --muted-foreground: 220 9% 38%;
+    --muted: 220 16% 95%;
+    --muted-foreground: 220 9% 40%;
 
     --destructive: 0 72% 45%;
-    --destructive-foreground: 36 30% 97%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 88%;
-    --input: 220 13% 88%;
+    --border: 220 14% 90%;
+    --input: 220 14% 90%;
     --ring: 221 83% 53%;
 
     --ink: 222 47% 6%;
@@ -67,7 +70,7 @@
   }
 
   .dark {
-    /* Dark mode — default */
+    /* Dark mode — scoped to terminal / footer surfaces only */
     --background: 222 47% 6%;
     --foreground: 36 25% 92%;
 

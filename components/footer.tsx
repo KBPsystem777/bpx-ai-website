@@ -11,7 +11,7 @@ export function Footer() {
   const siteName = t("meta.siteName");
 
   return (
-    <footer className="relative bg-background border-t border-border/60">
+    <footer className="dark relative bg-background border-t border-border/60">
       <div className="container mx-auto py-14 lg:py-16">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 lg:gap-6">
           <Link

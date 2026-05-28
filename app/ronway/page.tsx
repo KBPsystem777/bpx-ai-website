@@ -270,7 +270,7 @@ export default function RonwayPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: editorialEase, delay: 0.28 }}
-            className="border border-border/80 rounded-sm bg-surface overflow-hidden shadow-[0_0_0_1px_hsl(var(--border)/0.3)]"
+            className="dark border border-border/80 rounded-sm bg-surface overflow-hidden shadow-[0_24px_70px_-24px_rgba(11,15,26,0.45)]"
           >
             {/* Terminal header bar */}
             <div className="flex items-center justify-between px-4 lg:px-5 py-3 border-b border-border/70 bg-background/60">
