@@ -14,7 +14,6 @@ import {
   RadioTower,
   ShieldAlert,
   ShieldCheck,
-  TerminalSquare,
   Unlock,
   AlertTriangle,
 } from "lucide-react";
@@ -42,8 +41,16 @@ const scanSteps = [
 
 const howItWorks = [
   { number: "01", title: "Scan", description: "Paste a URL. Sixty seconds." },
-  { number: "02", title: "Review", description: "Score, grade, three findings." },
-  { number: "03", title: "Book", description: "Full exposure map. Written brief in seven days." },
+  {
+    number: "02",
+    title: "Review",
+    description: "Score, grade, three findings.",
+  },
+  {
+    number: "03",
+    title: "Book",
+    description: "Full exposure map. Written brief in seven days.",
+  },
 ];
 
 const whatWeCheck = [
@@ -133,7 +140,8 @@ type ScanView = {
   lockedExtraCount: number;
 };
 
-const API_URL = "https://ronway-api.bpxai.com";
+const API_URL =
+  process.env.NEXT_PUBLIC_RONWAY_API_URL || "https://ronway-api.bpxai.com";
 
 const STEP_INTERVAL_MS = 380;
 
@@ -148,7 +156,8 @@ export default function RonwayPage() {
   const unreachable = report ? isUnreachable(report) : false;
   // Resilience is the inverse of the engine's risk value. An unreachable
   // scan has no gradeable posture, so it stays at zero and the UI shows "—".
-  const targetScore = report && !unreachable ? 100 - report.risk_score.value : 0;
+  const targetScore =
+    report && !unreachable ? 100 - report.risk_score.value : 0;
 
   // Step animation while scanning — visual only. Holds at the last step
   // until the real fetch resolves so the user never sees the bar finish
@@ -268,21 +277,25 @@ export default function RonwayPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: editorialEase, delay: 0.28 }}
-            className="dark border border-border/80 rounded-sm bg-surface overflow-hidden shadow-[0_24px_70px_-24px_rgba(11,15,26,0.45)]"
+            className="border border-gray-200 rounded-[10px] bg-white overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.10),0_2px_8px_rgba(0,0,0,0.06)]"
           >
-            {/* Terminal header bar */}
-            <div className="flex items-center justify-between px-4 lg:px-5 py-3 border-b border-border/70 bg-background/60">
-              <div className="flex items-center gap-2.5">
-                <TerminalSquare
-                  className="w-3.5 h-3.5 text-accent"
-                  aria-hidden
-                />
-                <span className="text-[11px] font-mono tracking-wider text-muted-foreground">
+            {/* macOS-style title bar */}
+            <div className="relative flex items-center h-10 px-4 border-b border-gray-200 bg-[#f3f3f3]">
+              {/* Traffic lights */}
+              <div className="flex items-center gap-2 z-10">
+                <span className="w-3 h-3 rounded-full bg-[#ff5f57] ring-1 ring-black/10" aria-hidden />
+                <span className="w-3 h-3 rounded-full bg-[#ffbd2e] ring-1 ring-black/10" aria-hidden />
+                <span className="w-3 h-3 rounded-full bg-[#28c840] ring-1 ring-black/10" aria-hidden />
+              </div>
+              {/* Centered title */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <span className="text-[12px] font-medium text-gray-400 select-none font-mono tracking-wide">
                   ronway · scan
                 </span>
               </div>
-              <div className="flex items-center gap-4">
-                <span className="text-[11px] font-mono text-muted-foreground tracking-wider">
+              {/* Right controls */}
+              <div className="ml-auto flex items-center gap-4 z-10">
+                <span className="text-[11px] font-mono text-gray-400 tracking-wider">
                   v0.1.0-beta
                 </span>
                 {(status === "complete" || status === "error") && (
@@ -298,7 +311,7 @@ export default function RonwayPage() {
             </div>
 
             {/* Scanner body */}
-            <div className="p-6 lg:p-8">
+            <div className="p-5 lg:p-7 bg-white">
               {status === "idle" && (
                 <ScannerIdle url={url} setUrl={setUrl} onSubmit={handleScan} />
               )}
@@ -331,7 +344,10 @@ export default function RonwayPage() {
       {/* HOW IT WORKS */}
       <section className="relative py-32 lg:py-40 bg-surface border-t border-border/60">
         <div className="container mx-auto">
-          <motion.div {...fadeUp} className="max-w-4xl mx-auto text-center mb-20">
+          <motion.div
+            {...fadeUp}
+            className="max-w-4xl mx-auto text-center mb-20"
+          >
             <h2 className="font-display text-foreground text-[clamp(2.5rem,6vw,5rem)] font-light leading-[1.02] tracking-tighter mb-6">
               Three steps.
             </h2>
@@ -346,7 +362,11 @@ export default function RonwayPage() {
                 key={i}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: editorialEase, delay: i * 0.08 }}
+                transition={{
+                  duration: 0.5,
+                  ease: editorialEase,
+                  delay: i * 0.08,
+                }}
                 viewport={{ once: true, margin: "-40px" }}
                 className="bg-background p-10 lg:p-12 flex flex-col min-h-[260px]"
               >
@@ -368,7 +388,10 @@ export default function RonwayPage() {
       {/* WHAT WE CHECK */}
       <section className="relative py-32 lg:py-40 bg-background border-t border-border/60">
         <div className="container mx-auto">
-          <motion.div {...fadeUp} className="max-w-4xl mx-auto text-center mb-20">
+          <motion.div
+            {...fadeUp}
+            className="max-w-4xl mx-auto text-center mb-20"
+          >
             <h2 className="font-display text-foreground text-[clamp(2.5rem,6vw,5rem)] font-light leading-[1.02] tracking-tighter mb-6">
               Scan coverage.
             </h2>
@@ -385,7 +408,11 @@ export default function RonwayPage() {
                   key={i}
                   initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: editorialEase, delay: (i % 3) * 0.06 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: editorialEase,
+                    delay: (i % 3) * 0.06,
+                  }}
                   viewport={{ once: true, margin: "-40px" }}
                   className="bg-surface p-8 lg:p-10 flex flex-col items-center text-center min-h-[180px] justify-center"
                 >
@@ -441,9 +468,7 @@ export default function RonwayPage() {
                 variant="outline"
                 className="border border-border bg-transparent text-foreground hover:bg-muted/40 rounded-sm h-12 px-8 text-[13px] font-medium tracking-tight"
               >
-                <Link href="/quantum">
-                  Quantum Practice
-                </Link>
+                <Link href="/quantum">Quantum Practice</Link>
               </Button>
             </div>
           </motion.div>
@@ -650,8 +675,8 @@ function ScannerIdle({
           Target URL
         </label>
         <div className="flex flex-col sm:flex-row gap-2">
-          <div className="flex-1 flex items-center gap-3 border border-border focus-within:border-accent transition-colors bg-background rounded-sm px-4 h-12">
-            <span className="font-mono text-sm text-accent shrink-0">
+          <div className="flex-1 flex items-center gap-3 border border-gray-200 focus-within:border-accent transition-colors bg-gray-50 rounded-md px-4 h-12">
+            <span className="font-mono text-sm text-gray-400 shrink-0 select-none">
               {">"}
             </span>
             <input
@@ -660,7 +685,7 @@ function ScannerIdle({
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="https://example.gov.ph"
-              className="flex-1 bg-transparent text-sm font-mono text-foreground placeholder:text-muted-foreground/60 focus:outline-none"
+              className="flex-1 bg-transparent text-sm font-mono text-gray-900 placeholder:text-gray-400 focus:outline-none"
               autoComplete="off"
               spellCheck={false}
             />
@@ -677,26 +702,17 @@ function ScannerIdle({
         </div>
       </div>
 
-      <div className="pt-4 border-t border-border/60 flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] font-mono tracking-wider text-muted-foreground">
+      <div className="pt-4 border-t border-gray-100 flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] font-mono tracking-wider text-gray-400">
         <span className="inline-flex items-center gap-1.5">
-          <span
-            className="w-1.5 h-1.5 rounded-full bg-accent"
-            aria-hidden
-          />
+          <span className="w-1.5 h-1.5 rounded-full bg-accent" aria-hidden />
           ENGINE: Rust 1.78 · stable
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span
-            className="w-1.5 h-1.5 rounded-full bg-muted-foreground/80"
-            aria-hidden
-          />
+          <span className="w-1.5 h-1.5 rounded-full bg-gray-300" aria-hidden />
           AGAINST: NIST FIPS 203 / 204 / 205
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span
-            className="w-1.5 h-1.5 rounded-full bg-muted-foreground/80"
-            aria-hidden
-          />
+          <span className="w-1.5 h-1.5 rounded-full bg-gray-300" aria-hidden />
           AVG SCAN: 38s
         </span>
       </div>
@@ -790,7 +806,11 @@ function ScannerResult({
   // result rather than a misleading perfect score.
   if (unreachable) {
     return (
-      <UnreachableResult report={report} target={target} dateLabel={dateLabel} />
+      <UnreachableResult
+        report={report}
+        target={target}
+        dateLabel={dateLabel}
+      />
     );
   }
 
@@ -885,28 +905,29 @@ function ScannerResult({
             </li>
           )}
           {findings.map((f, i) => (
-            <li
-              key={i}
-              className="grid grid-cols-[20px_minmax(96px,128px)_1fr_100px] gap-4 items-start px-5 py-4"
-            >
-              <FindingIcon status={f.status} />
-              <div className="min-w-0 pt-0.5">
-                <p className="font-mono text-[11px] tracking-widest uppercase text-foreground/80 truncate">
-                  {f.component}
-                </p>
-                <p className="font-mono text-[10px] tracking-wider text-muted-foreground truncate mt-0.5">
-                  {f.code}
-                </p>
+            <li key={i} className="px-4 py-4 sm:px-5">
+              <div className="flex items-start gap-3">
+                <FindingIcon status={f.status} />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-2 flex-wrap mb-1.5">
+                    <div className="min-w-0">
+                      <span className="font-mono text-[11px] tracking-widest uppercase text-foreground/80">
+                        {f.component}
+                      </span>
+                      <span className="font-mono text-[10px] tracking-wider text-muted-foreground ml-2">
+                        {f.code}
+                      </span>
+                    </div>
+                    <FindingStatusBadge status={f.status} />
+                  </div>
+                  <p className="text-sm text-foreground font-medium leading-snug">
+                    {f.label}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                    {f.detail}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm text-foreground font-medium leading-snug">
-                  {f.label}
-                </p>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                  {f.detail}
-                </p>
-              </div>
-              <FindingStatusBadge status={f.status} />
             </li>
           ))}
 
@@ -957,9 +978,9 @@ function ScannerResult({
             Unlock the full report
           </p>
           <p className="text-sm lg:text-base text-foreground font-medium leading-snug max-w-xl">
-            The algorithm-mapped exposure detail, internal-surface
-            walkthrough, and written remediation brief are delivered in the
-            Ronway consultation.
+            The algorithm-mapped exposure detail, internal-surface walkthrough,
+            and written remediation brief are delivered in the Ronway
+            consultation.
           </p>
         </div>
         <Button
@@ -980,8 +1001,8 @@ function ScannerResult({
       </div>
 
       <p className="text-[11px] font-mono tracking-wider text-muted-foreground leading-relaxed">
-        Live result · Ronway is in limited-release beta · Score derived from
-        the Rust engine against the target endpoint · scan completed in{" "}
+        Live result · Ronway is in limited-release beta · Score derived from the
+        Rust engine against the target endpoint · scan completed in{" "}
         {report.target.scan_duration_ms} ms
       </p>
     </div>
@@ -1097,24 +1118,13 @@ function ScannerError({
 
 function FindingIcon({ status }: { status: FindingStatusKind }) {
   if (status === "safe")
-    return (
-      <CheckCircle2
-        className="w-4 h-4 mt-0.5 text-accent"
-        aria-hidden
-      />
-    );
+    return <CheckCircle2 className="w-4 h-4 mt-0.5 text-accent" aria-hidden />;
   if (status === "warning")
     return (
-      <ShieldAlert
-        className="w-4 h-4 mt-0.5 text-foreground/80"
-        aria-hidden
-      />
+      <ShieldAlert className="w-4 h-4 mt-0.5 text-foreground/80" aria-hidden />
     );
   return (
-    <ShieldAlert
-      className="w-4 h-4 mt-0.5 text-destructive"
-      aria-hidden
-    />
+    <ShieldAlert className="w-4 h-4 mt-0.5 text-destructive" aria-hidden />
   );
 }
 

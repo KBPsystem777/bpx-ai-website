@@ -4,14 +4,16 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function submitContactForm(formData: FormData) {
+export async function submitContactForm(
+  formData: FormData,
+): Promise<{ success: true } | { success: false; error: string }> {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const company = formData.get("company") as string;
   const message = formData.get("message") as string;
 
   if (!name || !email || !message) {
-    throw new Error("Name, email, and message are required");
+    return { success: false, error: "Name, email, and message are required" };
   }
 
   try {
@@ -54,6 +56,6 @@ export async function submitContactForm(formData: FormData) {
     return { success: true };
   } catch (error) {
     console.error("Error sending email:", error);
-    throw new Error("Failed to send message");
+    return { success: false, error: "Failed to send message. Please try again." };
   }
 }

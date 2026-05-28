@@ -26,8 +26,13 @@ export function ContactSection() {
     setState("submitting");
     setErrorMessage("");
     try {
-      await submitContactForm(formData);
-      setState("success");
+      const result = await submitContactForm(formData);
+      if (result.success) {
+        setState("success");
+      } else {
+        setState("error");
+        setErrorMessage(result.error ?? "Failed to send message.");
+      }
     } catch (error) {
       setState("error");
       setErrorMessage(
@@ -80,7 +85,13 @@ export function ContactSection() {
               </div>
             </div>
           ) : (
-            <form action={handleSubmit} className="space-y-4">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit(new FormData(e.currentTarget));
+              }}
+              className="space-y-4"
+            >
               <Input
                 name="name"
                 placeholder="Name"
