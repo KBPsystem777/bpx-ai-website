@@ -338,6 +338,38 @@ export default function RonwayPage() {
             Public surface only · No signup · Free at point of use ·
             Limited-release beta
           </p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: editorialEase, delay: 0.38 }}
+            className="mt-6"
+          >
+            <Link
+              href="/ronway/scans"
+              className="group flex items-center justify-between gap-6 border-2 border-accent/50 bg-accent/5 hover:bg-accent/10 hover:border-accent/80 transition-all rounded-sm px-6 py-5 shadow-[0_2px_12px_hsl(var(--accent)/0.12)]"
+            >
+              <div>
+                <p className="text-[11px] font-mono tracking-widest uppercase text-accent mb-2">
+                  Ronway Intelligence · TLS Scan Log
+                </p>
+                <p className="text-lg font-medium text-foreground leading-snug group-hover:text-accent transition-colors">
+                  See all domains scanned by Ronway and BPxAI
+                </p>
+                <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">
+                  297 domains graded · Government, banking, telco, education &amp; more · Public risk indicators
+                </p>
+              </div>
+              <div className="shrink-0 flex flex-col items-center gap-1.5">
+                <div className="w-10 h-10 rounded-full border-2 border-accent/40 bg-accent/10 flex items-center justify-center group-hover:border-accent group-hover:bg-accent/20 transition-all">
+                  <ArrowUpRight className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
+                </div>
+                <span className="text-[10px] font-mono tracking-widest uppercase text-accent/70">
+                  View all
+                </span>
+              </div>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
