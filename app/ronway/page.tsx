@@ -133,9 +133,7 @@ type ScanView = {
   lockedExtraCount: number;
 };
 
-const API_URL =
-  process.env.NEXT_PUBLIC_RONWAY_API_URL?.replace(/\/$/, "") ??
-  "http://localhost:3001";
+const API_URL = "https://ronway-api.bpxai.com";
 
 const STEP_INTERVAL_MS = 380;
 
