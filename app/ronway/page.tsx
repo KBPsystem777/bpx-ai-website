@@ -73,63 +73,18 @@ const lockedFindings = [
 ];
 
 const howItWorks = [
-  {
-    number: "01",
-    title: "Scan",
-    description:
-      "Paste a URL. Ronway probes the public cryptographic surface — TLS, certificates, signing algorithms, key-exchange protocols — in under sixty seconds.",
-  },
-  {
-    number: "02",
-    title: "Review",
-    description:
-      "Receive a resilience score, a letter grade, and three high-level findings. Categories of exposure are visible; the algorithm-mapped remediation plan is not.",
-  },
-  {
-    number: "03",
-    title: "Book",
-    description:
-      "Schedule a sixty-to-ninety-minute working session with our partners for the full exposure map, sector-aligned context, and a written remediation brief within seven days.",
-  },
+  { number: "01", title: "Scan", description: "Paste a URL. Sixty seconds." },
+  { number: "02", title: "Review", description: "Score, grade, three findings." },
+  { number: "03", title: "Book", description: "Full exposure map. Written brief in seven days." },
 ];
 
 const whatWeCheck = [
-  {
-    icon: RadioTower,
-    title: "TLS Configuration",
-    detail:
-      "Negotiated version, supported cipher suites, downgrade resistance, and forward-secrecy posture.",
-  },
-  {
-    icon: FileKey,
-    title: "Certificate Chain",
-    detail:
-      "Signing algorithms, key sizes, validity windows, CA trust path, and revocation infrastructure.",
-  },
-  {
-    icon: Fingerprint,
-    title: "Signing Algorithms",
-    detail:
-      "RSA, ECDSA, Ed25519 detection — scored against ML-DSA and SLH-DSA migration readiness.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Key Exchange",
-    detail:
-      "RSA, DHE, ECDHE protocol use — flagged for Shor-vulnerability on a cryptographically relevant quantum computer.",
-  },
-  {
-    icon: Lock,
-    title: "Security Headers",
-    detail:
-      "HSTS, CSP, Frame-Ancestors, Permissions-Policy, and transport-binding integrity.",
-  },
-  {
-    icon: ShieldAlert,
-    title: "PQC Readiness",
-    detail:
-      "Hybrid PQC negotiation indicators, ML-KEM handshake support, and post-quantum protocol presence.",
-  },
+  { icon: RadioTower, title: "TLS Configuration" },
+  { icon: FileKey, title: "Certificate Chain" },
+  { icon: Fingerprint, title: "Signing Algorithms" },
+  { icon: ShieldCheck, title: "Key Exchange" },
+  { icon: Lock, title: "Security Headers" },
+  { icon: ShieldAlert, title: "PQC Readiness" },
 ];
 
 type ScanStatus = "idle" | "scanning" | "complete";
@@ -231,25 +186,18 @@ export default function RonwayPage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: editorialEase, delay: 0.08 }}
-            className="font-display text-foreground text-[clamp(2.5rem,6vw,5rem)] font-light leading-[1.02] tracking-tighter mb-8 max-w-4xl"
+            className="font-display text-foreground text-[clamp(2.5rem,7vw,6rem)] font-light leading-[1.0] tracking-tighter mb-8 max-w-4xl"
           >
-            Know your quantum risk before it knows you.
+            Know your quantum risk.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: editorialEase, delay: 0.18 }}
-            className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-3xl mb-10"
+            className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-12"
           >
-            Ronway is the first Philippine-developed post-quantum cryptography
-            scanner. It probes the public cryptographic surface of any system
-            you nominate — TLS, certificates, signing infrastructure,
-            key-exchange protocols — and returns the proportion of that
-            surface that will not survive the post-quantum transition.{" "}
-            <span className="text-foreground">
-              The scan is free. The remediation plan is the consultation.
-            </span>
+            The first Philippine-developed PQC scanner. Free at point of use.
           </motion.p>
 
           {/* ─────────── SCANNER ─────────── */}
@@ -309,19 +257,15 @@ export default function RonwayPage() {
         </div>
       </section>
 
-      {/* ───────────── HOW IT WORKS ───────────── */}
-      <section className="relative py-24 lg:py-32 bg-surface border-t border-border/60">
+      {/* HOW IT WORKS */}
+      <section className="relative py-32 lg:py-40 bg-surface border-t border-border/60">
         <div className="container mx-auto">
-          <motion.div {...fadeUp} className="max-w-4xl mb-16 lg:mb-20">
-            <div className="eyebrow mb-5">How It Works</div>
-            <h2 className="font-display text-foreground text-[clamp(1.875rem,4vw,3rem)] font-light leading-[1.08] tracking-tighter mb-6">
-              Three steps to a resilience number you can defend.
+          <motion.div {...fadeUp} className="max-w-4xl mx-auto text-center mb-20">
+            <h2 className="font-display text-foreground text-[clamp(2.5rem,6vw,5rem)] font-light leading-[1.02] tracking-tighter mb-6">
+              Three steps.
             </h2>
-            <p className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              Ronway is built as the first scan in every BPxAI Quantum
-              engagement. It is also available as a free, public tool — so
-              the institutional conversation can begin before procurement
-              does.
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Scan. Review. Book.
             </p>
           </motion.div>
 
@@ -331,26 +275,17 @@ export default function RonwayPage() {
                 key={i}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  ease: editorialEase,
-                  delay: i * 0.08,
-                }}
+                transition={{ duration: 0.5, ease: editorialEase, delay: i * 0.08 }}
                 viewport={{ once: true, margin: "-40px" }}
-                className="bg-background p-8 lg:p-10 flex flex-col"
+                className="bg-background p-10 lg:p-12 flex flex-col min-h-[260px]"
               >
-                <div className="flex items-center justify-between mb-8">
-                  <span className="font-mono text-[11px] tracking-widest uppercase text-muted-foreground">
-                    Step {step.number}
-                  </span>
-                  <span className="font-mono text-[11px] tracking-widest uppercase text-accent">
-                    {step.number} / 03
-                  </span>
-                </div>
-                <h3 className="font-display text-foreground text-2xl tracking-tight font-normal mb-4">
+                <span className="font-mono text-[11px] tracking-widest uppercase text-accent mb-10">
+                  {step.number}
+                </span>
+                <h3 className="font-display text-foreground text-3xl tracking-tight font-light mb-4">
                   {step.title}
                 </h3>
-                <p className="text-sm lg:text-[15px] text-muted-foreground leading-relaxed">
+                <p className="text-base text-muted-foreground leading-relaxed">
                   {step.description}
                 </p>
               </motion.div>
@@ -359,28 +294,19 @@ export default function RonwayPage() {
         </div>
       </section>
 
-      {/* ───────────── WHAT WE CHECK ───────────── */}
-      <section className="relative py-24 lg:py-32 bg-background border-t border-border/60">
+      {/* WHAT WE CHECK */}
+      <section className="relative py-32 lg:py-40 bg-background border-t border-border/60">
         <div className="container mx-auto">
-          <motion.div
-            {...fadeUp}
-            className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-12 items-start mb-16 lg:mb-20"
-          >
-            <div>
-              <div className="eyebrow mb-5">Scan Coverage</div>
-              <h2 className="font-display text-foreground text-[clamp(1.875rem,4vw,3rem)] font-light leading-[1.08] tracking-tighter">
-                What Ronway reaches from the public surface.
-              </h2>
-            </div>
-            <p className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl lg:pt-2">
-              Ronway scans what an institutional adversary could see from the
-              outside. Internal HSMs, key-management systems, and air-gapped
-              infrastructure are out of scope for the free scan — and are
-              where the paid consultation begins.
+          <motion.div {...fadeUp} className="max-w-4xl mx-auto text-center mb-20">
+            <h2 className="font-display text-foreground text-[clamp(2.5rem,6vw,5rem)] font-light leading-[1.02] tracking-tighter mb-6">
+              Scan coverage.
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              The public cryptographic surface.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border/60 border border-border/60 rounded-sm overflow-hidden">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-border/60 border border-border/60 rounded-sm overflow-hidden max-w-5xl mx-auto">
             {whatWeCheck.map((item, i) => {
               const Icon = item.icon;
               return (
@@ -388,72 +314,45 @@ export default function RonwayPage() {
                   key={i}
                   initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.5,
-                    ease: editorialEase,
-                    delay: (i % 3) * 0.06,
-                  }}
+                  transition={{ duration: 0.5, ease: editorialEase, delay: (i % 3) * 0.06 }}
                   viewport={{ once: true, margin: "-40px" }}
-                  className="bg-surface p-8 flex flex-col"
+                  className="bg-surface p-8 lg:p-10 flex flex-col items-center text-center min-h-[180px] justify-center"
                 >
-                  <div className="flex items-start justify-between mb-6">
-                    <div
-                      className="w-10 h-10 border border-border flex items-center justify-center"
-                      aria-hidden
-                    >
-                      <Icon className="w-[18px] h-[18px] text-accent" />
-                    </div>
-                    <span className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground">
-                      0{i + 1}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-foreground text-lg lg:text-xl tracking-tight font-normal mb-3">
+                  <Icon className="w-6 h-6 text-accent mb-6" aria-hidden />
+                  <h3 className="font-display text-foreground text-lg lg:text-xl tracking-tight font-light">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {item.detail}
-                  </p>
                 </motion.div>
               );
             })}
           </div>
-
-          <p className="mt-8 text-xs text-muted-foreground max-w-3xl leading-relaxed font-mono tracking-wide">
-            Ronway does not exploit. It probes the same surface a standards
-            tool like SSLyze or testssl.sh would, scoring the result against
-            NIST FIPS 203 / 204 / 205 readiness.
-          </p>
         </div>
       </section>
 
-      {/* ───────────── CTA ───────────── */}
-      <section className="relative py-24 lg:py-36 bg-background border-t border-border/60 overflow-hidden">
+      {/* CTA */}
+      <section className="relative min-h-[80vh] flex items-center py-32 lg:py-40 bg-background border-t border-border/60 overflow-hidden">
         <div
-          className="absolute inset-x-0 bottom-0 h-[400px] pointer-events-none"
+          className="absolute inset-x-0 bottom-0 h-[500px] pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 50% 70% at 50% 100%, hsl(var(--accent) / 0.10) 0%, transparent 60%)",
+              "radial-gradient(ellipse 60% 80% at 50% 100%, hsl(var(--accent) / 0.10) 0%, transparent 60%)",
           }}
           aria-hidden
         />
 
         <div className="container mx-auto relative">
-          <motion.div {...fadeUp} className="max-w-4xl">
-            <div className="eyebrow mb-6">Beyond the Free Scan</div>
-            <h2 className="font-display text-foreground text-[clamp(2rem,5vw,4rem)] font-light leading-[1.05] tracking-tighter mb-8 max-w-3xl">
-              The detailed exposure map is the next conversation.
+          <motion.div {...fadeUp} className="max-w-4xl mx-auto text-center">
+            <h2 className="font-display text-foreground text-[clamp(2.5rem,7vw,6rem)] font-light leading-[1.0] tracking-tighter mb-8">
+              Beyond the free scan.
             </h2>
-            <p className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl mb-12">
-              A Ronway consultation is a sixty-to-ninety-minute working
-              session with our cryptographic partners — full exposure map,
-              internal-surface walkthrough, migration sequence proposal, and a
-              written remediation brief delivered within seven days.
+            <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed mb-14 max-w-xl mx-auto">
+              The full exposure map. Written brief in seven days.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button
                 asChild
                 size="lg"
-                className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-sm h-12 px-6 text-[13px] font-medium tracking-tight"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-sm h-12 px-8 text-[13px] font-medium tracking-tight"
               >
                 <a
                   href="https://calendly.com/bpxailabs/30min"
@@ -461,7 +360,7 @@ export default function RonwayPage() {
                   rel="noopener noreferrer"
                 >
                   <Calendar className="w-4 h-4" aria-hidden />
-                  Book a Ronway consultation
+                  Book consultation
                   <ArrowUpRight className="w-4 h-4" aria-hidden />
                 </a>
               </Button>
@@ -469,10 +368,10 @@ export default function RonwayPage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border border-border bg-transparent text-foreground hover:bg-muted/40 rounded-sm h-12 px-6 text-[13px] font-medium tracking-tight"
+                className="border border-border bg-transparent text-foreground hover:bg-muted/40 rounded-sm h-12 px-8 text-[13px] font-medium tracking-tight"
               >
                 <Link href="/quantum">
-                  Read about the Quantum Practice
+                  Quantum Practice
                 </Link>
               </Button>
             </div>

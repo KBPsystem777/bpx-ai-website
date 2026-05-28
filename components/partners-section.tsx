@@ -4,63 +4,103 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { siteConfig } from "@/config/config";
+import { useLanguage } from "@/components/language-provider";
 
 const editorialEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-export function PartnersSection() {
+interface LogoItem {
+  name: string;
+  logo: string;
+  website?: string;
+}
+
+function LogoTile({ name, logo, website }: LogoItem) {
+  const tile = (
+    <div className="group flex items-center justify-center bg-ivory rounded-sm h-20 px-6 transition-all hover:scale-[1.02]">
+      <Image
+        src={logo}
+        alt={name}
+        width={160}
+        height={56}
+        className="max-h-10 w-auto object-contain"
+      />
+    </div>
+  );
+
+  if (!website) return tile;
+
   return (
-    <section className="relative py-20 lg:py-24 bg-background border-t border-border/60">
+    <a
+      href={website}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block"
+      aria-label={`${name} (opens in new tab)`}
+    >
+      {tile}
+    </a>
+  );
+}
+
+export function PartnersSection() {
+  const { t } = useLanguage();
+  const clients = t("clients");
+
+  return (
+    <section className="relative py-24 lg:py-32 bg-background border-t border-border/60">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: editorialEase }}
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6 lg:gap-12 items-start mb-12 lg:mb-16"
+          className="max-w-3xl mx-auto text-center mb-16"
         >
-          <div>
-            <div className="eyebrow mb-4">Tooling & Alliances</div>
-            <h2 className="font-display text-foreground text-2xl lg:text-3xl leading-tight tracking-tight font-light">
-              The standards and platforms our practice runs on.
-            </h2>
-          </div>
-          <p className="text-sm lg:text-base text-muted-foreground leading-relaxed max-w-2xl">
-            We partner where the protocol matters — public-chain settlement
-            layers, agentic runtimes, model providers, and the open-source
-            cryptographic libraries our migrations rely on.
+          <p className="text-[11px] tracking-widest uppercase text-muted-foreground font-mono">
+            Trusted by institutions. Built on open infrastructure.
           </p>
         </motion.div>
 
+        {/* Clients */}
+        {Array.isArray(clients?.logos) && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, ease: editorialEase }}
+            viewport={{ once: true, margin: "-40px" }}
+            className="mb-10"
+          >
+            <p className="text-[11px] tracking-widest uppercase text-accent font-mono text-center mb-6">
+              Engagements
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+              {clients.logos.map((client: LogoItem, i: number) => (
+                <LogoTile key={i} {...client} />
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Partners */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, ease: editorialEase }}
+          transition={{ duration: 0.6, ease: editorialEase, delay: 0.1 }}
           viewport={{ once: true, margin: "-40px" }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px bg-border/60 border border-border/60 rounded-sm overflow-hidden"
         >
-          {siteConfig.partners.items.map((partner, index) => (
-            <a
-              key={index}
-              href={partner.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col items-center justify-center gap-3 bg-surface px-6 py-8 hover:bg-muted/30 transition-colors duration-300"
-              aria-label={`${partner.name} (opens in new tab)`}
-            >
-              <div className="w-full h-9 flex items-center justify-center bg-ivory/95 rounded-sm px-3 py-1.5">
-                <Image
-                  src={partner.logo || "/placeholder.svg"}
-                  alt={partner.name}
-                  width={140}
-                  height={36}
-                  className="max-h-7 w-auto object-contain"
-                />
-              </div>
-              <span className="text-[11px] tracking-wider uppercase text-muted-foreground group-hover:text-foreground transition-colors font-mono">
-                {partner.name}
-              </span>
-            </a>
-          ))}
+          <p className="text-[11px] tracking-widest uppercase text-accent font-mono text-center mb-6">
+            Tooling
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+            {siteConfig.partners.items.map((partner, i) => (
+              <LogoTile
+                key={i}
+                name={partner.name}
+                logo={partner.logo}
+                website={partner.website}
+              />
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
