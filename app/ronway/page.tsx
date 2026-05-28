@@ -16,6 +16,7 @@ import {
   ShieldCheck,
   TerminalSquare,
   Unlock,
+  AlertTriangle,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -39,39 +40,6 @@ const scanSteps = [
   "Key-exchange protocol assessment",
 ];
 
-const visibleFindings = [
-  {
-    status: "safe",
-    code: "TLS_1_3",
-    label: "TLS 1.3 negotiated",
-    detail: "Server supports modern transport handshake.",
-  },
-  {
-    status: "warning",
-    code: "ECDHE_RSA",
-    label: "ECDHE-RSA key exchange active",
-    detail:
-      "Pre-quantum elliptic-curve exchange — Shor-vulnerable on a CRQC.",
-  },
-  {
-    status: "critical",
-    code: "RSA_2048_SIG",
-    label: "RSA-2048 signing in certificate chain",
-    detail:
-      "Quantum-vulnerable. NIST recommends migration to ML-DSA or SLH-DSA.",
-  },
-];
-
-const lockedFindings = [
-  "Cipher-suite ordering anomalies",
-  "OCSP stapling configuration",
-  "Certificate-chain depth & CA trust path",
-  "HSTS, CSP, and transport-binding headers",
-  "Static-key DH risk indicators",
-  "Hybrid PQC negotiation readiness",
-  "Recommended algorithm-by-algorithm remediation sequence",
-];
-
 const howItWorks = [
   { number: "01", title: "Scan", description: "Paste a URL. Sixty seconds." },
   { number: "02", title: "Review", description: "Score, grade, three findings." },
@@ -87,68 +55,165 @@ const whatWeCheck = [
   { icon: ShieldAlert, title: "PQC Readiness" },
 ];
 
-type ScanStatus = "idle" | "scanning" | "complete";
+type ScanStatus = "idle" | "scanning" | "complete" | "error";
 
-const TARGET_SCORE = 42;
+type FindingStatusKind = "safe" | "warning" | "critical";
+
+// Mirrors the Rust `RiskLevel` enum (serialized as bare strings). `Unknown`
+// is what the engine reports when nothing answered and it could not grade
+// the endpoint.
+type RiskLevel = "Critical" | "High" | "Medium" | "Low" | "Pass" | "Unknown";
+
+type Finding = {
+  status: FindingStatusKind;
+  code: string;
+  component: string;
+  label: string;
+  detail: string;
+};
+
+// The public, free-tier projection returned by `POST /api/scan`
+// (`PublicScanReport` in ronway-scanner). Only the fields the page reads are
+// typed here — extra JSON keys (upgrade, cvss, etc.) are ignored at parse time.
+type ScanReport = {
+  target: {
+    domain: string;
+    ip_address: string | null;
+    port: number;
+    scanned_at: string;
+    scan_duration_ms: number;
+  };
+  risk_score: {
+    value: number;
+    level: RiskLevel;
+    summary: string;
+    harvest_risk: boolean;
+  };
+  quantum_ready: boolean;
+  summary: string;
+  tls: {
+    protocol_version: string;
+    protocol_vulnerable: boolean;
+    cipher_suite: string;
+    cipher_vulnerable: boolean;
+    key_exchange: string;
+    key_exchange_vulnerable: boolean;
+  } | null;
+  certificate: {
+    subject: string;
+    issuer: string;
+    key_algorithm: string;
+    key_algorithm_vulnerable: boolean;
+    signature_algorithm: string;
+    signature_algorithm_vulnerable: boolean;
+    days_remaining: number;
+    is_expired: boolean;
+    is_self_signed: boolean;
+  } | null;
+  http: {
+    hsts_enabled: boolean;
+    csp_present: boolean;
+    server_header: string | null;
+  } | null;
+  vulnerabilities: Array<{
+    id: string;
+    title: string;
+    description: string;
+    severity: RiskLevel;
+  }>;
+  // Free-tier remediation preview + count of the steps held back for the
+  // paid engagement.
+  recommended_actions: string[];
+  additional_recommendations: number;
+};
+
+type ScanView = {
+  findings: Finding[];
+  lockedTitles: string[];
+  lockedExtraCount: number;
+};
+
+const API_URL =
+  process.env.NEXT_PUBLIC_RONWAY_API_URL?.replace(/\/$/, "") ??
+  "http://localhost:3001";
+
+const STEP_INTERVAL_MS = 380;
 
 export default function RonwayPage() {
   const [url, setUrl] = React.useState("");
   const [status, setStatus] = React.useState<ScanStatus>("idle");
   const [stepIndex, setStepIndex] = React.useState(0);
   const [displayScore, setDisplayScore] = React.useState(0);
+  const [report, setReport] = React.useState<ScanReport | null>(null);
+  const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
 
-  // Step animation while scanning
+  const unreachable = report ? isUnreachable(report) : false;
+  // Resilience is the inverse of the engine's risk value. An unreachable
+  // scan has no gradeable posture, so it stays at zero and the UI shows "—".
+  const targetScore = report && !unreachable ? 100 - report.risk_score.value : 0;
+
+  // Step animation while scanning — visual only. Holds at the last step
+  // until the real fetch resolves so the user never sees the bar finish
+  // before results land.
   React.useEffect(() => {
     if (status !== "scanning") return;
-    if (stepIndex >= scanSteps.length) {
-      const t = setTimeout(() => setStatus("complete"), 350);
-      return () => clearTimeout(t);
-    }
-    const t = setTimeout(() => setStepIndex((i) => i + 1), 380);
-    return () => clearTimeout(t);
-  }, [status, stepIndex]);
-
-  // Score count-up on completion
-  React.useEffect(() => {
-    if (status !== "complete") return;
-    let raf: number;
-    const start = performance.now();
-    const duration = 900;
-    const animate = (now: number) => {
-      const t = Math.min(1, (now - start) / duration);
-      // ease-out cubic
-      const eased = 1 - Math.pow(1 - t, 3);
-      setDisplayScore(Math.round(TARGET_SCORE * eased));
-      if (t < 1) raf = requestAnimationFrame(animate);
-    };
-    raf = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(raf);
+    const id = window.setInterval(() => {
+      setStepIndex((i) => Math.min(i + 1, scanSteps.length - 1));
+    }, STEP_INTERVAL_MS);
+    return () => window.clearInterval(id);
   }, [status]);
 
-  function handleScan(e: React.FormEvent) {
+  // Score count-up on completion.
+  React.useEffect(() => {
+    if (status !== "complete") return;
+    let raf = 0;
+    const start = performance.now();
+    const duration = 900;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setDisplayScore(Math.round(targetScore * eased));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [status, targetScore]);
+
+  async function handleScan(e: React.FormEvent) {
     e.preventDefault();
-    if (!url.trim()) return;
+    const trimmed = url.trim();
+    if (!trimmed) return;
+
     setStatus("scanning");
     setStepIndex(0);
     setDisplayScore(0);
+    setReport(null);
+    setErrorMessage(null);
+
+    try {
+      const data = await runScan(trimmed);
+      // Snap the progress bar to 100% the moment data arrives.
+      setStepIndex(scanSteps.length);
+      setReport(data);
+      setStatus("complete");
+    } catch (e) {
+      setErrorMessage(humanError(e));
+      setStatus("error");
+    }
   }
 
   function handleReset() {
     setStatus("idle");
     setStepIndex(0);
     setDisplayScore(0);
+    setReport(null);
+    setErrorMessage(null);
   }
 
-  const scoreGrade =
-    displayScore >= 80
-      ? "A"
-      : displayScore >= 65
-        ? "B"
-        : displayScore >= 50
-          ? "C"
-          : displayScore >= 35
-            ? "D"
-            : "F";
+  const grade = unreachable ? "—" : scoreToGrade(displayScore);
+  const view: ScanView = report
+    ? deriveScanView(report)
+    : { findings: [], lockedTitles: [], lockedExtraCount: 0 };
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -220,9 +285,9 @@ export default function RonwayPage() {
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-[11px] font-mono text-muted-foreground tracking-wider">
-                  v0.4.2-beta
+                  v0.1.0-beta
                 </span>
-                {status === "complete" && (
+                {(status === "complete" || status === "error") && (
                   <button
                     type="button"
                     onClick={handleReset}
@@ -240,11 +305,19 @@ export default function RonwayPage() {
                 <ScannerIdle url={url} setUrl={setUrl} onSubmit={handleScan} />
               )}
               {status === "scanning" && <ScannerProgress step={stepIndex} />}
-              {status === "complete" && (
+              {status === "complete" && report && (
                 <ScannerResult
-                  url={url}
+                  report={report}
                   displayScore={displayScore}
-                  grade={scoreGrade}
+                  grade={grade}
+                  view={view}
+                  unreachable={unreachable}
+                />
+              )}
+              {status === "error" && (
+                <ScannerError
+                  message={errorMessage ?? "Unknown error"}
+                  onRetry={handleReset}
                 />
               )}
             </div>
@@ -382,6 +455,178 @@ export default function RonwayPage() {
       <Footer />
     </main>
   );
+}
+
+/* ─────────────────────────────────────────────────────────────
+ *  API + derivation helpers
+ * ────────────────────────────────────────────────────────── */
+
+async function runScan(rawTarget: string): Promise<ScanReport> {
+  const controller = new AbortController();
+  // Soft client-side timeout — server already enforces 30s.
+  const timer = window.setTimeout(() => controller.abort(), 35_000);
+  try {
+    const resp = await fetch(`${API_URL}/api/scan`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ target: rawTarget }),
+      signal: controller.signal,
+    });
+    if (!resp.ok) {
+      const body = await resp
+        .json()
+        .catch(() => null as { message?: string; error?: string } | null);
+      const detail = body?.message || body?.error || `HTTP ${resp.status}`;
+      throw new ScanError(resp.status, detail);
+    }
+    return (await resp.json()) as ScanReport;
+  } finally {
+    window.clearTimeout(timer);
+  }
+}
+
+class ScanError extends Error {
+  status: number;
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+  }
+}
+
+function humanError(err: unknown): string {
+  if (err instanceof ScanError) {
+    if (err.status === 400) return err.message;
+    if (err.status === 429)
+      return "Rate limit reached — try again in a minute.";
+    if (err.status === 504)
+      return "The scan took too long. The target may be unresponsive.";
+    if (err.status >= 500) return "Scanner is unavailable. Please try again.";
+    return err.message;
+  }
+  if (err instanceof DOMException && err.name === "AbortError")
+    return "The scan timed out. Try again or pick a different target.";
+  if (err instanceof TypeError)
+    return "Could not reach the scanner. Check your connection and retry.";
+  return err instanceof Error ? err.message : "Unknown error.";
+}
+
+function scoreToGrade(score: number): "A" | "B" | "C" | "D" | "F" {
+  if (score >= 80) return "A";
+  if (score >= 65) return "B";
+  if (score >= 50) return "C";
+  if (score >= 35) return "D";
+  return "F";
+}
+
+function severityToStatus(sev: RiskLevel): FindingStatusKind {
+  if (sev === "Critical" || sev === "High") return "critical";
+  if (sev === "Medium" || sev === "Low" || sev === "Unknown") return "warning";
+  return "safe";
+}
+
+function severityRank(sev: RiskLevel): number {
+  switch (sev) {
+    case "Critical":
+      return 4;
+    case "High":
+      return 3;
+    case "Medium":
+      return 2;
+    case "Low":
+      return 1;
+    default:
+      return 0;
+  }
+}
+
+// Map a vulnerability id (e.g. "TLS_LEGACY_VERSION", "RSA_CERTIFICATE",
+// "SHA1_IN_CHAIN", "NO_HSTS") to the public-surface component it concerns.
+function componentForVuln(id: string): string {
+  const u = id.toUpperCase();
+  if (u.includes("SIGNATURE") || u.includes("SHA1")) return "Signature";
+  if (u.startsWith("CERT") || u.includes("CERTIFICATE")) return "Certificate";
+  if (u.startsWith("TLS")) return "TLS";
+  if (
+    u.includes("HSTS") ||
+    u.includes("CSP") ||
+    u.includes("HEADER") ||
+    u.includes("SERVER")
+  )
+    return "Headers";
+  if (
+    u.includes("KEY") ||
+    u.includes("EXCHANGE") ||
+    u.includes("DH") ||
+    u.includes("KX")
+  )
+    return "Key exchange";
+  return "Crypto";
+}
+
+// A fully unreachable scan can't be graded — the engine reports
+// `risk_score.level === "Unknown"` with a zero value and no probe data. Never
+// render that as a perfect score.
+function isUnreachable(report: ScanReport): boolean {
+  return (
+    report.risk_score.level === "Unknown" ||
+    (!report.tls && !report.certificate && !report.http)
+  );
+}
+
+/**
+ * Build the free-tier view. Surfaces up to three findings — a positive
+ * opener when there's something genuinely good (TLS 1.3), then the
+ * highest-severity vulnerabilities. Everything past that, plus the
+ * remediation roadmap, is held behind the consultation paywall.
+ */
+function deriveScanView(report: ScanReport): ScanView {
+  const findings: Finding[] = [];
+
+  // Positive opener — only when we actually have something to celebrate.
+  if (
+    report.tls &&
+    !report.tls.protocol_vulnerable &&
+    report.tls.protocol_version.startsWith("TLSv1.3")
+  ) {
+    findings.push({
+      status: "safe",
+      code: "TLS_1_3",
+      component: "TLS",
+      label: `${report.tls.protocol_version} negotiated`,
+      detail: "Server supports the modern transport handshake.",
+    });
+  }
+
+  // Sort vulns: Critical > High > Medium > Low.
+  const ranked = [...report.vulnerabilities].sort(
+    (a, b) => severityRank(b.severity) - severityRank(a.severity),
+  );
+
+  let shownVulns = 0;
+  for (const v of ranked) {
+    if (findings.length >= 3) break;
+    findings.push({
+      status: severityToStatus(v.severity),
+      code: v.id,
+      component: componentForVuln(v.id),
+      label: v.title,
+      detail: v.description,
+    });
+    shownVulns += 1;
+  }
+
+  // Locked teaser = the real vulnerabilities we didn't surface, then the
+  // remediation action headlines the engine previews for the free tier.
+  const lockedTitles = [
+    ...ranked.slice(shownVulns).map((v) => v.title),
+    ...report.recommended_actions,
+  ];
+
+  return {
+    findings,
+    lockedTitles,
+    lockedExtraCount: report.additional_recommendations,
+  };
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -528,15 +773,33 @@ function ScannerProgress({ step }: { step: number }) {
 }
 
 function ScannerResult({
-  url,
+  report,
   displayScore,
   grade,
+  view,
+  unreachable,
 }: {
-  url: string;
+  report: ScanReport;
   displayScore: number;
   grade: string;
+  view: ScanView;
+  unreachable: boolean;
 }) {
-  const target = url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  const target = report.target.domain;
+  const dateLabel = report.target.scanned_at.slice(0, 10);
+
+  // Nothing answered on the public surface — show an honest "incomplete"
+  // result rather than a misleading perfect score.
+  if (unreachable) {
+    return (
+      <UnreachableResult report={report} target={target} dateLabel={dateLabel} />
+    );
+  }
+
+  const { findings, lockedTitles, lockedExtraCount } = view;
+  const lockedCount = lockedTitles.length + lockedExtraCount;
+  const totalFindings = findings.length + lockedCount;
+
   return (
     <div className="space-y-8">
       {/* Score band */}
@@ -562,6 +825,12 @@ function ScannerResult({
               style={{ width: `${displayScore}%` }}
             />
           </div>
+          {report.risk_score.harvest_risk && (
+            <p className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-mono tracking-wider text-destructive uppercase">
+              <AlertTriangle className="w-3 h-3" aria-hidden />
+              Harvest-now-decrypt-later risk
+            </p>
+          )}
         </div>
         <div className="bg-background p-6">
           <p className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground mb-3">
@@ -587,16 +856,23 @@ function ScannerResult({
             {target || "unspecified"}
           </span>
           <span className="font-mono text-[11px] text-muted-foreground tracking-wider mt-auto pt-3">
-            {new Date().toISOString().slice(0, 10)} · public surface
+            {dateLabel} · public surface
           </span>
         </div>
       </div>
+
+      {/* Summary line straight from the engine */}
+      {report.risk_score.summary && (
+        <p className="text-sm text-muted-foreground leading-relaxed border-l-2 border-accent/50 pl-4">
+          {report.risk_score.summary}
+        </p>
+      )}
 
       {/* Findings */}
       <div>
         <div className="flex items-center justify-between mb-4">
           <p className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground">
-            Findings · 3 of 10 visible
+            Findings · {findings.length} of {totalFindings} visible
           </p>
           <span className="text-[11px] font-mono tracking-widest uppercase text-accent">
             Public-surface only
@@ -604,15 +880,26 @@ function ScannerResult({
         </div>
 
         <ul className="border border-border/60 rounded-sm divide-y divide-border/60 overflow-hidden bg-background">
-          {visibleFindings.map((f, i) => (
+          {findings.length === 0 && (
+            <li className="px-5 py-6 text-sm text-muted-foreground">
+              No public-surface findings — the endpoint meets current
+              post-quantum readiness guidance.
+            </li>
+          )}
+          {findings.map((f, i) => (
             <li
               key={i}
-              className="grid grid-cols-[20px_120px_1fr_100px] gap-4 items-start px-5 py-4"
+              className="grid grid-cols-[20px_minmax(96px,128px)_1fr_100px] gap-4 items-start px-5 py-4"
             >
               <FindingIcon status={f.status} />
-              <span className="font-mono text-xs text-muted-foreground tracking-wider uppercase pt-0.5">
-                {f.code}
-              </span>
+              <div className="min-w-0 pt-0.5">
+                <p className="font-mono text-[11px] tracking-widest uppercase text-foreground/80 truncate">
+                  {f.component}
+                </p>
+                <p className="font-mono text-[10px] tracking-wider text-muted-foreground truncate mt-0.5">
+                  {f.code}
+                </p>
+              </div>
               <div>
                 <p className="text-sm text-foreground font-medium leading-snug">
                   {f.label}
@@ -621,45 +908,47 @@ function ScannerResult({
                   {f.detail}
                 </p>
               </div>
-              <FindingStatus status={f.status} />
+              <FindingStatusBadge status={f.status} />
             </li>
           ))}
 
-          {/* Locked findings */}
-          <li className="relative px-5 py-5 bg-background">
-            <div
-              className="absolute inset-0 pointer-events-none"
-              aria-hidden
-              style={{
-                background:
-                  "linear-gradient(180deg, hsl(var(--background) / 0) 0%, hsl(var(--background) / 0.85) 60%)",
-              }}
-            />
-            <div className="relative">
-              <div className="flex items-center gap-2 mb-3">
-                <Lock
-                  className="w-3.5 h-3.5 text-muted-foreground"
-                  aria-hidden
-                />
-                <span className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground">
-                  7 additional findings — locked
-                </span>
+          {/* Locked findings — real remaining vulns + remediation roadmap */}
+          {lockedCount > 0 && (
+            <li className="relative px-5 py-5 bg-background">
+              <div
+                className="absolute inset-0 pointer-events-none"
+                aria-hidden
+                style={{
+                  background:
+                    "linear-gradient(180deg, hsl(var(--background) / 0) 0%, hsl(var(--background) / 0.85) 60%)",
+                }}
+              />
+              <div className="relative">
+                <div className="flex items-center gap-2 mb-3">
+                  <Lock
+                    className="w-3.5 h-3.5 text-muted-foreground"
+                    aria-hidden
+                  />
+                  <span className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground">
+                    {lockedCount} more findings &amp; remediation steps — locked
+                  </span>
+                </div>
+                <ul className="space-y-1.5 select-none">
+                  {lockedTitles.map((label, i) => (
+                    <li
+                      key={i}
+                      className="flex items-center gap-3 text-sm text-muted-foreground/70 blur-[3px] hover:blur-[2px] transition-all"
+                    >
+                      <span className="font-mono text-[11px] tracking-widest uppercase shrink-0">
+                        [{String(i + findings.length + 1).padStart(2, "0")}]
+                      </span>
+                      <span className="truncate">{label}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-1.5 select-none">
-                {lockedFindings.map((label, i) => (
-                  <li
-                    key={i}
-                    className="flex items-center gap-3 text-sm text-muted-foreground/70 blur-[3px] hover:blur-[2px] transition-all"
-                  >
-                    <span className="font-mono text-[11px] tracking-widest uppercase">
-                      [{String(i + 4).padStart(2, "0")}]
-                    </span>
-                    <span>{label}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </li>
+            </li>
+          )}
         </ul>
       </div>
 
@@ -693,15 +982,122 @@ function ScannerResult({
       </div>
 
       <p className="text-[11px] font-mono tracking-wider text-muted-foreground leading-relaxed">
-        Demonstration result · Ronway is in limited-release beta. Scan
-        backend is mock. Production scoring derives from the live Rust engine
-        against the target endpoint.
+        Live result · Ronway is in limited-release beta · Score derived from
+        the Rust engine against the target endpoint · scan completed in{" "}
+        {report.target.scan_duration_ms} ms
       </p>
     </div>
   );
 }
 
-function FindingIcon({ status }: { status: string }) {
+function UnreachableResult({
+  report,
+  target,
+  dateLabel,
+}: {
+  report: ScanReport;
+  target: string;
+  dateLabel: string;
+}) {
+  const reason = report.risk_score.summary || report.summary;
+
+  return (
+    <div className="space-y-8">
+      {/* Score band — deliberately N/A so a dead host never reads as a pass */}
+      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-px bg-border/60 border border-border/60 rounded-sm overflow-hidden">
+        <div className="bg-background p-6">
+          <p className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground mb-3">
+            Resilience Score
+          </p>
+          <div className="flex items-baseline gap-3 mb-4">
+            <span className="font-display text-6xl lg:text-7xl tracking-tighter text-muted-foreground tabular-nums">
+              —
+            </span>
+            <span className="font-mono text-sm text-muted-foreground">
+              / 100
+            </span>
+          </div>
+          <p className="text-[11px] font-mono tracking-wider text-muted-foreground uppercase">
+            Not assessed
+          </p>
+        </div>
+        <div className="bg-background p-6">
+          <p className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground mb-3">
+            Grade
+          </p>
+          <span className="font-display text-6xl tracking-tighter text-muted-foreground">
+            N/A
+          </span>
+        </div>
+        <div className="bg-background p-6 flex flex-col">
+          <p className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground mb-3">
+            Target
+          </p>
+          <span className="font-mono text-sm text-foreground break-all">
+            {target || "unspecified"}
+          </span>
+          <span className="font-mono text-[11px] text-muted-foreground tracking-wider mt-auto pt-3">
+            {dateLabel} · unreachable
+          </span>
+        </div>
+      </div>
+
+      <div className="flex items-start gap-3 border border-border/60 bg-muted/20 rounded-sm px-5 py-4">
+        <RadioTower
+          className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5"
+          aria-hidden
+        />
+        <div>
+          <p className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground mb-1">
+            Assessment incomplete
+          </p>
+          <p className="text-sm text-foreground leading-snug">{reason}</p>
+        </div>
+      </div>
+
+      <p className="text-[11px] font-mono tracking-wider text-muted-foreground leading-relaxed">
+        Nothing answered on the public TLS surface, so no post-quantum posture
+        could be graded. Confirm the host is reachable on port{" "}
+        {report.target.port} and try again.
+      </p>
+    </div>
+  );
+}
+
+function ScannerError({
+  message,
+  onRetry,
+}: {
+  message: string;
+  onRetry: () => void;
+}) {
+  return (
+    <div className="space-y-5 font-mono text-sm">
+      <div className="flex items-start gap-3 border border-destructive/40 bg-destructive/5 rounded-sm px-5 py-4">
+        <AlertTriangle
+          className="w-5 h-5 text-destructive shrink-0 mt-0.5"
+          aria-hidden
+        />
+        <div>
+          <p className="text-[11px] tracking-widest uppercase text-destructive mb-1">
+            Scan failed
+          </p>
+          <p className="text-sm text-foreground leading-snug">{message}</p>
+        </div>
+      </div>
+      <Button
+        type="button"
+        onClick={onRetry}
+        className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-sm h-11 px-6 text-[13px] font-medium tracking-tight"
+      >
+        Try again
+        <ChevronRight className="w-4 h-4" aria-hidden />
+      </Button>
+    </div>
+  );
+}
+
+function FindingIcon({ status }: { status: FindingStatusKind }) {
   if (status === "safe")
     return (
       <CheckCircle2
@@ -724,22 +1120,16 @@ function FindingIcon({ status }: { status: string }) {
   );
 }
 
-function FindingStatus({ status }: { status: string }) {
-  const map: Record<string, { label: string; cls: string }> = {
-    safe: {
-      label: "Safe",
-      cls: "text-accent border-accent/40",
-    },
-    warning: {
-      label: "Warning",
-      cls: "text-foreground border-border",
-    },
+function FindingStatusBadge({ status }: { status: FindingStatusKind }) {
+  const map: Record<FindingStatusKind, { label: string; cls: string }> = {
+    safe: { label: "Safe", cls: "text-accent border-accent/40" },
+    warning: { label: "Warning", cls: "text-foreground border-border" },
     critical: {
       label: "Critical",
       cls: "text-destructive border-destructive/40",
     },
   };
-  const m = map[status] || map.warning;
+  const m = map[status];
   return (
     <span
       className={`inline-flex items-center justify-center text-[11px] font-mono tracking-widest uppercase px-2 py-1 border ${m.cls} self-start`}
