@@ -1,13 +1,15 @@
 export const metadata = {
   title:
-    "BPxAI — The Philippine Practice for Post-Quantum Cryptography, Applied AI, and Verifiable Systems",
+    "BPxAI — AI Consulting & Architecture, Blockchain Solutions, and Post-Quantum Security",
   description:
-    "BPxAI is the Philippine market's specialist consultancy for post-quantum cryptography, applied artificial intelligence, and blockchain-verified systems. We work with the institutions whose continuity depends on cryptographic resilience and decision-grade intelligence in the decade ahead.",
+    "BPxAI is a full-service technology studio for AI consulting and architecture, blockchain engineering, and post-quantum security. We architect intelligent systems for enterprises, SMEs, and the public sector — from strategy to production.",
   keywords: [
     // Practice positioning
+    "AI consulting Philippines",
+    "AI architecture consultancy",
+    "Enterprise AI consulting",
+    "Blockchain consultancy Philippines",
     "Post-quantum cryptography Philippines",
-    "PQC consultancy Philippines",
-    "Quantum-safe migration Philippines",
     "Cryptographic resilience consulting",
     "BPxAI",
     "BPxAI Labs",
@@ -62,9 +64,9 @@ export const metadata = {
   ],
   openGraph: {
     title:
-      "BPxAI — The Philippine Practice for Post-Quantum Cryptography, Applied AI, and Verifiable Systems",
+      "BPxAI — AI Consulting & Architecture, Blockchain Solutions, and Post-Quantum Security",
     description:
-      "Specialist consultancy for the institutions whose continuity depends on cryptographic resilience and decision-grade intelligence in the post-quantum decade. NIST-aligned hybrid PQC migration, applied AI in regulated environments, and blockchain-verified systems.",
+      "A full-service technology studio. We architect intelligent systems for enterprises, SMEs, and the public sector — AI consulting and architecture, blockchain engineering, and NIST-aligned post-quantum security.",
     url: "https://www.bpxai.com",
     siteName: "BPxAI",
     images: [
@@ -72,7 +74,7 @@ export const metadata = {
         url: "https://www.bpxai.com/bpxai.png",
         width: 1200,
         height: 630,
-        alt: "BPxAI — Engineered for the post-quantum decade",
+        alt: "BPxAI — We architect intelligent systems for the enterprise",
       },
     ],
     locale: "en_PH",
@@ -81,9 +83,9 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "BPxAI — Engineered for the post-quantum decade",
+      "BPxAI — AI, Blockchain, and Post-Quantum Security",
     description:
-      "The Philippine practice for post-quantum cryptography, applied AI, and blockchain-verified systems. Ronway Scanner: the first Philippine-developed PQC scanner.",
+      "A full-service technology studio for AI consulting and architecture, blockchain solutions, and post-quantum security. Ronway Scanner: a Philippine-developed PQC scanner.",
     images: ["https://www.bpxai.com/bpxai.png"],
   },
 };

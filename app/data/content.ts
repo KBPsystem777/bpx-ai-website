@@ -8,7 +8,7 @@ export const siteContent: Record<string, any> = {
     meta: {
       siteName: "BPxAI",
       description:
-        "Post-quantum cryptography, applied AI, and verifiable systems.",
+        "AI consulting and architecture, blockchain engineering, and post-quantum security.",
     },
 
     navigation: {
@@ -25,10 +25,10 @@ export const siteContent: Record<string, any> = {
     },
 
     hero: {
-      tagline: "Post-Quantum · AI · Verifiable Systems",
-      headline: "Engineered for the post-quantum decade.",
+      tagline: "AI · Blockchain · Post-Quantum Security",
+      headline: "We architect intelligent systems for the enterprise.",
       subheadline:
-        "The Philippine practice for cryptographic resilience.",
+        "AI consulting and architecture, blockchain engineering, and post-quantum security — from strategy to production.",
       primaryCta: {
         label: "Brief our partners",
         href: "/#contact",
@@ -41,32 +41,32 @@ export const siteContent: Record<string, any> = {
 
     capabilities: {
       sectionLabel: "Practices",
-      title: "Three disciplines. One posture.",
-      subtitle: "Where cryptography, intelligence, and verifiability converge.",
+      title: "Three practices. One partner.",
+      subtitle: "AI, blockchain, and cryptography — architected end to end.",
       pillars: [
         {
-          id: "pqc",
-          title: "Post-Quantum Cryptography",
-          shortTitle: "Quantum",
-          description:
-            "NIST-aligned migration. Mapped, sequenced, engineered.",
-          metric: "FIPS 203 / 204 / 205",
-        },
-        {
           id: "ai",
-          title: "Applied AI",
+          title: "AI Consulting & Architecture",
           shortTitle: "AI",
           description:
-            "Decision-grade systems for high-consequence operations.",
+            "Strategy, architecture, and production AI systems for high-consequence operations.",
           metric: "Doctrine published. Deployments running.",
         },
         {
           id: "web3",
-          title: "Verifiable Systems",
-          shortTitle: "Trust",
+          title: "Blockchain Solutions",
+          shortTitle: "Blockchain",
           description:
-            "Blockchain where verifiability is the requirement.",
-          metric: "Live across U.S. residential markets.",
+            "Verifiable systems and on-chain infrastructure where trust is the requirement.",
+          metric: "Live across U.S. markets.",
+        },
+        {
+          id: "pqc",
+          title: "Post-Quantum Security",
+          shortTitle: "Quantum",
+          description:
+            "NIST-aligned cryptographic migration. Mapped, sequenced, engineered.",
+          metric: "FIPS 203 / 204 / 205",
         },
       ],
     },
@@ -81,19 +81,14 @@ export const siteContent: Record<string, any> = {
           industry: "Defense",
         },
         {
-          title: "Sovereign Revenue Infrastructure",
-          impact: "+30% revenue collection",
-          industry: "Public Sector",
-        },
-        {
-          title: "Fortune 500 Utilities",
-          impact: "−70% billing error rate",
-          industry: "Energy",
-        },
-        {
           title: "MedixAI — Clinical Triage",
           impact: "Live, Philippine market",
           industry: "Healthcare",
+        },
+        {
+          title: "Operational Intelligence Platform",
+          impact: "Production",
+          industry: "Enterprise",
         },
         {
           title: "ManageLife — Verified Housing",
@@ -101,9 +96,14 @@ export const siteContent: Record<string, any> = {
           industry: "Financial Services",
         },
         {
-          title: "Operational Intelligence Platform",
-          impact: "Production",
-          industry: "Enterprise",
+          title: "Sovereign Revenue Infrastructure",
+          impact: "+30% revenue collection",
+          industry: "Public Sector",
+        },
+        {
+          title: "Post-Quantum Migration Practice",
+          impact: "NIST-aligned",
+          industry: "Cryptography",
         },
       ],
     },
@@ -121,13 +121,13 @@ export const siteContent: Record<string, any> = {
 
     research: {
       title: "Research.",
-      subtitle: "Published positions on the post-quantum decade.",
+      subtitle: "Published positions on AI, blockchain, and post-quantum systems.",
       documents: [
         {
           title: "AI Defense Intelligence Framework",
           description:
             "Strategic doctrine on AI in Philippine defense and intelligence.",
-          category: "Defense",
+          category: "AI",
           date: "Feb 2026",
           fileSize: "PDF",
           downloadUrl:
@@ -139,13 +139,14 @@ export const siteContent: Record<string, any> = {
 
     cta: {
       title: "Begin the conversation.",
-      description: "A thirty-minute partner briefing.",
+      description:
+        "A thirty-minute partner briefing on your AI, blockchain, or security roadmap.",
       buttonText: "Brief our partners",
       buttonHref: "https://calendly.com/bpxailabs/30min",
     },
 
     footer: {
-      companyDescription: "Engineered for the post-quantum decade.",
+      companyDescription: "We architect intelligent systems for the enterprise.",
       contactInfo: {
         email: "bpxailabs@gmail.com",
         phone: "+63 917 713 8316",
@@ -158,9 +159,9 @@ export const siteContent: Record<string, any> = {
         { label: "Contact", href: "/#contact" },
       ],
       solutions: [
-        { label: "Post-Quantum", href: "/quantum" },
-        { label: "Applied AI", href: "/#capabilities" },
-        { label: "Verifiable Systems", href: "/#capabilities" },
+        { label: "AI Consulting", href: "/#capabilities" },
+        { label: "Blockchain Solutions", href: "/#capabilities" },
+        { label: "Post-Quantum Security", href: "/quantum" },
         { label: "Ronway", href: "/ronway" },
       ],
       copyright: `© ${currentYear} BPxAI.`,
@@ -171,7 +172,7 @@ export const siteContent: Record<string, any> = {
     meta: {
       siteName: "BPxAI",
       description:
-        "Post-quantum cryptography, inilapat na AI, at mga sistemang may katibayan.",
+        "AI consulting at arkitektura, blockchain engineering, at post-quantum security.",
     },
 
     navigation: {
@@ -188,9 +189,10 @@ export const siteContent: Record<string, any> = {
     },
 
     hero: {
-      tagline: "Post-Quantum · AI · Katibayang Digital",
-      headline: "Itinatayo para sa dekada ng post-quantum.",
-      subheadline: "Ang Filipinong praktis para sa katibayang kriptograpiko.",
+      tagline: "AI · Blockchain · Post-Quantum Security",
+      headline: "Itinatayo namin ang matatalinong sistema para sa negosyo.",
+      subheadline:
+        "AI consulting at arkitektura, blockchain engineering, at post-quantum security — mula estratehiya hanggang produksyon.",
       primaryCta: {
         label: "Makipag-ugnayan",
         href: "/#contact",
@@ -203,29 +205,32 @@ export const siteContent: Record<string, any> = {
 
     capabilities: {
       sectionLabel: "Mga Praktis",
-      title: "Tatlong disiplina. Isang panindigan.",
-      subtitle: "Kung saan nagtatagpo ang kriptograpiya, AI, at katibayan.",
+      title: "Tatlong praktis. Isang kasosyo.",
+      subtitle: "AI, blockchain, at kriptograpiya — inaarkitekto mula umpisa hanggang dulo.",
       pillars: [
         {
-          id: "pqc",
-          title: "Post-Quantum Cryptography",
-          shortTitle: "Quantum",
-          description: "Paglipat na nakaayon sa NIST. Tinatakda, isinasagawa.",
-          metric: "FIPS 203 / 204 / 205",
-        },
-        {
           id: "ai",
-          title: "Inilapat na AI",
+          title: "AI Consulting at Arkitektura",
           shortTitle: "AI",
-          description: "Mga sistemang pang-pasiya para sa mahahalagang operasyon.",
+          description:
+            "Estratehiya, arkitektura, at production AI systems para sa mahahalagang operasyon.",
           metric: "May doktrina. May deployment.",
         },
         {
           id: "web3",
-          title: "Mga Sistemang May Katibayan",
-          shortTitle: "Katibayan",
-          description: "Blockchain kung saan ang katibayan ang pangangailangan.",
-          metric: "Live sa U.S. residential markets.",
+          title: "Mga Solusyong Blockchain",
+          shortTitle: "Blockchain",
+          description:
+            "Mga sistemang may katibayan at on-chain infrastructure kung saan ang tiwala ang pangangailangan.",
+          metric: "Live sa U.S. markets.",
+        },
+        {
+          id: "pqc",
+          title: "Post-Quantum Security",
+          shortTitle: "Quantum",
+          description:
+            "Paglipat na nakaayon sa NIST. Tinatakda, isinasagawa.",
+          metric: "FIPS 203 / 204 / 205",
         },
       ],
     },
@@ -240,19 +245,14 @@ export const siteContent: Record<string, any> = {
           industry: "Tanggulan",
         },
         {
-          title: "Sovereign Revenue Infrastructure",
-          impact: "+30% koleksyon",
-          industry: "Pampublikong Sektor",
-        },
-        {
-          title: "Fortune 500 Utilities",
-          impact: "−70% pagkakamali sa pagsingil",
-          industry: "Enerhiya",
-        },
-        {
           title: "MedixAI — Klinikal na Triage",
           impact: "Live, Pilipinas",
           industry: "Pangkalusugan",
+        },
+        {
+          title: "Operasyonal na Plataporma",
+          impact: "Sa produksyon",
+          industry: "Negosyo",
         },
         {
           title: "ManageLife — Pabahay na May Katibayan",
@@ -260,9 +260,14 @@ export const siteContent: Record<string, any> = {
           industry: "Pinansiyal",
         },
         {
-          title: "Operasyonal na Plataporma",
-          impact: "Sa produksyon",
-          industry: "Negosyo",
+          title: "Sovereign Revenue Infrastructure",
+          impact: "+30% koleksyon",
+          industry: "Pampublikong Sektor",
+        },
+        {
+          title: "Post-Quantum Migration Practice",
+          impact: "Nakaayon sa NIST",
+          industry: "Kriptograpiya",
         },
       ],
     },
@@ -280,12 +285,12 @@ export const siteContent: Record<string, any> = {
 
     research: {
       title: "Pananaliksik.",
-      subtitle: "Mga naipalathalang panindigan sa dekada ng post-quantum.",
+      subtitle: "Mga naipalathalang panindigan sa AI, blockchain, at post-quantum systems.",
       documents: [
         {
           title: "AI Defense Intelligence Framework",
           description: "Doktrina sa AI para sa Philippine defense at intelligence.",
-          category: "Tanggulan",
+          category: "AI",
           date: "Peb 2026",
           fileSize: "PDF",
           downloadUrl:
@@ -297,13 +302,15 @@ export const siteContent: Record<string, any> = {
 
     cta: {
       title: "Simulan ang pag-uusap.",
-      description: "Isang tatlumpung-minutong partner briefing.",
+      description:
+        "Isang tatlumpung-minutong partner briefing sa iyong AI, blockchain, o security roadmap.",
       buttonText: "Makipag-ugnayan",
       buttonHref: "https://calendly.com/bpxailabs/30min",
     },
 
     footer: {
-      companyDescription: "Itinatayo para sa dekada ng post-quantum.",
+      companyDescription:
+        "Itinatayo namin ang matatalinong sistema para sa negosyo.",
       contactInfo: {
         email: "bpxailabs@gmail.com",
         phone: "+63 917 713 8316",
@@ -316,9 +323,9 @@ export const siteContent: Record<string, any> = {
         { label: "Makipag-ugnayan", href: "/#contact" },
       ],
       solutions: [
-        { label: "Post-Quantum", href: "/quantum" },
-        { label: "Inilapat na AI", href: "/#capabilities" },
-        { label: "Mga Sistemang May Katibayan", href: "/#capabilities" },
+        { label: "AI Consulting", href: "/#capabilities" },
+        { label: "Mga Solusyong Blockchain", href: "/#capabilities" },
+        { label: "Post-Quantum Security", href: "/quantum" },
         { label: "Ronway", href: "/ronway" },
       ],
       copyright: `© ${currentYear} BPxAI.`,
