@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(rm -rf C:/Users/Kolee/AppData/Local/pnpm/store/v10)",
-      "Bash(rm -rf node_modules)"
+      "Bash(rm -rf node_modules)",
+      "WebFetch(domain:www.melbourneaiagents.com.au)",
+      "Skill(claude-api)",
+      "Skill(claude-api:*)"
     ]
   }
 }
